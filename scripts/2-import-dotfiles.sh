@@ -19,3 +19,7 @@ comtrya -d private apply
 # change repo remote origin to ssh address
 
 $ROOT_DIR/modules/git/git_https_to_ssh.sh
+
+# ssh-add sshkey
+
+ssh-add
