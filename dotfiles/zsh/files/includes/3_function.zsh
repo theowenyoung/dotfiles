@@ -11,6 +11,12 @@ gr(){
   
 }
 
+# git commit 
+
+function gc() { git clone ssh://git@github.com/"$*" }
+function gg() { git commit -m "$*" }
+function ga() { git commit -a -m "$*"}
+
 
 # urlencode
 encode()

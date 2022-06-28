@@ -64,5 +64,3 @@ alias m="less"
 # Do this: git config --global url.ssh://git@github.com/.insteadOf https://github.com
 alias gd="git diff"
 alias gs="git status 2>/dev/null"
-function gc() { git clone ssh://git@github.com/"$*" }
-function gg() { git commit -m "$*" }
