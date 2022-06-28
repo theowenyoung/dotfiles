@@ -16,6 +16,11 @@ sudo apt install --yes keepassxc
 
 chsh -s $(which zsh)
 
+
+# change root password 
+
+sudo passwd $(whoami)
+
 # create normal user
 sudo adduser $USERNAME
 

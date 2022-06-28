@@ -33,6 +33,9 @@ inbox.kdbx
 
 ## Deiban
 
+```bash
+ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@ip
+```
 
 ### 0. Install Pre Required Modules
 
