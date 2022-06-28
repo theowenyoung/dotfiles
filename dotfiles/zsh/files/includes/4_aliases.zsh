@@ -1,5 +1,8 @@
 # Custom
 
+# git
+
+alias gp="git push"
 
 alias pos="port search"
 alias poi="sudo port -N install"

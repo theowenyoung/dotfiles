@@ -8,6 +8,6 @@ data=$(cat ~/Desktop/test.csv)
 
 # write git  ssh private key to ~/.ssh/git_id
 TARGET_GIT="$HOME/.ssh/id_ed25519_git"
-printf "$data" | mlr --c2j --jlistwrap cat | jq 'map(select(.Title=="git_ssh_private_key")) | .[0].Notes' | xargs printf > $TARGET_GIT
+printf "$data" | mlr --c2j --jlistwrap cat | jq 'map(select(.Title=="git_ssh_private_key")) | .[0].Password' | xargs printf -- > $TARGET_GIT
 
 echo "copy to $TARGET_GIT success"
