@@ -5,7 +5,7 @@ ENV_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/en
 source $ENV_PATH;
 
 
-local module_path=$ENV_PATH/modules;
+module_path=$ENV_PATH/modules;
 
 $module_path/helix/install_helix_debian.sh
 
