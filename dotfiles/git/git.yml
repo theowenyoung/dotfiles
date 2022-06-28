@@ -1,0 +1,8 @@
+actions:
+    - action: file.copy
+      from: dot_gitconfig
+      to: "{{user.home_dir}}/.gitconfig"
+      template: true
+    - action: file.link
+      source: dot_gitignore
+      target: "{{user.home_dir}}/.gitignore"

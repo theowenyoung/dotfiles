@@ -1,0 +1,4 @@
+actions:
+  - action: file.link
+    source: config.toml
+    target: "{{user.home_dir}}/.config/helix/config.toml"

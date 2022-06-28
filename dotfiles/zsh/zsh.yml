@@ -1,0 +1,18 @@
+actions:
+  - action: file.link
+    source: path_macos.zsh
+    where: os.name == "macos"
+    target: "{{user.home_dir}}/.zsh/extra/path_macos.zsh"
+  - action: file.link
+    source: includes
+    walk_dir: true
+    target: "{{user.home_dir}}/.zsh/includes"
+  - action: file.link
+    source: general_config.zsh
+    target: "{{user.home_dir}}/.zsh/general_config.zsh"
+  - action: file.link
+    source: zshenv.zsh
+    target: "{{user.home_dir}}/.zshenv" 
+  - action: file.link
+    source: zshrc.zsh
+    target: "{{user.home_dir}}/.zshrc"

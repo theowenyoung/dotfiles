@@ -1,0 +1,4 @@
+actions:
+  - action: file.link
+    source: alacritty.yml
+    target: {{user.home_dir}}/.config/alacritty/alacritty.yml

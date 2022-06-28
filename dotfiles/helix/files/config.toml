@@ -1,0 +1,5 @@
+theme="gruvbox"
+[editor]
+line-number="relative"
+[keys.normal]
+"#" = "toggle_comments"

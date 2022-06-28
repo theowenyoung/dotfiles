@@ -1,0 +1,4 @@
+actions:
+  - action: file.link
+    source: kakrc
+    target: "{{user.home_dir}}/.config/kak/kakrc"
