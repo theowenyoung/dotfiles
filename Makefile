@@ -1,8 +1,8 @@
-.PHONY: mac
-mac:
-	rash ./main.yml
-.PHONY: bootstrap
-bootstrap:
+.PHONY: link
+link:
+	comtrya -d dotfiles apply && comtrya -d private apply
+.PHONY: dotfiles
+dotfiles:
 	comtrya -d dotfiles apply
 .PHONY: private
 private:
