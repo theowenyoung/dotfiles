@@ -1,5 +1,5 @@
 #!/bin/sh
-export PATH=$HOME/bin
+export PATH=$HOME/.local/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:/usr/local/bin

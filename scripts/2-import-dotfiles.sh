@@ -20,6 +20,20 @@ comtrya -d private apply
 
 $ROOT_DIR/modules/git/git_https_to_ssh.sh
 
+
+# change private repo url to ssh
+
+cd $ROOT_DIR/$PRIVATE_REPO_NAME
+$ROOT_DIR/modules/git/git_https_to_ssh.sh
+
+
+cd $ROOT_DIR
 # ssh-add sshkey
 
 ssh-add
+
+
+# link private/comtrya.yaml to root dir
+ln -s ./private/Comtrya.yaml ./Comtrya.yaml
+
+echo "Please run source ~/.zshrc"

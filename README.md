@@ -34,6 +34,12 @@ inbox.kdbx
 ## Deiban
 
 
+### 0. Install Pre Required Modules
+
+```bash
+curl -s https://raw.githubusercontent.com/theowenyoung/env/main/scripts/0-install-pre-required-modules-for-debian.sh | bash -s
+```
+
 > This will install keepassxc,git
 
 ## Resource
