@@ -40,10 +40,20 @@ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@ip
 ### 0. Install Pre Required Modules
 
 ```bash
-curl -s https://raw.githubusercontent.com/theowenyoung/env/main/scripts/0-install-pre-required-modules-for-debian.sh | bash -s
+bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/env/main
+/scripts/0-install-pre-required-modules-for-debian.sh
 ```
 
 > This will install keepassxc,git
+
+### 2. Clone private repo
+
+> get [github personal_token](https://github.com/settings/tokens) first 
+
+```bash
+git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/env/private
+```
+
 
 ## Resource
 

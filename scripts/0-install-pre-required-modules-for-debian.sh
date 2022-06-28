@@ -26,14 +26,19 @@ passwd $(whoami)
 # create normal user
 adduser $USERNAME
 
-# change normal user to 
+# change normal user to sudo 
 
-usermod -aG $USERNAME
+usermod -aG sudo $USERNAME
 
 echo create user $USERNAME success, now we will switch to user $USERNAME
+echo please manual to save the root and $USERNAME password to keepassxc 
+
 
 su $USERNAME
 
 
 # change zsh as the default shell
 chsh -s $(which zsh)
+
+# change to home
+cd ~
