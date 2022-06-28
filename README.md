@@ -42,9 +42,23 @@ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@ip
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/env/main
 /scripts/0-install-pre-required-modules-for-debian.sh
+
+source ~/.cargo/env
 ```
 
 > This will install keepassxc,git
+
+
+### 1. Give normal user NO-PASSWORD permission
+
+```bash
+sudo visudo
+``` 
+
+```bash
+green ALL=(ALL) NOPASSWD:ALL
+```
+
 
 ### 2. Clone private repo
 
@@ -53,6 +67,25 @@ bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/env/main
 ```bash
 git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/env/private
 ```
+
+
+
+### 3. Link and Copy dotfiles
+
+
+```bash
+cd ~/env
+make link
+```
+
+### 3. Install Apps
+
+
+```bash
+cd ~/env
+make install-apps-for-debian  
+```
+
 
 
 ## Resource
