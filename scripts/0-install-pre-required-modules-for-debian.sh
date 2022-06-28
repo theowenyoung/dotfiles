@@ -23,8 +23,8 @@ echo please manual to save the root and $USERNAME password to keepassxc
 
 
 
-
-
+# install openssl for comtrya
+apt install --yes pkg-config libssl-dev
 # install git
 apt install --yes git
 # install zsh

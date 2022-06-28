@@ -1,6 +1,6 @@
 .PHONY: link
 link:
-	comtrya -d dotfiles apply && comtrya -d private apply
+	~/.local/bin/comtrya -d dotfiles apply && comtrya -d private apply
 .PHONY: dotfiles
 dotfiles:
 	comtrya -d dotfiles apply
