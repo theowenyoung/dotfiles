@@ -1,0 +1,9 @@
+actions:
+  - action: file.copy
+    from: config.json.tmpl
+    to: "{{user.home_dir}}/.config/ss/config.json"
+    template: true
+  - action: file.copy
+    from: ss.service.tmpl
+    to: "/etc/systemd/system/ss.service"
+    template: true

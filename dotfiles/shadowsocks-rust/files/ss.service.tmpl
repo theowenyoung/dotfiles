@@ -1,0 +1,16 @@
+[Unit]
+Description=ssserver service
+After=network.target
+
+[Service]
+ExecStart=/home/{{user.username}}/.cargo/bin/ssserver -c /home/{{user.username}}/.config/ss/config.json
+ss/config.json
+ExecStop=/usr/bin/killall ssserver
+Restart=on-failure
+StandardOutput=syslog               # Output to syslog
+StandardError=syslog                # Output to syslog
+SyslogIdentifier=ss
+User={{user.username}}
+
+[Install]
+WantedBy=multi-user.target
