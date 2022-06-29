@@ -83,6 +83,13 @@ fi
     }
 
 
+# dns query
+
+di(){
+  dig $1 @192.168.50.2 -p 6053
+}
+
+
 localip() {
   local ip=$(ipconfig getifaddr en0)
   echo $ip | tr -d '\n' | pbcopy
