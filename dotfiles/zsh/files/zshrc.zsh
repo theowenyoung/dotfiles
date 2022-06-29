@@ -28,4 +28,4 @@ source ~/.zsh/general_config.zsh
 
 
 # start zellij
-eval "$(zellij setup --generate-auto-start zsh)"
+# eval "$(zellij setup --generate-auto-start zsh)"
