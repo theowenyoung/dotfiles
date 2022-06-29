@@ -1,7 +1,7 @@
-# actions:
-#   - action: file.link
-#     source: minimal_nvim
-#     target: "{{user.home_dir}}/.config/nvim"
+actions:
+  - action: file.link
+    source: minimal_nvim
+    target: "{{user.home_dir}}/.config/nvim"
 #   - action: command.run
 #     command: nvim
 #     args:
