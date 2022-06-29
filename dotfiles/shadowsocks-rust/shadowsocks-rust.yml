@@ -5,5 +5,5 @@ actions:
     template: true
   - action: file.copy
     from: ss.service.tmpl
-    to: "/etc/systemd/system/ss.service"
+    to: "{{user.home_dir}}.config/systemd/user/ss.service"
     template: true
