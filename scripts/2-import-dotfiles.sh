@@ -8,6 +8,10 @@ source $ENV_PATH;
 # import ssh private key
 $ROOT_DIR/modules/ssh/import_ssh_private_key.sh
 
+# copy ssh public key to authorized-keys
+
+$ROOT_DIR/modules/ssh/append_ssh_pub_key_to_authorized-keys.sh
+
 # import all dotfiles
 cd $ROOT_DIR;
 comtrya -d dotfiles apply
