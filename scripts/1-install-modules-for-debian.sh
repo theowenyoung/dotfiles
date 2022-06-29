@@ -12,6 +12,8 @@ $module_path/helix/install_helix_debian.sh
 
 $module_path/jq/install_jq_debian.sh
 
+$module_path/miller/install_miller_debian.sh
+
 $module_path/shadowsocks-rust/install_shadowsocks-rust.sh
 
 $module_path/fd/install_debian.sh
