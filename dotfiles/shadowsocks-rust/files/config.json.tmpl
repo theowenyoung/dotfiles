@@ -2,10 +2,7 @@
   "servers": [
     {
       "address": "::",
-      "port": {
-        {variables.ss_port
-        }
-      },
+      "port": {{variables.ss_port}},
       "method": "chacha20-ietf-poly1305",
       "password": "{{variables.ss_password}}",
       "mode": "tcp_and_udp",
@@ -13,7 +10,4 @@
       "timeout": 7200
     }
   ]
-}
-}
-]
 }
