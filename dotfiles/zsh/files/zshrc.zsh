@@ -25,6 +25,6 @@ source ~/.zsh/general_config.zsh
 
 
 # add ssh agent
-eval "$(ssh-agent)"
+#eval "$(ssh-agent)"
 # start zellij
 # eval "$(zellij setup --generate-auto-start zsh)"

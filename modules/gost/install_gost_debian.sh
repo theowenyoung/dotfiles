@@ -11,4 +11,7 @@ echo  start install $REPO_NAME latest v${latest_version}
 cd /tmp
 curl -O -L https://github.com/$REPO_NAME/releases/download/v${latest_version}/gost-linux-amd64-${latest_version}.gz
 gzip -d gost-linux-amd64-$latest_version.gz
-#cd gost-linux-amd64-2.11.2  
+mv gost-linux-amd64-$latest_version ~/.local/bin/gost
+
+# add execute permission
+chmod +x ~/.local/bin/gost

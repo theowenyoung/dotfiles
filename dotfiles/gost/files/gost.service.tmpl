@@ -4,8 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=%h/.cargo/bin/ssserver -c %h/.config/ss/config.json
+ExecStart=%h/.local/bin/gost -c %h/.config/gost/gost.json
 Restart=on-failure
-WorkingDirectory=%h/.config/ss
+WorkingDirectory=%h/.config/gost
 [Install]
 WantedBy=multi-user.target
+

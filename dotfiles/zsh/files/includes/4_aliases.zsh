@@ -1,5 +1,16 @@
 # Custom
 
+## systemctl
+
+alias sstatus="systemctl --user status"
+alias sstart="systemctl --user start"
+alias sstop="systemctl --user stop"
+alias srestart="systemctl --user restart"
+alias sreload="systemctl --user daemon-reload"
+alias jlog="journalctl --user -n 30 -f -u"
+
+## process grep
+alias pgr="ps aux | grep "
 
 alias pos="port search"
 alias poi="sudo port -N install"
