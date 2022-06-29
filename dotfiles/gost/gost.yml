@@ -7,3 +7,11 @@ actions:
     from: ss.service.tmpl
     to: "{{user.home_dir}}/.config/systemd/user/ss.service"
     template: true
+  - action: command.run
+    command: acme.sh
+    args:
+      - --issue
+      - --dns
+      - dns_cf
+      - -d
+      - {{variables.gost_domain}}

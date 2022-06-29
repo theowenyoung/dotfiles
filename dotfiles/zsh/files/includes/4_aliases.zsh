@@ -1,5 +1,9 @@
 # Custom
 
+## zeje
+
+alias ze="zellij"
+
 ## systemctl
 
 alias sstatus="systemctl --user status"
