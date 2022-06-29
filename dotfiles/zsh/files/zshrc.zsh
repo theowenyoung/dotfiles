@@ -24,8 +24,7 @@ fi
 source ~/.zsh/general_config.zsh
 
 
-# starship
-
-
+# add ssh agent
+eval "$(ssh-agent)"
 # start zellij
 # eval "$(zellij setup --generate-auto-start zsh)"
