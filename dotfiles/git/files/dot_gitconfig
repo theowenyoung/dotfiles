@@ -1,6 +1,6 @@
 [user]
-	name = {{variables.main_name}}
-	email = {{variables.main_email}}
+	name = {{env.MAIN_NAME}}
+	email = {{env.MAIN_EMAIL}}
 [alias]
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits.

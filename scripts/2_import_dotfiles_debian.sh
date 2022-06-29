@@ -19,7 +19,7 @@ comtrya -d dotfiles apply
 # import all private dotfiles
 comtrya -d private apply
 
-
+source ~/.zshrc
 # change repo remote origin to ssh address
 
 $ROOT_DIR/modules/git/git_https_to_ssh.sh
@@ -32,12 +32,19 @@ $ROOT_DIR/modules/git/git_https_to_ssh.sh
 
 
 cd $ROOT_DIR
-# ssh-add sshkey
 
-ssh-add
+# ssh-add sshkey should be manual run?
+# ssh-add
 
 
-# link private/comtrya.yaml to root dir
-ln -s ./private/Comtrya.yaml ./Comtrya.yaml
+#link private/comtrya.yaml to root dir, do not need now
+# ln -s ./private/Comtrya.yaml ./Comtrya.yaml
+
+
+# run acem.sh
+
+
+$HOME/.acme.sh/acme.sh --issue --dns dns_cf -d $GOST_HOST
+
 
 echo "Please run source ~/.zshrc"

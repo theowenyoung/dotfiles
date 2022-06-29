@@ -20,3 +20,5 @@ $module_path/zellij/install_zellij.sh
 $module_path/fd/install_debian.sh
 
 $module_path/fzf/install_fzf_debian.sh
+
+$module_path/acee/install_acem.sh

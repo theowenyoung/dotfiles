@@ -1,17 +1,14 @@
 actions:
   - action: file.copy
-    from: config.json.tmpl
-    to: "{{user.home_dir}}/.config/ss/config.json"
+    from: gost.json.tmpl
+    to: "{{user.home_dir}}/.config/gost/gost.json"
     template: true
   - action: file.copy
-    from: ss.service.tmpl
-    to: "{{user.home_dir}}/.config/systemd/user/ss.service"
+    from: gost.service.tmpl
+    to: "{{user.home_dir}}/.config/systemd/user/gost.service"
     template: true
   - action: command.run
-    command: acme.sh
+    command: "{{user.home_dir}}/env/dotfiles/gost/files/install_gost_ssl.sh"
     args:
-      - --issue
-      - --dns
-      - dns_cf
-      - -d
-      - {{variables.gost_domain}}
+      - hello
+        # command:"{{user.home_dir}}/env/dotfiles/gost/files/install_gost_ssl.sh"

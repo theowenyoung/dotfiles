@@ -2,6 +2,11 @@
 ### Environment variables ###
 #############################
 
+# acme.sh env
+ACME_ENV_FILE="$HOME/.acme.sh/acme.sh.env"
+if [ -f "$ACME_ENV_FILE" ]; then
+  . $ACME_ENV_FILE
+fi
 # xdg env
 
 export XDG_CONFIG_HOME="$HOME/.config"

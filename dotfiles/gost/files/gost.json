@@ -1,7 +1,0 @@
-{
-  "Debug": false,
-  "Retries": 0,
-  "ServeNodes": [
-    "http2://{{variables.gost_user}}:{{variables.gost_password}}@:{{variables.gost_port}}?probe_resist=web:https://www.smzdm.com"
-  ]
-}
