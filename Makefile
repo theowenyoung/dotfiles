@@ -10,3 +10,6 @@ private:
 .PHONY: restart
 restart:
 	systemctl --user restart ss
+.PHONY: sync
+sync:
+	cd private && git pull && cd ../ && git pull
