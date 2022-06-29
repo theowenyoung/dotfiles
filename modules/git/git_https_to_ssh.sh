@@ -1,5 +1,13 @@
 #!/bin/sh
 
+function convert_to_ssh(){
+
+ sed -r -i 's:https\://([^/]+)/(.*\.git):git@\1\:\2:g' $(git rev-parse --git-dir)/config
+}
+
+convert_to_ssh
+
+return;
 # Modified from: https://gist.github.com/m14t/3056747
 
 REPO_URL=$(git remote -v | grep -m1 '^origin' | sed -Ene's#.*(https://[^[:space:]]*).*#\1#p')
