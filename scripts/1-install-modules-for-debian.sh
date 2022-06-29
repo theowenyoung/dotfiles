@@ -19,3 +19,5 @@ $module_path/shadowsocks-rust/install_shadowsocks-rust.sh
 $module_path/fd/install_debian.sh
 
 $module_path/fzf/install_fzf_debian.sh
+
+eval $(ssh-agent)
