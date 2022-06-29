@@ -2,7 +2,7 @@
 # bash/zsh git prompt support
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 GIT_PS1_SHOWCOLORHINTS="true"
-setopt PROMPT_SUBST ; PS1='%F{243}%n@%M %F{255}%~$(__git_ps1 " (%s)")\$ '
+setopt PROMPT_SUBST ; PS1='%F{white}%n@%M%f %~%f$(__git_ps1 " (%s) ")\$ '
 
 
 # Host
