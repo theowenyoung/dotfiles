@@ -16,6 +16,10 @@ Move Terminal, Activity Monitor, Quick Time Player to the top. Move anything tha
 Settings -> Keyboard -> Input Sources
 
 
+### Alfred 
+
+Open alfred -> settings -> choose `~/env/private/alfred` as the setting store.
+
 
 ## Terminal
 
