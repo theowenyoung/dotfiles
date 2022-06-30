@@ -1,5 +1,10 @@
 # Custom
 
+
+## batcat
+
+alias bat="batcat"
+
 ## zeje
 
 alias ze="zellij"
