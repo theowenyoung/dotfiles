@@ -7,7 +7,7 @@ rm ~/.tmux.conf
 rm ~/.gitignore
 rm ~/.gitconfig
 rm -rf ~/.tmux
-rm -rf ~/.ssh
+rm -rf ~/.ssh/config
 rm -rf ~/.config/nvim
 rm -rf ~/.config/helix/config.toml
 rm -rf ~/.config/alacritty
