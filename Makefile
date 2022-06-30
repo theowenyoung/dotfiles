@@ -13,3 +13,6 @@ restart:
 .PHONY: sync
 sync:
 	cd private && git pull && cd ../ && git pull
+.PHONY: caddyrestart
+caddyrestart:
+	sudo systemctl restart caddy

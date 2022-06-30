@@ -18,18 +18,20 @@ function ca (){
   else
     cd -- $HOME/env
     # check if file exist
-    public_filelic_file=$HOME/env/modules/$UNIT/$UNIT.yml
+    public_file=$HOME/env/modules/$UNIT/$UNIT.yml
     private_file=$HOME/env/private/$UNIT/$UNIT.yml
-    echo check $public_file if exist
-    if [ -f "$public_file" ] 
-    then
-      module_name="modules.$UNIT.$UNIT";
-      comtrya apply -m $module_name
-    fi
     echo check $private_file if exist
     if [ -f "$private_file" ]
     then
+      echo private file exist
       comtrya apply -m "private.$UNIT.$UNIT"
+    fi
+    echo check $public_file if exist
+    if [ -f "$public_file" ] 
+    then
+      echo public file exist
+      module_name="modules.$UNIT.$UNIT";
+      comtrya apply -m $module_name
     fi
     
   fi 
