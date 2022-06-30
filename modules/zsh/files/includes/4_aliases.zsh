@@ -37,7 +37,6 @@ alias rd='rm -r $(fd --type directory | fzf)'
 
 #alias t="tmux"
 alias ctags="uctags"
-alias ca="comtrya apply"
 #alias ns="hx --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
 # Unix
 alias ..='cd ..'
