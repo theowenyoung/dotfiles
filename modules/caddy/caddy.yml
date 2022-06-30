@@ -9,13 +9,6 @@ actions:
   - action: command.run
     sudo: true
     where: os.name=="linux"
-    command: systemctl
+    command: "{{user.home_dir}}/env/modules/systemd/restart_root_service.sh"
     args:
-      - daemon-reload
-  - action: command.run
-    sudo: true
-    where: os.name=="linux"
-    command: systemctl
-    args:
-      - enable
       - caddy
