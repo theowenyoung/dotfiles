@@ -1,0 +1,21 @@
+actions:
+  - action: command.run
+    sudo: true
+    command: cp
+    where: os.name=="linux"
+    args:
+      - "{{user.home_dir}}/env/modules/caddy/files/caddy.service"
+      - /etc/systemd/system/caddy.service
+  - action: command.run
+    sudo: true
+    where: os.name=="linux"
+    command: systemctl
+    args:
+      - daemon-reload
+  - action: command.run
+    sudo: true
+    where: os.name=="linux"
+    command: systemctl
+    args:
+      - enable
+      - caddy
