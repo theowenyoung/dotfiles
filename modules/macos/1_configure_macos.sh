@@ -40,8 +40,11 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
+# Change temperature unit
+defaults write -g AppleTemperatureUnit -string "Celsius"
 
-
+# Change macos menu time format to Thu 18 Aug 21:46
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm\""
 # Disable Sound Effects on Boot
 sudo nvram SystemAudioVolume=" "
 
