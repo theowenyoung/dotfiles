@@ -1,4 +1,5 @@
 actions:
   - action: file.link
+    where: os.name=="macos"
     source: alacritty.yml
     target: {{user.home_dir}}/.config/alacritty/alacritty.yml

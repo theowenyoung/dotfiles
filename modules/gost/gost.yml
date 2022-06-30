@@ -1,14 +1,19 @@
 actions:
   - action: file.copy
+    where: os.name=="linux"
     from: gost.json.tmpl
     to: "{{user.home_dir}}/.config/gost/gost.json"
     template: true
   - action: file.copy
+    where: os.name=="linux"
     from: gost.service.tmpl
     to: "{{user.home_dir}}/.config/systemd/user/gost.service"
     template: true
   - action: command.run
-    command: "{{user.home_dir}}/env/dotfiles/gost/files/install_gost_ssl.sh"
+    where: os.name=="linux"
+    command: "{{user.home_dir}}/env/modules/gost/install_gost_ssl.sh"
+  - action: command.run
+    where: os.name=="linux"
+    command: "{{user.home_dir}}/env/modules/systemd/restart_service.sh"
     args:
-      - hello
-        # command:"{{user.home_dir}}/env/dotfiles/gost/files/install_gost_ssl.sh"
+      - gost

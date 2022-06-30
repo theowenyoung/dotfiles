@@ -1,9 +1,9 @@
 .PHONY: link
 link:
-	~/.local/bin/comtrya -d dotfiles apply && ~/.local/bin/comtrya -d private apply
-.PHONY: dotfiles
-dotfiles:
-	comtrya -d dotfiles apply
+	~/.local/bin/comtrya -d modules apply && ~/.local/bin/comtrya -d private apply
+.PHONY: public
+public:
+	comtrya -d modules apply
 .PHONY: private
 private:
 	comtrya -d private apply

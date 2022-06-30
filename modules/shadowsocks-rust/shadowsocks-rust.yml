@@ -1,9 +1,16 @@
 actions:
   - action: file.copy
+    where: os.name=="linux"
     from: config.json.tmpl
     to: "{{user.home_dir}}/.config/ss/config.json"
     template: true
   - action: file.copy
     from: ss.service.tmpl
+    where: os.name=="linux"
     to: "{{user.home_dir}}/.config/systemd/user/ss.service"
     template: true
+  - action: command.run
+    where: os.name=="linux"
+    command: "{{user.home_dir}}/env/modules/systemd/restart_service.sh"
+    args:
+      - ss

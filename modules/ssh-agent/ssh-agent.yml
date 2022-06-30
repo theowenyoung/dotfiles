@@ -2,15 +2,18 @@
 
 actions:
   - action: file.link
+    where: os.name=="linux"
     source: ssh-agent.service
     target: "{{user.home_dir}}/.config/systemd/user/ssh-agent.service"
   - action: command.run
+    where: os.name=="linux"
     command: systemctl
     args:
       - --user 
       - enable 
       - ssh-agent
   - action: command.run
+    where: os.name=="link"
     command: systemctl
     args:
       - --user 
