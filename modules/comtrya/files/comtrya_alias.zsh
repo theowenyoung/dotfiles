@@ -2,22 +2,23 @@
 
 function ca (){
   UNIT="$1";
-  cd -- $HOME/env
   # check if exist
   if [ "$UNIT" = "all" ]
     then
+      cd -- $HOME/env
       comtrya -d modules apply
       comtrya -d private apply
   fi
   
   if [ -z "$UNIT" ]
   then
-      echo look for $UNIT
+      echo yes here
       # apply current
       comtrya apply
   else
+    cd -- $HOME/env
     # check if file exist
-    public_file=$HOME/env/modules/$UNIT/$UNIT.yml
+    public_filelic_file=$HOME/env/modules/$UNIT/$UNIT.yml
     private_file=$HOME/env/private/$UNIT/$UNIT.yml
     echo check $public_file if exist
     if [ -f "$public_file" ] 

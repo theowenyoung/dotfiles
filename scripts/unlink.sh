@@ -17,3 +17,4 @@ rm -rf ~/.config/wezterm
 rm -rf ~/.config/systemd
 rm -rf ~/.config/ss
 rm -rf ~/.config/gost
+rm ~/.config/clash/config.yaml
