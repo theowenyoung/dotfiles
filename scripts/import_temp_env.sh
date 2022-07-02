@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 # covert password to json
-data=$(keepassxc-cli export -f csv $DOTFILES_PRIVATE_PATH/keepassxc/dev.kdbx);
+data=$(keepassxc-cli export -f csv ~/dotfiles/private/keepassxc/dev.kdbx);
 
 #data=$(cat ~/Desktop/test.csv)
 json=$(printf "$data" | mlr --c2j --jlistwrap cat)
