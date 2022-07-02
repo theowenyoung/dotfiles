@@ -1,11 +1,21 @@
 actions:
+  - action: file.copy
+    template: true
+    where: os.name=="linux"
+    from: caddy.service
+    to: /tmp/caddy.service
   - action: command.run
     sudo: true
     command: cp
     where: os.name=="linux"
     args:
-      - "{{env.DOTFILES_ROOT_PATH}}/modules/caddy/files/caddy.service"
+      - "/tmp/caddy.service"
       - /etc/systemd/system/caddy.service
+  - action: command.run
+    command: rm
+    where: os.name=="linux"
+    args:
+      - /tmp/caddy.service
   - action: file.copy
     where: os.name=="linux"
     from: disallow_robots.txt
