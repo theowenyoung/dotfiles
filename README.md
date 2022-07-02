@@ -14,7 +14,7 @@ Dotfiles, init scripts, etc, for now, it includes macOS, and Debian (my VPS), yo
 
 1. `make link`: link or copy all dotfiles to the right place
 2. `make unlink`: unlink all things.
-
+3. `make backup`: backup qBittorrent.conf to dotfiles source, cause you may change the qbittorrent settings from web ui 
 
 ## MacOS
 
