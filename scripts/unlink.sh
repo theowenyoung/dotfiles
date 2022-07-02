@@ -20,4 +20,5 @@ rm -rf ~/.config/systemd
 rm -rf ~/.config/ss
 rm -rf ~/.config/gost
 rm -rf ~/.config/caddy
+rm -rf ~/.config/systemd
 touch ~/.zshrc
