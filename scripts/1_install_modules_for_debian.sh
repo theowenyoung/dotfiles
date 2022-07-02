@@ -18,7 +18,7 @@ $module_path/shadowsocks-rust/install_shadowsocks-rust.sh
 
 $module_path/zellij/install_zellij.sh
 
-$module_path/fd/install_debian.sh
+$module_path/fd/install_fd_debian.sh
 
 $module_path/fzf/install_fzf_debian.sh
 

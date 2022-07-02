@@ -4,7 +4,7 @@ actions:
     source: qbittorrent.service
     target: "{{user.home_dir}}/.config/systemd/user/qbittorrent.service"
   - action: command.run
-    command: "{{user.home_dir}}/env/modules/systemd/restart_service.sh"
+    command: "{{env.DOTFILES_ROOT_PATH}}/modules/systemd/restart_service.sh"
     where: os.name=="linux"
     args:
       - qbittorrent

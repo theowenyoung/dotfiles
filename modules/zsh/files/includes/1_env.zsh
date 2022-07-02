@@ -2,6 +2,18 @@
 ### Environment variables ###
 #############################
 
+
+# global dotfiles path  variables
+
+export DOTFILES_ROOT_PATH="$HOME/dotfiles"
+export DOTFILES_PRIVATE_PATH="$HOME/dotfiles/private" 
+
+DOTFILES_FUNCTIONS_PATH="$DOTFILES_ROOT_PATH/scripts/common.sh"
+if [ -f "$DOTFILES_FUNCTIONS_PATH" ]; then
+  . $DOTFILES_FUNCTIONS_PATH
+fi
+
+
 # acme.sh env
 ACME_ENV_FILE="$HOME/.acme.sh/acme.sh.env"
 if [ -f "$ACME_ENV_FILE" ]; then

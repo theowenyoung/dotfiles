@@ -4,6 +4,10 @@ actions:
     where: os.name == "macos"
     target: "{{user.home_dir}}/.zsh/extra/path_macos.zsh"
   - action: file.link
+    source: alias_debian.zsh
+    target: "{{user.home_dir}}/.zsh/extra/alias_debian.zsh"
+    where: os.name=="linux"
+  - action: file.link
     source: includes
     walk_dir: true
     target: "{{user.home_dir}}/.zsh/includes"
@@ -13,6 +17,10 @@ actions:
   - action: file.link
     source: zshenv.zsh
     target: "{{user.home_dir}}/.zshenv" 
+  - action: command.run
+    command: rm
+    args:
+      - "{{user.home_dir}}/.zshrc"
   - action: file.link
     source: zshrc.zsh
     target: "{{user.home_dir}}/.zshrc"

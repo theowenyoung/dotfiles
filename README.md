@@ -1,10 +1,22 @@
-# OS
+# Dotfiles
 
-All my OS config
+Dotfiles, init scripts, etc, for now, it includes macOS, and Debian (my VPS), you shouldn't use it directly, cause it contains many personal habits, but you do can get some inspiratiions from it.
 
-- [Mac](./mac.md)
+> It still work in process
 
-## Mac
+
+## Structure Stree
+
+// TODO
+
+
+## Common Commands
+
+1. `make link`: link or copy all dotfiles to the right place
+2. `make unlink`: unlink all things.
+
+
+## MacOS
 
 
 ### 0. Resort pre-installed Apps
@@ -18,13 +30,14 @@ Settings -> Keyboard -> Input Sources
 
 ### Alfred 
 
-Open alfred -> settings -> choose `~/env/private/alfred` as the setting store.
+Open alfred -> settings -> choose `~/dotfiles/private/alfred` as the setting store.
 
 
 ## Terminal
 
 
 ## Apps
+
 
 ## Keepassxc
 
@@ -37,6 +50,8 @@ inbox.kdbx
 
 ## Deiban
 
+ssh to the machine(force use password, consider it's a new machine):
+
 ```bash
 ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@ip
 ```
@@ -44,16 +59,17 @@ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@ip
 ### 0. Install Pre Required Modules
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/env/main
-/scripts/0-install-pre-required-modules-for-debian.sh
-
-source ~/.cargo/env
+bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/dotfiles/main/scripts/0-install-pre-required-modules-for-debian.sh
 ```
 
-> This will install keepassxc,git
+> This will install keepassxc,git,zsh,curl,build-essential,rust,cargo,comtrya
+> and create normal user `green`
 
 
-### 1. Give normal user NO-PASSWORD permission
+
+Now you should be in zsh 
+
+### 1. Optional: Give normal user NO-PASSWORD permission (so run sudo won't need password)
 
 ```bash
 sudo visudo
@@ -64,30 +80,37 @@ green ALL=(ALL) NOPASSWD:ALL
 ```
 
 
-### 2. Clone private repo
 
-> get [github personal_token](https://github.com/settings/tokens) first 
+### 2. Clone dotfiles repo and private dotfiles repo
+
+> first we will use the git https url, then we settle sshkey down, we'll change it to ssh url. 
 
 ```bash
-git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/env/private
+git clone https://github.com/theowenyoung/dotfiles.git ~/dotfiles
 ```
 
-
-
-### 3. Link and Copy dotfiles
-
+Then, clone the private repo, should get [github personal_token](https://github.com/settings/tokens) first, private will be placed in `~/dotfiles`, considered more convinient.
 
 ```bash
-cd ~/env
-make link
+git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dotfiles/private
 ```
 
 ### 3. Install Apps
 
 
 ```bash
-cd ~/env
-make install-apps-for-debian  
+cd ~/dotfiles
+./scripts/1_install_modules_for_debian.sh
+```
+
+
+### 4. Link and Copy dotfiles to the right places
+
+
+```bash
+cd ~/dotfiles
+make link
+source ~/.zshrc
 ```
 
 

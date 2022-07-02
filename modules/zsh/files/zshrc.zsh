@@ -20,6 +20,17 @@ if [ -d "$EXTRA_DIR" ]; then
 
 fi
 
+alias TTT="echo"
+function xxx(){
+  
+export XXX=1
+
+TTT hhhh
+
+echo $XXX;
+}
+
+
 # load general config
 source ~/.zsh/general_config.zsh
 

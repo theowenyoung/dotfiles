@@ -19,7 +19,7 @@
 if 'zmodload' 'zsh/parameter' 2>'/dev/null' && (( ${+options} )); then
   __fzf_key_bindings_options="options=(${(j: :)${(kv)options[@]}})"
 else
-  () {
+   {
     __fzf_key_bindings_options="setopt"
     'local' '__fzf_opt'
     for __fzf_opt in "${(@)${(@f)$(set -o)}%% *}"; do

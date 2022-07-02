@@ -1,8 +1,8 @@
 # custom
-Comtrya.yaml
 
 .secrets
-.dots
+.env
+*.env
 private/
 
 # nodejs

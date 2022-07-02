@@ -1,14 +1,11 @@
 .PHONY: link
 link:
-	~/.local/bin/comtrya -d modules apply && ~/.local/bin/comtrya -d private apply
-.PHONY: public
-public:
-	comtrya -d modules apply
-.PHONY: private
-private:
-	comtrya -d private apply
-.PHONY: restart
-restart:
+	./scripts/link_all.sh
+.PHONY: unlink
+unlink:
+	./scripts/unlink.sh
+.PHONY: ssrestart
+ssrestart:
 	systemctl --user restart ss
 .PHONY: sync
 sync:
@@ -16,3 +13,6 @@ sync:
 .PHONY: caddyrestart
 caddyrestart:
 	sudo systemctl restart caddy
+.PHONY: slogs
+slogs:
+	sudo journalctl -f

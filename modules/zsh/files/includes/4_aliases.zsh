@@ -1,9 +1,6 @@
 # Custom
 
 
-## batcat
-
-alias bat="batcat"
 
 ## zeje
 

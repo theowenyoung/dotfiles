@@ -1,6 +1,6 @@
 [user]
-	name = {{env.MAIN_NAME}}
-	email = {{env.MAIN_EMAIL}}
+	name = {{env.TEMP_MAIN_NAME}}
+	email = {{env.TEMP_MAIN_EMAIL}}
 [alias]
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits.

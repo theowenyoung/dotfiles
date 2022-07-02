@@ -37,12 +37,6 @@ apt install --yes build-essential
 
 apt install --yes keepassxc
 
-
-# set zsh as the default shell
-
-chsh -s $(which zsh)
-
-
 # su to normal user to install rust
 
 echo we will switch to user $USERNAME
@@ -59,10 +53,9 @@ source $HOME/.cargo/env
 
 # install comtrya
 
-bash <(curl -s https://raw.githubusercontent.com/theowenyoung/env/main/modules/comtrya/install_comtrya.sh)
+bash <(curl -s https://raw.githubusercontent.com/theowenyoung/dotfiles/main/modules/comtrya/install_comtrya.sh)
 
 
-ln -s $HOME/env/private/Comtrya.yaml $HOME/env/Comtrya.yaml
 
 
 # change zsh as the default shell
@@ -70,3 +63,10 @@ chsh -s $(which zsh)
 
 # change to home
 cd ~
+
+# create init zshrc
+
+touch ~/.zshrc
+
+# to zsh 
+zsh

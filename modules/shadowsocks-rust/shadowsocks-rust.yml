@@ -11,6 +11,6 @@ actions:
     template: true
   - action: command.run
     where: os.name=="linux"
-    command: "{{user.home_dir}}/env/modules/systemd/restart_service.sh"
+    command: "{{env.DOTFILES_ROOT_PATH}}/modules/systemd/restart_service.sh"
     args:
       - ss

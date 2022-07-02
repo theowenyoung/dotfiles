@@ -1,7 +1,7 @@
 #!/bin/sh
 mkdir -p ~/.ssh
 # covert password to json
-data=$(keepassxc-cli export -f csv ~/env/private/keepassxc/dev.kdbx);
+data=$(keepassxc-cli export -f csv $DOTFILES_PRIVATE_PATH/keepassxc/dev.kdbx);
 
 #data=$(cat ~/Desktop/test.csv)
 
@@ -17,16 +17,3 @@ printf %s "$json" | jq 'map(select(.Title=="ssh_private_key")) | .[0].Password' 
 chmod 400 $TARGET;
 
 echo copy to $TARGET success
-
-mkdir -p $HOME/.zsh/extra
-ENV_TARGET="$HOME/.zsh/extra/auto_env.zsh";
-
-echo start copy cf_key
-
-#printf %s $json | jq '.[0].Password'
-cf_token_str=$(printf %s $json | jq 'map(select(.Title=="cloudflare_CF_Key")) | .[0].Password')
-
- 
-echo "export CF_Token=$cf_token_str" >> $ENV_TARGET;
-
-echo "copy cf_key success"

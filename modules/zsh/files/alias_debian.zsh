@@ -1,0 +1,4 @@
+
+## batcat
+
+alias bat="batcat"
