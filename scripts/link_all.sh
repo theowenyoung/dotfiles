@@ -26,7 +26,7 @@ if [ -f "$FILE" ];then
 # source temp env
   source $FILE
 else
-  echo "can not found .temp.env, do you run modules/secret/import_temp_env.sh first?"
+  echo "can not found .temp.env, do you run scripts/import_temp_env.sh first?"
   exit 1
 fi
 

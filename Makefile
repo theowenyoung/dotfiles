@@ -4,6 +4,9 @@ link:
 .PHONY: unlink
 unlink:
 	./scripts/unlink.sh
+.PHONY: temp-env
+temp-env:
+	./scripts/import_temp_env.sh
 .PHONY: ssrestart
 ssrestart:
 	systemctl --user restart ss
