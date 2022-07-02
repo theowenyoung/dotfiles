@@ -1,11 +1,11 @@
 #!/bin/sh
 
-if [[ $# -eq 0 ]] ; then
+if [ $# -eq 0 ] ; then
     echo 'service name is required!'
     exit 1
 fi
 
-UNIT=$1
+UNIT="$1"
 
 
 
