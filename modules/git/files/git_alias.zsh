@@ -7,4 +7,5 @@ function gp() { git commit -a -m "$*" && git push }
 function ga() { git add . }
 
 
-alias gipu="git pull"
+alias gpull="git pull"
+alias gpush="git push"
