@@ -2,3 +2,6 @@ actions:
   - action: file.link
     source: config.toml
     target: "{{user.home_dir}}/.config/helix/config.toml"
+  - action: file.link
+    source: languages.toml
+    target: "{{user.home_dir}}/.config/helix/languages.toml"
