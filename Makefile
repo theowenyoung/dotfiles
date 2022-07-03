@@ -19,3 +19,6 @@ caddyrestart:
 .PHONY: slogs
 slogs:
 	sudo journalctl -f
+.PHONY: backup
+backup:
+	./modules/qBittorrent/backup_qBittorrent_config.sh

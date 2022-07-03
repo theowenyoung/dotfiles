@@ -1,21 +1,12 @@
 # <https://stackoverflow.com/a/38980986>
 
 actions:
-  - action: file.link
+  - action: file.copy
     where: os.name=="linux"
-    source: ssh-agent.service
-    target: "{{user.home_dir}}/.config/systemd/user/ssh-agent.service"
+    from: ssh-agent.service
+    to: "{{user.home_dir}}/.config/systemd/user/ssh-agent.service"
   - action: command.run
     where: os.name=="linux"
-    command: systemctl
+    command: "{{env.DOTFILES_ROOT_PATH}}/modules/systemd/restart_service.sh"
     args:
-      - --user 
-      - enable 
-      - ssh-agent
-  - action: command.run
-    where: os.name=="link"
-    command: systemctl
-    args:
-      - --user 
-      - restart
       - ssh-agent
