@@ -1,0 +1,44 @@
+defaults:
+  nicks: [test]
+  realname: Test
+
+servers:
+- addr: irc.libera.chat
+  port: 6697
+  tls: true
+
+  join:
+  - '#alacritty'
+  - '#amber'
+  - '#archlinux'
+  - '#bash'
+  - '#chromium'
+  - '#chromium-extensions'
+  - '#chromium-support'
+  - '#crystal-lang'
+  - '#css'
+  - '#curl'
+  - '#emacs'
+  - '#evil-mode'
+  - '#ffmpeg'
+  - '#hammerspoon'
+  - '#html'
+  - '#inkscape'
+  - '#javascript'
+  - '#jq'
+  - '#kakoune'
+  - '#kde'
+  - '#lua'
+  - '#mpv'
+  - '#mpv-android'
+  - '#neovim'
+  - '#nixos'
+  - '#ruby'
+  - '#rubyonrails'
+  - '#sway'
+  - '#termux'
+  - '#tiny'
+  - '#tmux'
+  - '#vim'
+  - '#vim-fr'
+  - '#wayfire'

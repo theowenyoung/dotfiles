@@ -2,3 +2,6 @@ actions:
   - action: file.link
     source: kakrc
     target: "{{user.home_dir}}/.config/kak/kakrc"
+  - action: file.link
+    source: colors
+    target: "{{user.home_dir}}/.config/kak/colors"

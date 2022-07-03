@@ -14,11 +14,18 @@ if [ -f "$DOTFILES_FUNCTIONS_PATH" ]; then
 fi
 
 
+# editor
+export VIM_EDITOR=kak
+export MAIN_EDITOR=$VIM_EDITOR
+export EDITOR=$MAIN_EDITOR
+export VISUAL=$EDITOR
+
 # acme.sh env
 ACME_ENV_FILE="$HOME/.acme.sh/acme.sh.env"
 if [ -f "$ACME_ENV_FILE" ]; then
   . $ACME_ENV_FILE
 fi
+
 # xdg env
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -40,11 +47,6 @@ export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
 
-# editor
-export VIM_EDITOR=hx
-export MAIN_EDITOR=$VIM_EDITOR
-export EDITOR=$MAIN_EDITOR
-export VISUAL=$EDITOR
 
 
 # history

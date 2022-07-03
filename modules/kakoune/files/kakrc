@@ -1,1 +1,154 @@
+colorscheme gruvbox
+# add-highlighter global/ number-lines -relative 
+add-highlighter global/ wrap -word -indent
 
+add-highlighter global/ regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+rb
+add-highlighter global/ regex @\b(todo|fixme|xxx|note)\b 0:default+rb
+
+# # Highlight the word under the cursor
+# # ───────────────────────────────────
+# declare-option -hidden regex curword
+# set-face global CurWord default,rgb:4a4a4a
+
+hook global WinCreate .* %{
+	add-highlighter window/number-lines number-lines -relative -hlcursor
+}
+## option
+# set-option global ui_options terminal_status_on_top=true
+
+# indentation
+set-option global tabstop     2
+set-option global indentwidth 2
+
+set-option global scrolloff 6,6
+
+
+## mapping
+# comment 
+map global normal '#' :comment-line<ret>
+
+
+# user mode
+map global user -docstring 'next lint error' n ':lint-next-error<ret>'
+map global user -docstring 'lsp mode' l ':enter-user-mode lsp<ret>'
+
+map global normal <space> , -docstring 'leader'
+
+# navigation
+map -docstring 'move to previous paragraph' global normal [ <space>gh[pgi
+map -docstring 'move to next paragraph' global normal ] <space>]plgi
+
+# Hot reloading
+map -docstring 'reload kakrc' global user a ': source "%val{runtime}/kakrc"; echo reloaded kakrc<ret>'
+
+
+map -docstring 'next display line' global user j ': displayline_down<ret>'# # soft wrap mode, visual line move
+
+
+# Goto mode ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+
+map -docstring 'file' global goto f '<a-;>: open-file-picker<ret>'
+
+define-command -override open-file-picker -docstring 'open file picker' %{
+  prompt file: -shell-script-candidates 'fd --type file' %{
+    edit %val{text}
+  }
+}
+
+map -docstring 'buffer' global goto b '<a-;>: open-buffer-picker<ret>'
+
+define-command -override open-buffer-picker -docstring 'open buffer picker' %{
+  prompt buffer: -buffer-completion %{
+    buffer %val{text}
+  }
+}
+
+map -docstring 'grep' global goto / '<a-;>: open-grep-prompt<ret>'
+
+define-command -override open-grep-prompt -docstring 'open grep prompt' %{
+  # Provides word completion
+  prompt grep: -shell-script-candidates %{
+    echo "write '$kak_response_fifo'" > "$kak_command_fifo"
+    cat "$kak_response_fifo" | kak -f 's[\w-]{4,}<ret>y%<a-R>a<ret>'
+  } %{
+    grep %val{text}
+  }
+}
+
+
+## hook
+# save on pressing enter
+hook global NormalKey <ret> w
+
+# # tabs to spaces
+hook global InsertChar \t %{
+    exec -draft h@
+}
+
+
+# Enable <tab>/<s-tab> for insert completion selection
+# ──────────────────────────────────────────────────────
+
+hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
+hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
+
+
+define-command -hidden displayline_down %{ evaluate-commands -itersel %{
+    try %{
+        execute-keys -draft <semicolon> <a-l> "<a-k>\A.{%val{window_width},}<ret>"
+        execute-keys %val{window_width} l
+    } catch %{
+        execute-keys j
+    }
+} }
+
+
+## command 
+define-command -docstring "save and quit" x "write-all; quit"
+define-command mkdir %{ nop %sh{ mkdir -p $(dirname $kak_buffile) }}
+define-command -docstring "quit without saving" qq "quit!"
+
+
+
+
+# system clipboard handling
+evaluate-commands %sh{
+    if [ -n "$SSH_TTY" ]; then
+        copy='printf "\033]52;;%s\033\\" $(base64 | tr -d "\n") > /dev/tty'
+        paste='printf "paste unsupported through ssh"'
+        backend="OSC 52"
+    else
+        case $(uname) in
+            Linux)
+                if [ -n "$WAYLAND_DISPLAY" ]; then
+                    copy="wl-copy -p"; paste="wl-paste -p"; backend=Wayland
+                else
+                    copy="xclip -i"; paste="xclip -o"; backend=X11
+                fi
+                ;;
+            Darwin)  copy="pbcopy"; paste="pbpaste"; backend=OSX ;;
+        esac
+    fi
+    printf "map global user -docstring 'paste (after) from clipboard' p '<a-!>%s<ret>'\n" "$paste"
+    printf "map global user -docstring 'paste (before) from clipboard' P '!%s<ret>'\n" "$paste"
+    printf "map global user -docstring 'yank to primary' y '<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s primary}<ret>'\n" "$copy" "$backend"
+    printf "map global user -docstring 'yank to clipboard' Y '<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s clipboard}<ret>'\n" "$copy -selection clipboard" "$backend"
+    printf "map global user -docstring 'replace from clipboard' R '|%s<ret>'\n" "$paste"
+}
+
+
+
+evaluate-commands %sh{
+    plugins="$kak_config/plugins"
+    mkdir -p "$plugins"
+    [ ! -e "$plugins/plug.kak" ] && \
+        git clone -q https://github.com/andreyorst/plug.kak.git "$plugins/plug.kak"
+    printf "%s\n" "source '$plugins/plug.kak/rc/plug.kak'"
+}
+plug "andreyorst/plug.kak" noload
+
+
+# Load local Kakoune config file if it exists
+# ───────────────────────────────────────────
+
+evaluate-commands %sh{ [ -f $kak_config/local.kak ] && echo "source $kak_config/local.kak" }
