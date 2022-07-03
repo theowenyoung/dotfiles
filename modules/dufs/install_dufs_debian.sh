@@ -12,7 +12,7 @@ REPO_NAME="sigoden/dufs"
 latest_version=$(get_latest_release $REPO_NAME)
 echo  start install $REPO_NAME latest v${latest_version}
 cd /tmp
-file_name="dufs-v$latest_version-x86_64-unknown-linux-musl.tar.gz"
+file_name="dufs-v$latest_version-x86_64-unknown-linux-musl"
 curl -O -L https://github.com/$REPO_NAME/releases/download/v${latest_version}/${file_name}.tar.gz
 tar -xf ${file_name}.tar.gz
 mv ${NAME} ~/.local/bin/${NAME}

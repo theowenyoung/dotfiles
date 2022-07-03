@@ -3,7 +3,7 @@
 
 cd -- ~/dotfiles
 
-VERBOSE=""
+VERBOSE="-vv"
 
 if [ "$1" = "-v"  ]; then
   VERBOSE="-vv"

@@ -2,7 +2,18 @@
 
 function ca (){
   UNIT="$1";
-  # check if exist
+
+
+  #check if .temp.env is exist
+  FILE="$DOTFILES_ROOT_PATH/.temp.env"
+  if [ -f "$FILE" ];then
+  # source temp env
+    source $FILE
+  else
+    echo "can not found .temp.env, do you run scripts/import_temp_env.sh first?"
+    exit 1
+  fi
+      # check if exist
   if [ "$UNIT" = "all" ]
     then
       cd -- $DOTFILES_ROOT_PATH
@@ -25,15 +36,15 @@ function ca (){
     then
       echo private file exist
       cd -- $DOTFILES_PRIVATE_PATH
-      comtrya apply -m "private.$UNIT.$UNIT"
+      comtrya -vv apply -m "$UNIT.$UNIT"
     fi
     echo check $public_file if exist
     if [ -f "$public_file" ] 
     then
       echo public file exist
       cd -- $DOTFILES_ROOT_PATH
-      module_name="modules.$UNIT.$UNIT";
-      comtrya apply -m $module_name
+      module_name="$UNIT.$UNIT";
+      comtrya apply -vv -m $module_name
     fi
     
   fi 
