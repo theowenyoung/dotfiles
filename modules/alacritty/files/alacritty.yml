@@ -1,6 +1,6 @@
 # window
-# window:
-  # startup_mode: SimpleFullscreen
+window:
+  startup_mode: SimpleFullscreen
 # https://github.com/alexherbo2/alacritty-extended-keys/blob/master/keys.yml
 key_bindings:
 
