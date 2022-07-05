@@ -1,0 +1,51 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "escape",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "escape",
+    "command": "workbench.action.output.toggleOutput",
+    "when": "inOutput"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+s",
+    "command": "workbench.action.openGlobalSettings"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+k",
+    "command": "workbench.action.openGlobalKeybindings"
+  },
+  {
+    "key": "cmd+k cmd+s",
+    "command": "-workbench.action.openGlobalKeybindings"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+h",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+l",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+j",
+    "command": "workbench.action.navigateDown"
+  }
+]

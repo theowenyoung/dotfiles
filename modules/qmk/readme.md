@@ -3,7 +3,7 @@
 > Note, only right hand work for me, so change the `config.h` to right hand mode.
 
 
-![Redoxpro keyboard layout](./redoxpro.png)
+![Redoxpro keyboard layout](./files/redoxpro/redoxpro.png)
 
 
 

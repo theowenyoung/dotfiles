@@ -5,3 +5,6 @@ actions:
   - action: file.link
     source: colors
     target: "{{user.home_dir}}/.config/kak/colors"
+  - action: file.link
+    source: kak-lsp.toml
+    target: "{{user.home_dir}}/.config/kak-lsp/kak-lsp.toml"

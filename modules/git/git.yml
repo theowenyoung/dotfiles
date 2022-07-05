@@ -1,11 +1,11 @@
 actions:
-    - action: file.copy
-      from: dot_gitconfig
-      to: "{{user.home_dir}}/.gitconfig"
-      template: true
-    - action: file.link
-      source: dot_gitignore
-      target: "{{user.home_dir}}/.gitignore"
-    - action: file.link
-      source: git_alias.zsh
-      target: "{{user.home_dir}}/.zsh/extra/git_alias.zsh"
+  - action: file.copy
+    from: dot_gitconfig
+    to: "{{user.home_dir}}/.gitconfig"
+    template: true
+  - action: file.link
+    source: dot_gitignore
+    target: "{{user.home_dir}}/.gitignore"
+  - action: file.link
+    source: git_alias.zsh
+    target: "{{user.home_dir}}/.zsh/extra/git_alias.zsh"

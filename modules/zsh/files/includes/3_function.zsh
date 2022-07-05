@@ -19,6 +19,24 @@ encode()
     jq -nr --arg v "$args" '$v|@uri';
 }
 
+hex2rgb(){
+value="$1";
+
+if [[ "$value" = \#* ]] ; then
+  value=${value:1};
+fi
+hexinput=`echo $value | tr '[:lower:]' '[:upper:]'`  # uppercase-ing
+a=`echo $hexinput | cut -c-2`
+b=`echo $hexinput | cut -c3-4`
+c=`echo $hexinput | cut -c5-6`
+
+r=`echo "ibase=16; $a" | bc`
+g=`echo "ibase=16; $b" | bc`
+b=`echo "ibase=16; $c" | bc`
+
+echo $r,$g,$b
+}
+
 alias decode='python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))"'
 # create with vim
 

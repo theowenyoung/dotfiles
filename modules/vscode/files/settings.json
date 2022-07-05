@@ -1,0 +1,117 @@
+{
+  "telemetry.telemetryLevel": "off",
+  "editor.tabSize": 2,
+  "editor.fontSize": 14,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "javascript.format.insertSpaceAfterConstructor": true,
+  "javascript.format.enable": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "go.formatTool": "goimports",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "tabnine.experimentalAutoImports": true,
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.formatOnSave": true,
+  "prettier.requireConfig": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.ignoreMissingGitWarning": true,
+  "editor.suggest.showInterfaces": false,
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    "**/.cache": true
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false
+  },
+  "git.autofetch": true,
+  "licenser.disableAutoHeaderInsertion": true,
+  "licenser.license": "MIT",
+  "licenser.author": "Owen Young",
+  "security.workspace.trust.untrustedFiles": "open",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "dart.showInspectorNotificationsForWidgetErrors": false,
+  "dart.warnWhenEditingFilesInPubCache": false,
+  "dart.warnWhenEditingFilesOutsideWorkspace": false,
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": true,
+    "typescript": false
+  },
+  "dart.debugExternalPackageLibraries": true,
+  "dart.debugSdkLibraries": false,
+  "dart.openDevTools": "flutter",
+  "spellright.notificationClass": "warning",
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "markdown.extension.syntax.plainTheme": true,
+  "markdown.extension.toc.levels": "1..3",
+  "foam.edit.linkReferenceDefinitions": "withExtensions",
+  "foam.internalLink.enableRelative": false,
+  "foam.internalLink.absoluteLinkPrefix": "",
+  "foamLite.internalLink.enableRelativeLink": false,
+  "window.openFoldersInNewWindow": "on",
+  "window.zoomLevel": 1,
+  "editor.fontFamily": "'Fira Code',Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": false,
+  "editor.rulers": [80],
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 80,
+  "files.exclude": {
+    "**/.DS_Store": true,
+
+    "**/node_modules": true,
+    "**/bower_components": true,
+
+    "**/__pycache__": true,
+    "**/.cache": true,
+    "**/.idea": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.venv": true,
+    "**/.coverage": true,
+    "**/*.py[co]": true,
+    "**/htmlcoverage": true,
+    "**/docs/build": true
+  },
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

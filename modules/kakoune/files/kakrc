@@ -1,9 +1,9 @@
 colorscheme gruvbox
 # add-highlighter global/ number-lines -relative 
-add-highlighter global/ wrap -word -indent
+# add-highlighter global/ wrap -word -indent
 
-add-highlighter global/ regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+rb
-add-highlighter global/ regex @\b(todo|fixme|xxx|note)\b 0:default+rb
+# add-highlighter global/ regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+rb
+# add-highlighter global/ regex @\b(todo|fixme|xxx|note)\b 0:default+rb
 
 # # Highlight the word under the cursor
 # # ───────────────────────────────────
@@ -11,7 +11,8 @@ add-highlighter global/ regex @\b(todo|fixme|xxx|note)\b 0:default+rb
 # set-face global CurWord default,rgb:4a4a4a
 
 hook global WinCreate .* %{
-	add-highlighter window/number-lines number-lines -relative -hlcursor
+   add-highlighter window/ number-lines -relative -hlcursor
+	 add-highlighter window/ number-lines -hlcursor
 }
 ## option
 # set-option global ui_options terminal_status_on_top=true
@@ -22,7 +23,6 @@ set-option global indentwidth 2
 
 set-option global scrolloff 6,6
 
-
 ## mapping
 # comment 
 map global normal '#' :comment-line<ret>
@@ -32,8 +32,8 @@ map global normal '#' :comment-line<ret>
 map global user -docstring 'next lint error' n ':lint-next-error<ret>'
 map global user -docstring 'lsp mode' l ':enter-user-mode lsp<ret>'
 
-map global normal <space> , -docstring 'leader'
-
+#map global normal <space> , -docstring 'leader'
+# map global normal , ""
 # navigation
 map -docstring 'move to previous paragraph' global normal [ <space>gh[pgi
 map -docstring 'move to next paragraph' global normal ] <space>]plgi
@@ -158,7 +158,52 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
     # these languages will use `smarttab' behavior
     hook global WinSetOption filetype=(c|cpp) smarttab
 }
-# Load local Kakoune config file if it exists
-# ───────────────────────────────────────────
+
+plug "alexherbo2/auto-pairs.kak" %{
+    enable-auto-pairs
+} config %{
+  set-option global auto_pairs ( ) { } [ ] '"' '"' "'" "'" ` ` “ ” ‘ ’ « » ‹ ›
+}
+
+
+plug "kak-lsp/kak-lsp" config %{
+
+    # uncomment to enable debugging
+    # eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
+    # set global lsp_cmd "kak-lsp -c ~/.config/kak-lsp/kak-lsp.toml -s %val{session} -vvv --log /tmp/kak-lsp.log"
+
+    # this is not necessary; the `lsp-enable-window` will take care of it
+    # eval %sh{${kak_opt_lsp_cmd} --kakoune -s $kak_session}
+
+    set global lsp_diagnostic_line_error_sign '║'
+    set global lsp_diagnostic_line_warning_sign '┊'
+
+    define-command ne -docstring 'go to next error/warning from lsp' %{ lsp-find-error --include-warnings }
+    define-command pe -docstring 'go to previous error/warning from lsp' %{ lsp-find-error --previous --include-warnings }
+    define-command ee -docstring 'go to current error/warning from lsp' %{ lsp-find-error --include-warnings; lsp-find-error --previous --include-warnings }
+
+    define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
+    hook global WinSetOption filetype=(yaml|html|css|rust|javascript|typescript) %{
+        # set-option window lsp_auto_highlight_references false
+        # set-option window lsp_hover_anchor false
+        # lsp-auto-hover-enable
+        echo -debug "Enabling LSP for filtetype %opt{filetype}"
+        lsp-enable-window
+    }
+
+    hook global WinSetOption filetype=(rust) %{
+        set window lsp_server_configuration rust.clippy_preference="on"
+    }
+
+    # hook global WinSetOption filetype=rust %{
+    #     hook window BufWritePre .* %{
+    #         evaluate-commands %sh{
+    #             test -f rustfmt.toml && printf lsp-formatting-sync
+    #         }
+    #     }
+    # }
+
+    hook global KakEnd .* lsp-exit
+}
 
 evaluate-commands %sh{ [ -f $kak_config/local.kak ] && echo "source $kak_config/local.kak" }

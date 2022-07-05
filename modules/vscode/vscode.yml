@@ -1,0 +1,10 @@
+actions:
+  - action: file.link
+    source: settings.json
+    target: "{{user.home_dir}}/Library/Application Support/Code/User/settings.json"
+  - action: file.link
+    source: snippets
+    target: "{{user.home_dir}}/Library/Application Support/Code/User/snippets"
+  - action: file.link
+    source: keybindings.json
+    target: "{{user.home_dir}}/Library/Application Support/Code/User/keybindings.json"

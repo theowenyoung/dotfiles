@@ -17,15 +17,15 @@ function ca (){
   if [ "$UNIT" = "all" ]
     then
       cd -- $DOTFILES_ROOT_PATH
-      comtrya -d modules apply
+      comtrya -vv -d modules apply
       cd -- $DOTFILES_PRIVATE_PATH
-      comtrya -d private apply
+      comtrya -vv apply
   fi
   
   if [ -z "$UNIT" ]
   then
       # apply current
-      comtrya apply
+      comtrya -vv apply
   else
   
     # check if file exist
@@ -43,9 +43,9 @@ function ca (){
     then
       echo public file exist
       cd -- $DOTFILES_ROOT_PATH
-      module_name="$UNIT.$UNIT";
-      comtrya apply -vv -m $module_name
+      module_name="modules.$UNIT.$UNIT";
+      comtrya -vv apply -m $module_name
     fi
     
-  fi 
+  fi
 }
