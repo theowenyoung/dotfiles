@@ -8,6 +8,4 @@ ExecStart=%h/.config/dufs/start_dufs.sh
 Restart=on-failure
 WorkingDirectory=%h/.config/dufs
 [Install]
-WantedBy=multi-user.target
-
-
+WantedBy=default.target

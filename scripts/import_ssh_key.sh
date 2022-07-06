@@ -20,7 +20,7 @@ chmod 400 $TARGET;
 #
 TRACK_TARGET="$HOME/.ssh/track-awesome-list_id_ed25519"
 printf %s "$json" | jq 'map(select(.Title=="track-awesome-list_ssh_deploy_key")) | .[0].Password' | xargs printf -- > $TRACK_TARGET;
-chmod 400 
+chmod 400 $TRACK_TARGET;
 
 
 echo copy to $TARGET success

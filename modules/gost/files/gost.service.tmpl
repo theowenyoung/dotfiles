@@ -8,5 +8,4 @@ ExecStart=%h/.local/bin/gost -C %h/.config/gost/gost.json
 Restart=on-failure
 WorkingDirectory=%h/.config/gost
 [Install]
-WantedBy=multi-user.target
-
+WantedBy=default.target

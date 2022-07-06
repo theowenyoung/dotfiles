@@ -8,4 +8,4 @@ ExecStart=%h/.cargo/bin/ssserver -c %h/.config/ss/config.json
 Restart=on-failure
 WorkingDirectory=%h/.config/ss
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
