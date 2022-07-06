@@ -16,4 +16,12 @@ json=$(printf "$data" | mlr --c2j --jlistwrap cat)
 printf %s "$json" | jq 'map(select(.Title=="ssh_private_key")) | .[0].Password' | xargs printf -- > $TARGET;
 chmod 400 $TARGET;
 
+# copy trackawesomelist key
+#
+TRACK_TARGET="$HOME/.ssh/track-awesome-list_id_ed25519"
+printf %s "$json" | jq 'map(select(.Title=="track-awesome-list_ssh_deploy_key")) | .[0].Password' | xargs printf -- > $TRACK_TARGET;
+chmod 400 
+
+
 echo copy to $TARGET success
+echo copy to $TRACK_TARGET success

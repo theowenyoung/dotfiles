@@ -10,9 +10,11 @@ temp-env:
 .PHONY: ssrestart
 ssrestart:
 	systemctl --user restart ss
-.PHONY: sync
-sync:
+.PHONY: pull
+pull:
 	cd private && git pull && cd ../ && git pull
+.PHONY: push
+
 .PHONY: caddyrestart
 caddyrestart:
 	sudo systemctl restart caddy
