@@ -2,3 +2,6 @@ actions:
   - action: file.link
     source: broot_alias.zsh
     target: "{{user.home_dir}}/.zsh/extra/broot_alias.zsh"
+  - action: file.link
+    source: conf.hjson
+    target: "{{user.home_dir}}/.config/broot/conf.hjson"

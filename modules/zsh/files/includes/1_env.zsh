@@ -15,7 +15,7 @@ fi
 
 
 # editor
-export VIM_EDITOR=kak
+export VIM_EDITOR=hx
 export MAIN_EDITOR=$VIM_EDITOR
 export EDITOR=$MAIN_EDITOR
 export VISUAL=$EDITOR

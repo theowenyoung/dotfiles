@@ -1,0 +1,4 @@
+actions:
+   - action: file.link
+     source: kitty.conf
+     target: "{{user.home_dir}}/.config/kitty/kitty.conf"

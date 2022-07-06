@@ -11,11 +11,11 @@
     "when": "inOutput"
   },
   {
-    "key": "ctrl+shift+alt+cmd+s",
+    "key": "ctrl+shift+alt+c",
     "command": "workbench.action.openGlobalSettings"
   },
   {
-    "key": "ctrl+shift+alt+cmd+k",
+    "key": "ctrl+shift+alt+s",
     "command": "workbench.action.openGlobalKeybindings"
   },
   {
@@ -23,7 +23,7 @@
     "command": "-workbench.action.openGlobalKeybindings"
   },
   {
-    "key": "ctrl+shift+alt+cmd+t",
+    "key": "ctrl+shift+alt+t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
@@ -33,19 +33,39 @@
     "when": "terminal.active"
   },
   {
-    "key": "ctrl+shift+alt+cmd+h",
+    "key": "ctrl+shift+alt+h",
     "command": "workbench.action.navigateLeft"
   },
   {
-    "key": "ctrl+shift+alt+cmd+l",
+    "key": "ctrl+shift+alt+l",
     "command": "workbench.action.navigateRight"
   },
   {
-    "key": "ctrl+shift+alt+cmd+k",
+    "key": "ctrl+shift+alt+k",
     "command": "workbench.action.navigateUp"
   },
   {
-    "key": "ctrl+shift+alt+cmd+j",
+    "key": "ctrl+shift+alt+j",
     "command": "workbench.action.navigateDown"
+  },
+  {
+    "key": ",",
+    "command": "dance.selections.clear.secondary",
+    "when": "editorTextFocus && dance.mode == 'normal'"
+  },
+  {
+    "key": "space",
+    "command": "-dance.selections.clear.secondary",
+    "when": "editorTextFocus && dance.mode == 'normal'"
+  },
+  {
+    "key": "alt+,",
+    "command": "dance.selections.clear.main",
+    "when": "editorTextFocus && dance.mode == 'normal'"
+  },
+  {
+    "key": "alt+space",
+    "command": "-dance.selections.clear.main",
+    "when": "editorTextFocus && dance.mode == 'normal'"
   }
 ]

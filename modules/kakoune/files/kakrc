@@ -1,5 +1,5 @@
 colorscheme gruvbox
-# add-highlighter global/ number-lines -relative 
+# add-highlighter global/ number-lines -relative
 # add-highlighter global/ wrap -word -indent
 
 # add-highlighter global/ regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+rb
@@ -14,6 +14,18 @@ hook global WinCreate .* %{
    add-highlighter window/ number-lines -relative -hlcursor
 	 add-highlighter window/ number-lines -hlcursor
 }
+# delete the *scratch* buffer as soon as another is created, but only if it's empty
+hook global BufCreate '^\*scratch\*$' %{
+    exec '%d'
+    hook -once -always global BufCreate '^(?!\*scratch\*).*$' %{
+        try %{
+            # throw if the buffer has more than one character
+            exec -buffer *scratch* 'L<a-K>..<ret>'
+            db *scratch*
+        }
+    }
+}
+
 ## option
 # set-option global ui_options terminal_status_on_top=true
 
@@ -23,8 +35,9 @@ set-option global indentwidth 2
 
 set-option global scrolloff 6,6
 
-## mapping
-# comment 
+
+# mapping
+# comment
 map global normal '#' :comment-line<ret>
 
 
@@ -93,21 +106,28 @@ hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window
 hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
 
 
-define-command -hidden displayline_down %{ evaluate-commands -itersel %{
-    try %{
-        execute-keys -draft <semicolon> <a-l> "<a-k>\A.{%val{window_width},}<ret>"
-        execute-keys %val{window_width} l
-    } catch %{
-        execute-keys j
-    }
-} }
+# define-command -hidden displayline_down %{ evaluate-commands -itersel %{
+#     try %{
+#         execute-keys -draft <semicolon> <a-l> "<a-k>\A.{%val{window_width},}<ret>"
+#         execute-keys %val{window_width} l
+#     } catch %{
+#         execute-keys j
+#     }
+# } }
 
 
-## command 
+## command
 define-command -docstring "save and quit" x "write-all; quit"
 define-command mkdir %{ nop %sh{ mkdir -p $(dirname $kak_buffile) }}
 define-command -docstring "quit without saving" qq "quit!"
-
+define-command trim-whitespaces -docstring "Remove trailing whitespace from every line" %{
+   try %{
+        exec -draft '%s\h+$<ret>d'
+        echo -markup "{Information}trimmed"
+    } catch %{
+        echo -markup "{Information}nothing to trim"
+    }
+}
 
 
 
