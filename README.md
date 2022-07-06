@@ -7,7 +7,7 @@ Dotfiles, init scripts, etc, for now, it includes macOS, and Debian (my VPS), yo
 
 ## Structure Stree
 
-// TODO
+ TODO
 
 
 ## Common Commands
