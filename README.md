@@ -30,8 +30,11 @@ Settings -> Keyboard -> Input Sources
 
 ### Alfred 
 
-Open alfred -> settings -> choose `~/dotfiles/private/alfred` as the setting store.
+Alfred config is so mess, so I make the alfred syncing folder to `~/syncing/alfred`, then mamual to set it up.
 
+#### Workflows
+
+- [YoudaoTranslator](https://github.com/wensonsmith/YoudaoTranslator) - [Release](https://github.com/wensonsmith/YoudaoTranslator/releases)
 
 ## Terminal
 
