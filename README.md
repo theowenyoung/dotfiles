@@ -171,7 +171,7 @@ Settings -> Keyboard -> Input Sources
 
 
 
-## Deiban
+## Deiban Init
 
 
 <details>
