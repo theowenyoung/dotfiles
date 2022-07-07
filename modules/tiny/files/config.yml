@@ -1,44 +1,23 @@
 defaults:
-  nicks: [test]
-  realname: Test
-
+  nicks: 
+    - "{{env.TEMP_MAIN_IRC_NICKNAME}}"
+  realname: "{{env.TEMP_MAIN_IRC_REALNAME}}"
+log_dir: "{{user.home_dir}}/.cache/tiny"    
 servers:
-- addr: irc.libera.chat
-  port: 6697
-  tls: true
-
-  join:
-  - '#alacritty'
-  - '#amber'
-  - '#archlinux'
-  - '#bash'
-  - '#chromium'
-  - '#chromium-extensions'
-  - '#chromium-support'
-  - '#crystal-lang'
-  - '#css'
-  - '#curl'
-  - '#emacs'
-  - '#evil-mode'
-  - '#ffmpeg'
-  - '#hammerspoon'
-  - '#html'
-  - '#inkscape'
-  - '#javascript'
-  - '#jq'
-  - '#kakoune'
-  - '#kde'
-  - '#lua'
-  - '#mpv'
-  - '#mpv-android'
-  - '#neovim'
-  - '#nixos'
-  - '#ruby'
-  - '#rubyonrails'
-  - '#sway'
-  - '#termux'
-  - '#tiny'
-  - '#tmux'
-  - '#vim'
-  - '#vim-fr'
-  - '#wayfire'
+  - addr: irc.ea.libera.chat
+    port: 7000
+    realname: "{{env.TEMP_MAIN_IRC_REALNAME}}"
+    nickserv_ident: NickServ
+    nicks: 
+      - "{{env.TEMP_MAIN_IRC_NICKNAME}}"
+    sasl:
+      username: '{{env.TEMP_MAIN_IRC_NICKNAME}}'
+      password: '{{env.TEMP_MAIN_IRC_PASSWORD}}'      
+    tls: true
+    join:
+      - '#alacritty'
+      - '#bash'
+      - '#javascript'
+      - '#kakoune'
+      - '#tmux'
+      - '#libera'

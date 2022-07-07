@@ -21,4 +21,6 @@ rm -rf ~/.config/ss
 rm -rf ~/.config/gost
 rm -rf ~/.config/caddy
 rm -rf ~/.config/systemd
+rm -rf /Users/green/Library/Application\ Support/tiny
+
 touch ~/.zshrc

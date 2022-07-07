@@ -1,5 +1,5 @@
 actions:
   - action: file.copy
     from: config.yml
-    to: "{{user.home_dir}}/.config/tiny/config.yml"
+    to: "{{user.config_dir}}/tiny/config.yml"
     template: true
