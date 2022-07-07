@@ -1,4 +1,4 @@
-theme="gruvbox"
+# theme="gruvbox"
 [editor]
 line-number="relative"
 [keys.normal]

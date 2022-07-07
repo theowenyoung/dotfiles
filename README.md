@@ -130,11 +130,67 @@ See [qmk readme](./modules/qmk/readme.md)
 <details>
 <summary>Details</summary>
 
-### 0. Resort pre-installed Apps
+
+
+### 0. Clone dotfiles repo and private dotfiles repo
+
+> first we will use the git https url, then we settle sshkey down, we'll change it to ssh url. 
+
+```bash
+git clone https://github.com/theowenyoung/dotfiles.git ~/dotfiles
+```
+
+Then, clone the private repo, should get [github personal_token](https://github.com/settings/tokens) first, private will be placed in `~/dotfiles`, considered more convinient.
+
+```bash
+git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dotfiles/private
+```
+
+### 1. Install pre-required modules
+
+```bash
+./scripts/0_install_pre_required_modules_for_macos.sh
+```
+
+### 2. Config macos
+
+
+```bash
+./scripts/1_configure_macos.sh
+```
+
+
+### 3. Install required apps
+
+```bash
+./scripts/2_install_required_modules_macos.sh
+``` 
+
+
+### 4. Import Dotfiles
+
+
+```bash
+./scripts/3_import_dotfiles_macos.sh
+source ~/.zshrc
+```
+
+
+### 4. Install Apps
+
+
+```bash
+cd ~/dotfiles
+./scripts/1_install_modules_macos.sh
+```
+
+
+
+### 5. Resort pre-installed Apps
 
 Move Terminal, Activity Monitor, Quick Time Player to the top. Move anything that Don't need to the Other Folder.
 
-### 1. Add Input Source if needed
+### 6. Add Input Source if needed
 
 Settings -> Keyboard -> Input Sources
 
