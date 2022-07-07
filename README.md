@@ -65,13 +65,18 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 │   │   └── ssh.yml
 └── scripts
     ├── 0_install_pre_required_modules_for_debian.sh
-    ├── 1_install_modules_for_debian.sh
+    ├── 0_install_pre_required_modules_for_macos.sh
+    ├── 1_configure_macos.sh
+    ├── 1_install_required_modules_for_debian.sh
     ├── 2_import_dotfiles_debian.sh
-    ├── 2_import_dotfiles_macos.sh
+    ├── 2_install_required_modules_macos.sh
+    ├── 3_import_dotfiles_macos.sh
+    ├── 4_install_modules_macos.sh
     ├── env.sh
     ├── import_ssh_key.sh
     ├── import_temp_env.sh
     ├── link_all.sh
+    ├── test.sh
     └── unlink.sh
 ```
 
