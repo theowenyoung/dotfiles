@@ -9,8 +9,9 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 [Alacritty](https://github.com/alacritty/alacritty) for terminal,
 [helix](https://github.com/helix-editor/helix) for modal editor.
 [alfred](https://www.alfredapp.com/) for translation, calculate, launch center, workflow.
-## Structure Stree
 
+
+## Introduction
 
 ### Home Structure
 
@@ -93,41 +94,6 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 2. `make unlink`: unlink all things.
 3. `make backup`: backup qBittorrent.conf to dotfiles source, cause you may change the qbittorrent settings from web ui, and qBittorrent run with podman, the qBittorrent.conf file permission does not allow to link. 
 4. `ca`: short for `comtrya apply`,but a lot convinience, for example: `ca` for apply current module's dotfiles. `ca all`, apply all. `ca module_name`, apply module's dotfiles whatever your current work direction. 
-
-
-
-### Keepassxc
-
-```zsh
-# high level password
-high.kdbx
-# most password
-main.kdbx
-# dev related password, like api token, personal token.
-dev.kdbx 
-```
-
-
-### Alfred 
-
-Alfred config is so messed, so I make the alfred syncing folder to `~/syncing/alfred`, then mamual to set it up.
-
-<details>
-<summary>Settings</summary>
-
-Hot Key: <cmd><space>
-Disable system Hot Key: Spotlight Hot Key, in Keyboard shortcut settings.
-
-</details>
-
-
-### QMK
-
-See [qmk readme](./modules/qmk/readme.md)
-
-#### Workflows
-
-- [YoudaoTranslator](https://github.com/wensonsmith/YoudaoTranslator) - [Release](https://github.com/wensonsmith/YoudaoTranslator/releases)
 
 
 ## MacOS Init
@@ -276,6 +242,45 @@ source ~/.zshrc
 ```
 
 </details>
+
+
+
+## Apps Notes
+
+### Keepassxc
+
+Password Manager
+
+```zsh
+# high level password
+high.kdbx
+# most password
+main.kdbx
+# dev related password, like api token, personal token.
+dev.kdbx 
+```
+
+
+### Alfred 
+
+Alfred config is so messed, so I make the alfred syncing folder to `~/syncing/alfred`, then mamual to set it up.
+
+<details>
+<summary>Settings</summary>
+
+Hot Key: <cmd><space>
+Disable system Hot Key: Spotlight Hot Key, in Keyboard shortcut settings.
+
+</details>
+
+
+### QMK
+
+See [qmk readme](./modules/qmk/readme.md)
+
+#### Workflows
+
+- [YoudaoTranslator](https://github.com/wensonsmith/YoudaoTranslator) - [Release](https://github.com/wensonsmith/YoudaoTranslator/releases)
 
 
 
