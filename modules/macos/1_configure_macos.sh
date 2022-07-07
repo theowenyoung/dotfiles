@@ -15,6 +15,10 @@ sudo scutil --set LocalHostName "green"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "green"
 
 
+# set screenshot to Downloads
+
+defaults write com.apple.screencapture location ~/Downloads
+
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
