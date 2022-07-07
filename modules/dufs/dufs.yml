@@ -1,6 +1,18 @@
 actions:
   - action: file.copy
     where: os.name=="linux"
+    template: true
+    from: start_dufs.sh.tmpl
+    to: "{{user.home_dir}}/.config/dufs/start_dufs.sh"
+  - action: command.run
+    command: chmod
+    where: os.name=="linux"
+    args:
+      - +x
+      - "{{user.home_dir}}/.config/dufs/start_dufs.sh"
+    where: os.name=="linux"
+  - action: file.copy
+    where: os.name=="linux"
     from: dufs.service
     to: "{{user.home_dir}}/.config/systemd/user/dufs.service"
   - action: command.run

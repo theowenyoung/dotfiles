@@ -183,7 +183,8 @@ key_bindings:
   - { key: Apostrophe, mods: Alt|Shift, chars: "\x1b\"" }
   - { key: Comma, mods: Alt|Shift, chars: "\x1b<" }
   - { key: Period, mods: Alt|Shift, chars: "\x1b>" }
-  - { key: Slash, mods: Alt|Shift, chars: "\x1b?" }# shell
+  - { key: Slash, mods: Alt|Shift, chars: "\x1b?" }
+# shell
 
 # font
 font:

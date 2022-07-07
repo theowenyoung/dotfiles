@@ -2,22 +2,133 @@
 
 Dotfiles, init scripts, etc, for now, it includes macOS, and Debian (my VPS), you shouldn't use it directly, cause it contains many personal habits, but you do can get some inspiratiions from it.
 
-> It still work in process
 
-
+I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtrya/comtrya) for linking dotfiles or using template to copy template dotfile to the dest location, 
+[Keepassxc](https://github.com/keepassxreboot/keepassxc) for password manager, 
+[tmux](https://github.com/tmux/tmux) for window manager,
+[Alacritty](https://github.com/alacritty/alacritty) for terminal,
+[helix](https://github.com/helix-editor/helix) for modal editor.
+[alfred](https://www.alfredapp.com/) for translation, calculate, launch center, workflow.
 ## Structure Stree
 
- TODO
+
+### Home Structure
+
+```bash
+├── blog
+|── dotfiles
+│   ├── private
+├── inbox
+├── repos
+├── syncing
+
+```
+
+> `dotfiles` for all env related stuffs.
+> `inbox` for all temp things, like temp run repos from Github.
+> `repos` for all personal repos.
+> `syncing` for all other settings that does not have a decent dotfiles, but still need to backup. So if I want to reflush my sytem, I need to backup this folder.
 
 
-## Common Commands
+### Dotfile Structure:
+
+```bash
+├── modules
+│   └── zsh
+│       ├── change_zsh_as_default_shell_debian.sh
+│       ├── files
+│       │   ├── alias_debian.zsh
+│       │   ├── general_config.zsh
+│       │   ├── includes
+│       │   │   ├── 1_env.zsh
+│       │   │   ├── 2_path.zsh
+│       │   │   ├── 3_function.zsh
+│       │   │   ├── 4_aliases.zsh
+│       │   │   ├── 5_fzf_keybinding.zsh
+│       │   │   ├── 6_fzf_completion.zsh
+│       │   │   ├── 7_git_prompt.zsh
+│       │   │   └── 8_ssh_zsh_completion.zsh
+│       │   ├── path_macos.zsh
+│       │   ├── zshenv.zsh
+│       │   └── zshrc.zsh
+│       ├── install_zsh_debian.sh
+│       └── zsh.yml
+├── private
+│   ├── keepassxc
+│   │   ├── dev.kdbx
+│   │   ├── high.kdbx
+│   │   └── main.kdbx
+│   ├── ssh
+│   │   ├── files
+│   │   │   ├── config
+│   │   │   └── id_ed25519.pub
+│   │   └── ssh.yml
+└── scripts
+    ├── 0_install_pre_required_modules_for_debian.sh
+    ├── 1_install_modules_for_debian.sh
+    ├── 2_import_dotfiles_debian.sh
+    ├── 2_import_dotfiles_macos.sh
+    ├── env.sh
+    ├── import_ssh_key.sh
+    ├── import_temp_env.sh
+    ├── link_all.sh
+    └── unlink.sh
+```
+
+> `modules` for all apps, every app should contains an install script, and optional `files` folder, and `app.yml` for [Comtrya](https://github.com/comtrya/comtrya).
+>
+> `private` for private data, I sync it to a github private repo, inlucde keepassxc encrypted file, and other personal file.
+> Though it's a individual repo, I still clone it in `dotfiles` folder, and ignore it in `.gitignore`, cause it's convenient to apply changes.
+>
+> `scripts` for common shell script, so ideally, I can use a few script to bootstrap my new environment. 
+
+### Common Commands
 
 1. `make link`: link or copy all dotfiles to the right place
 2. `make unlink`: unlink all things.
-3. `make backup`: backup qBittorrent.conf to dotfiles source, cause you may change the qbittorrent settings from web ui 
+3. `make backup`: backup qBittorrent.conf to dotfiles source, cause you may change the qbittorrent settings from web ui, and qBittorrent run with podman, the qBittorrent.conf file permission does not allow to link. 
+4. `ca`: short for `comtrya apply`,but a lot convinience, for example: `ca` for apply current module's dotfiles. `ca all`, apply all. `ca module_name`, apply module's dotfiles whatever your current work direction. 
 
-## MacOS
 
+
+### Keepassxc
+
+```zsh
+# high level password
+high.kdbx
+# most password
+main.kdbx
+# dev related password, like api token, personal token.
+dev.kdbx 
+```
+
+
+### Alfred 
+
+Alfred config is so messed, so I make the alfred syncing folder to `~/syncing/alfred`, then mamual to set it up.
+
+<details>
+<summary>Settings</summary>
+
+Hot Key: <cmd><space>
+Disable system Hot Key: Spotlight Hot Key, in Keyboard shortcut settings.
+
+</details>
+
+
+### QMK
+
+See [qmk readme](./modules/qmk/readme.md)
+
+#### Workflows
+
+- [YoudaoTranslator](https://github.com/wensonsmith/YoudaoTranslator) - [Release](https://github.com/wensonsmith/YoudaoTranslator/releases)
+
+
+## MacOS Init
+
+<details>
+<summary>Details</summary>
 
 ### 0. Resort pre-installed Apps
 
@@ -28,30 +139,17 @@ Move Terminal, Activity Monitor, Quick Time Player to the top. Move anything tha
 Settings -> Keyboard -> Input Sources
 
 
-### Alfred 
-
-Alfred config is so mess, so I make the alfred syncing folder to `~/syncing/alfred`, then mamual to set it up.
-
-#### Workflows
-
-- [YoudaoTranslator](https://github.com/wensonsmith/YoudaoTranslator) - [Release](https://github.com/wensonsmith/YoudaoTranslator/releases)
-
-## Terminal
+</details>
 
 
-## Apps
 
-
-## Keepassxc
-
-```bash
-high.kdbx
-main.kdbx
-server.kdbx
-inbox.kdbx  
-````
 
 ## Deiban
+
+
+<details>
+
+<summary>Details</summary>
 
 ssh to the machine(force use password, consider it's a new machine):
 
@@ -116,14 +214,10 @@ make link
 source ~/.zshrc
 ```
 
+</details>
 
 
-## Setup
 
-
-### QMK
-
-See [qmk readme](./modules/qmk/readme.md)
 
 ## Resource
 
@@ -131,15 +225,5 @@ See [qmk readme](./modules/qmk/readme.md)
 - [Osx-init](https://github.com/why-jay/osx-init)
 - [dev-setup](https://github.com/donnemartin/dev-setup)
 - [dotsfile](https://github.com/mathiasbynens/dotfiles/tree/master)
-- [vim tips](https://docs.oracle.com/cd/E19253-01/806-7612/editorvi-43/index.html)
-- [vim online course](https://www.vim.so)
-- [vim advance](https://thevaluable.dev/vim-advanced/)
-- [vim after 15 years](https://statico.github.io/vim3.html)
-- [vim plug](https://github.com/junegunn/vim-plug)
-- [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
-
-## GPG
-
-
 - [Debian Create GPG key](https://keyring.debian.org/creating-key.html)
 - [Debian GPG Subkeys](https://wiki.debian.org/Subkeys?action=show&redirect=subkeys)
