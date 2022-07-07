@@ -1,10 +1,13 @@
 actions:
   - action: file.link
+    where: os.name=="macos"
     source: settings.json
     target: "{{user.home_dir}}/Library/Application Support/Code/User/settings.json"
   - action: file.link
+    where: os.name=="macos"
     source: snippets
     target: "{{user.home_dir}}/Library/Application Support/Code/User/snippets"
   - action: file.link
+    where: os.name=="macos"
     source: keybindings.json
     target: "{{user.home_dir}}/Library/Application Support/Code/User/keybindings.json"

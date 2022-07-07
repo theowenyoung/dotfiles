@@ -6,7 +6,6 @@ actions:
     to: "{{user.home_dir}}/.config/dufs/start_dufs.sh"
   - action: command.run
     command: chmod
-    where: os.name=="linux"
     args:
       - +x
       - "{{user.home_dir}}/.config/dufs/start_dufs.sh"
