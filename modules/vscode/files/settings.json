@@ -455,5 +455,6 @@
         }
       }
     }
-  }
+  },
+  "git.confirmSync": false
 }
