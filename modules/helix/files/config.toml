@@ -1,5 +1,7 @@
 # theme="gruvbox"
 [editor]
 line-number="relative"
+[editor.lsp]
+display-messages=true
 [keys.normal]
 "#" = "toggle_comments"

@@ -9,5 +9,5 @@ cargo install --path helix-term
 mkdir -p $HOME/.local/share/helix
 rm $HOME/.local/share/helix/runtime
 mv runtime $HOME/.local/share/helix/runtime
-rm ~/.config/helix/runtime
+rm -rf ~/.config/helix/runtime
 ln -s $HOME/.local/share/helix/runtime ~/.config/helix/runtime
