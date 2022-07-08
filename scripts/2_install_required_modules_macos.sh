@@ -12,6 +12,7 @@ $module_path/macos/install_package_managers_macos.sh
 
 $module_path/keepassxc/install_keepassxc_macos.sh
 
+$module_path/alacritty/install_alacritty_macos.sh
 
 
 $module_path/helix/install_helix.sh

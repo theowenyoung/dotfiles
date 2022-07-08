@@ -39,3 +39,4 @@ source ~/.zsh/general_config.zsh
 #eval "$(ssh-agent)"
 # start zellij
 # eval "$(zellij setup --generate-auto-start zsh)"
+

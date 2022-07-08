@@ -147,23 +147,34 @@ source ~/.zshrc
 ```
 
 
-### 4. Install Apps
+### 5. Install Apps
 
 
 ```bash
 cd ~/dotfiles
-./scripts/1_install_modules_macos.sh
+./scripts/4_install_modules_macos.sh
 ```
 
-
-
-### 5. Resort pre-installed Apps
+### 6. Resort pre-installed Apps
 
 Move Terminal, Activity Monitor, Quick Time Player to the top. Move anything that Don't need to the Other Folder.
 
-### 6. Add Input Source if needed
+### 7. Add Input Source if needed
 
 Settings -> Keyboard -> Input Sources
+
+### 8. Addition settings
+
+Settings -> Keyboard -> Shortcuts
+
+```bash
+open alacritty.app -> hyper+a
+open keepassxc -> hyper+p
+open mail -> hyper+m
+open edge -> hyper+e
+open system preferences -> hyper+s
+open vscode -> hyper+v
+```
 
 
 </details>
@@ -274,16 +285,28 @@ Disable system Hot Key: Spotlight Hot Key, in Keyboard shortcut settings.
 </details>
 
 
-### QMK
 
-See [qmk readme](./modules/qmk/readme.md)
 
 #### Workflows
 
+##### Manual Download
+
 - [YoudaoTranslator](https://github.com/wensonsmith/YoudaoTranslator) - [Release](https://github.com/wensonsmith/YoudaoTranslator/releases)
+- [alfred open with vscode workflow](https://github.com/alexchantastic/alfred-open-with-vscode-workflow) - trigger key: v to search
+
+##### Shell Scripts
+
+```bash
+./modules/alfred/install_alfred_workflows.sh
+```
+
+This will install the following workflows:
 
 
 
+### QMK
+
+See [qmk readme](./modules/qmk/readme.md)
 
 ## Resource
 

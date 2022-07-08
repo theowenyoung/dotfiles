@@ -1,0 +1,8 @@
+actions:
+  - action: file.copy
+    from: dot_npmrc
+    to: "{{user.home_dir}}/.npmrc"
+    template: true
+  - action: file.link
+    source: pnpm_env.zsh
+    target: "{{user.home_dir}}/.zsh/extra/pnpm_env.zsh"

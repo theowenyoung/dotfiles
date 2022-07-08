@@ -1,0 +1,7 @@
+prefix=$HOME/.npm-packages
+init-author-name=Owen Young
+init-author-email=theowenyoung@gmail.com
+init-author-url=https://www.owenyoung.com
+init-license=MIT
+init-version=0.0.1
+loglevel=warn

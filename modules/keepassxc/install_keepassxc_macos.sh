@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo port -N install keepassxc
+brew install --cask keepassxc

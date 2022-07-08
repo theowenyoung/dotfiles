@@ -1,0 +1,27 @@
+actions:
+  - action: file.link
+    where: os.name=="macos"
+    source: open_macos_mail.workflow
+    target: "{{user.home_dir}}/Library/Services/open_macos_mail.workflow"
+  - action: file.link
+    where: os.name=="macos"
+    source: open_alacritty.workflow
+    target: "{{user.home_dir}}/Library/Services/open_alacritty.workflow"
+  - action: file.link
+    source: open_keepassxc.workflow
+    where: os.name=="macos"
+    target: "{{user.home_dir}}/Library/Services/open_keepassxc.workflow"
+  - action: file.link
+    source: open_microsoft_edge.workflow
+    where: os.name=="macos"
+    target: "{{user.home_dir}}/Library/Services/open_microsoft_edge.workflow"
+  - action: file.link
+    source: open_system_preferences.workflow
+    where: os.name=="macos"
+    target: "{{user.home_dir}}/Library/Services/open_system_preferences..workflow"
+  - action: file.link
+    source: open_vscode.workflow
+    where: os.name=="macos"
+    target: "{{user.home_dir}}/Library/Services/open_vscode..workflow"
+
+  

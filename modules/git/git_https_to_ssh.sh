@@ -19,7 +19,7 @@ if [ -z "$REPO_URL" ]; then
     exit
 fi
 
-USER=$(echo "$REPO_URL" | sed -Ene's#https://.*github.com/([^/]*)/(.*).git#\1#p')
+USER=$(echo "$REPO_URL" | sed -Ene's#https://.*github.com/([^/]*)/(.*)#\1#p')
 if [ -z "$USER" ]; then
     echo "-- ERROR:  Could not identify User."
     exit

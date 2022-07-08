@@ -4,6 +4,7 @@ rm -rf ~/.zsh
 rm ~/.zshrc
 rm ~/.zshenv
 rm ~/.tmux.conf
+rm ~/.curlrc
 rm ~/.gitignore
 rm ~/.gitconfig
 rm -rf ~/.tmux

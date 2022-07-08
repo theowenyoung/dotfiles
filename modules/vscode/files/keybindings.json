@@ -11,11 +11,11 @@
     "when": "inOutput"
   },
   {
-    "key": "ctrl+shift+alt+c",
+    "key": "ctrl+shift+alt+cmd+c",
     "command": "workbench.action.openGlobalSettings"
   },
   {
-    "key": "ctrl+shift+alt+s",
+    "key": "ctrl+shift+alt+cmd+s",
     "command": "workbench.action.openGlobalKeybindings"
   },
   {
@@ -23,7 +23,7 @@
     "command": "-workbench.action.openGlobalKeybindings"
   },
   {
-    "key": "ctrl+shift+alt+t",
+    "key": "ctrl+alt+t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
@@ -33,19 +33,19 @@
     "when": "terminal.active"
   },
   {
-    "key": "ctrl+shift+alt+h",
+    "key": "ctrl+alt+h",
     "command": "workbench.action.navigateLeft"
   },
   {
-    "key": "ctrl+shift+alt+l",
+    "key": "ctrl+alt+l",
     "command": "workbench.action.navigateRight"
   },
   {
-    "key": "ctrl+shift+alt+k",
+    "key": "ctrl+alt+k",
     "command": "workbench.action.navigateUp"
   },
   {
-    "key": "ctrl+shift+alt+j",
+    "key": "ctrl+alt+j",
     "command": "workbench.action.navigateDown"
   },
   {
