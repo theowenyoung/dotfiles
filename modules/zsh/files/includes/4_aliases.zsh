@@ -1,6 +1,9 @@
 # Custom
 
 
+## http server
+#
+alias hs="python3 -m http.server"
 
 ## zeje
 

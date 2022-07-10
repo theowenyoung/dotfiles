@@ -1,0 +1,8 @@
+% hn
+
+# unblock ip1
+source $DOTFILES_ROOT_PATH/.temp.env && curl -Lv "https://news.ycombinator.com/unban?ip=$TEMP_VPS1_IP"
+
+# unblock ip2
+source $DOTFILES_ROOT_PATH/.temp.env && curl -Lv "https://news.ycombinator.com/unban?ip=$TEMP_VPS2_IP"
+

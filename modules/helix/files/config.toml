@@ -1,7 +1,17 @@
-# theme="gruvbox"
+theme="gruvbox"
 [editor]
 line-number="relative"
 [editor.lsp]
 display-messages=true
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
 [keys.normal]
 "#" = "toggle_comments"

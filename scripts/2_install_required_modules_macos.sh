@@ -29,3 +29,4 @@ $module_path/fzf/install_fzf_macos.sh
 
 $module_path/bat/install_bat_macos.sh
 
+$module_path/navi/install_navi.sh

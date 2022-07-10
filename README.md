@@ -9,7 +9,7 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 [Alacritty](https://github.com/alacritty/alacritty) for terminal,
 [helix](https://github.com/helix-editor/helix) for modal editor.
 [alfred](https://www.alfredapp.com/) for translation, calculate, launch center, workflow.
-
+[navi](https://github.com/denisidoro/navi) for cheatsheets
 
 ## Introduction
 

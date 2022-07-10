@@ -1,0 +1,2 @@
+
+eval "$(navi widget zsh)"

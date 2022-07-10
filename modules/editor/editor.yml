@@ -1,0 +1,4 @@
+actions:
+   - action: file.link
+     source: dot_editorconfig
+     target: "{{user.home_dir}}/.editorconfig"

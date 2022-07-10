@@ -7,6 +7,7 @@ rm ~/.tmux.conf
 rm ~/.curlrc
 rm ~/.gitignore
 rm ~/.gitconfig
+rm ~/.editorconfig
 rm -rf ~/.tmux
 rm -rf ~/.ssh/config
 rm ~/.ssh/id_ed25519.pub
@@ -22,6 +23,6 @@ rm -rf ~/.config/ss
 rm -rf ~/.config/gost
 rm -rf ~/.config/caddy
 rm -rf ~/.config/systemd
-rm -rf /Users/green/Library/Application\ Support/tiny
-
+rm -rf ~/Library/Application\ Support/tiny
+rm -rf ~/Library/Application\ Support/navi
 touch ~/.zshrc

@@ -23,7 +23,7 @@
     "command": "-workbench.action.openGlobalKeybindings"
   },
   {
-    "key": "ctrl+alt+t",
+    "key": "ctrl+shift+alt+cmd+t",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
@@ -67,5 +67,9 @@
     "key": "alt+space",
     "command": "-dance.selections.clear.main",
     "when": "editorTextFocus && dance.mode == 'normal'"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+\\",
+    "command": "terminal.focus"
   }
 ]

@@ -1,0 +1,16 @@
+actions:
+  - action: file.copy
+    where: os.name=="linux"
+    from: dot_env.tmpl
+    to: "{{user.home_dir}}/.config/meilisearch/.env"
+    template: true
+  - action: file.copy
+    where: os.name=="linux"
+    from: meilisearch.service.tmpl
+    to: "{{user.home_dir}}/.config/systemd/user/meilisearch.service"
+    template: true
+  - action: command.run
+    where: os.name=="linux"
+    command: "{{env.DOTFILES_ROOT_PATH}}/modules/systemd/restart_service.sh"
+    args:
+      - meilisearch

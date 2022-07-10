@@ -1,0 +1,11 @@
+actions:
+  - action: file.link
+    source: navi_eval.zsh
+    target: "{{user.home_dir}}/.zsh/extra/navi_eval.zsh"
+  - action: file.copy
+    from: config.yaml
+    to: "{{user.config_dir}}/navi/config.yaml"
+    template: true
+  - action: file.link
+    source: cheats
+    target: "{{user.home_dir}}/.config/navi/cheats"

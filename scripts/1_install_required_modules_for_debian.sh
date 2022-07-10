@@ -16,7 +16,7 @@ $module_path/miller/install_miller_debian.sh
 
 $module_path/shadowsocks-rust/install_shadowsocks-rust.sh
 
-$module_path/zellij/install_zellij.sh
+$module_path/navi/install_navi.sh
 
 $module_path/fd/install_fd_debian.sh
 

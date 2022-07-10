@@ -12,8 +12,6 @@ setopt hist_verify              # Don't execute immediately upon history expansi
 setopt inc_append_history       # Write to history file immediately, not when shell quits
 setopt share_history            # Share history among all sessions
 
-# Tab completion
-autoload -Uz compinit && compinit
 
 setopt complete_in_word         # cd /ho/sco/tm<TAB> expands to /home/scott/tmp
 setopt auto_menu                # show completion menu on succesive tab presses

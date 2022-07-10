@@ -456,5 +456,10 @@
       }
     }
   },
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "[njk]": {
+    "editor.defaultFormatter": "eseom.nunjucks-template"
+  },
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "dance.defaultMode": "insert"
 }
