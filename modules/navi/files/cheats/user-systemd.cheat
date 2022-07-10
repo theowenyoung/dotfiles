@@ -1,0 +1,37 @@
+% systemctl, service
+
+# Start service
+systemctl --user start <service_inactive>
+
+# Stop service
+systemctl --user stop <service_active>
+
+# Enable service
+systemctl --user enable <service_disabled>
+
+# Disable service
+systemctl --user disable <service_enabled>
+
+# Restart service
+systemctl --user restart <service>
+
+# Reload service
+systemctl --user reload <service_active>
+
+# Service status
+systemctl --user status <service>
+
+# List running services
+systemctl --user list-units --type=service --state=running
+
+# List enabled services
+systemctl --user list-unit-files --type=service --state=enabled
+
+# List disabled services
+systemctl --user list-unit-files --type=service --state=disabled
+
+$ service_inactive: systemctl --user list-units --type=service --state=inactive | awk '{print $1}' | grep .service | sed 's/.service$//'
+$ service_active: systemctl --user list-units --type=service --state=active | awk '{print $1}' | grep .service | sed 's/.service$//'
+$ service_enabled: systemctl --user list-unit-files --type=service --state=enabled | awk '{print $1}' | grep .service | sed 's/.service$//'
+$ service_disabled: systemctl --user list-unit-files --type=service --state=disabled | awk '{print $1}' | grep .service | sed 's/.service$//'
+$ service: systemctl --user list-units --type=service --all | awk '{print $1}' | grep .service | sed 's/.service$//'

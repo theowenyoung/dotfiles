@@ -35,3 +35,7 @@ $module_path/podman-compose/install_podman-compose.sh
 $module_path/dufs/install_dufs_debian.sh
 
 $module_path/tmux/install_tmux_debian.sh
+
+$module_path/meilisearch/install_meilisearch.sh
+
+$module_path/navi/install_navi.sh
