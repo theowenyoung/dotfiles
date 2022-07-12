@@ -7,7 +7,7 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 [Keepassxc](https://github.com/keepassxreboot/keepassxc) for password manager, 
 [tmux](https://github.com/tmux/tmux) for window manager,
 [Alacritty](https://github.com/alacritty/alacritty) for terminal,
-[helix](https://github.com/helix-editor/helix) for modal editor.
+[helix](https://github.com/helix-editor/helix) and [kakoune](https://github.com/mawww/kakoune) for modal editor.
 [alfred](https://www.alfredapp.com/) for translation, calculate, launch center, workflow.
 [navi](https://github.com/denisidoro/navi) for cheatsheets
 
