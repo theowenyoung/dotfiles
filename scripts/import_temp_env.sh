@@ -11,18 +11,8 @@ TEMP_ENV_TARGET="$HOME/dotfiles/.temp.env";
 
 echo start to import temp env
 
-#printf %s $json | jq '.[0].Password'
-
-#json='{"text":"line1 with space\nline2\nline3"}'
-
-#text=$(printf %s $json | jq -r '.text') 
-
-#printf "%s" "$text"
-
 
 temp_str=$(printf %s "$json" | jq -r 'map(select(.Title=="temp_env")) | .[0].Notes')
-
-
 
 printf "%s" "$temp_str"> $TEMP_ENV_TARGET;
 
