@@ -102,8 +102,13 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 <summary>Details</summary>
 
 
+### 0. Install xcode command line tools
 
-### 0. Clone dotfiles repo and private dotfiles repo
+```bash
+xcode-select --install
+```
+
+### 1. Clone dotfiles repo and private dotfiles repo
 
 > first we will use the git https url, then we settle sshkey down, we'll change it to ssh url. 
 
@@ -114,13 +119,8 @@ git clone https://github.com/theowenyoung/dotfiles.git ~/dotfiles
 Then, clone the private repo, should get [github personal_token](https://github.com/settings/tokens) first, private will be placed in `~/dotfiles`, considered more convinient.
 
 ```bash
+cd dotfiles
 git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dotfiles/private
-```
-
-### 1. Install pre-required modules
-
-```bash
-./scripts/0_install_pre_required_modules_for_macos.sh
 ```
 
 ### 2. Config macos
@@ -147,12 +147,11 @@ source ~/.zshrc
 ```
 
 
-### 5. Install Apps
-
+### 5. Install Other Apps You need by shell
 
 ```bash
 cd ~/dotfiles
-./scripts/4_install_modules_macos.sh
+./modules/foo/install_foo_macos.sh
 ```
 
 ### 6. Resort pre-installed Apps

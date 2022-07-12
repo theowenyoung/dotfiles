@@ -1,11 +1,8 @@
 #!/bin/zsh
 set -e
-# import cf env
-source $PRIVATE_PATH/cloudflare/.env
+# import  env
+source $DOTFILES_ROOT_PATH/modules/gost/.env
 
-# import gost env
-
-source $PRIVATE_PATH/gost/.env
 
 $HOME/.acme.sh/acme.sh --issue --dns dns_cf -d $TEMP_GOST_HOST
 

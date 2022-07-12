@@ -95,8 +95,8 @@
   "editor.wordWrapColumn": 80,
   "files.exclude": {
     "**/.DS_Store": true,
-
-    "**/node_modules": true,
+    "**/.parcel-cache": true,
+    // "**/node_modules": true,
     "**/bower_components": true,
 
     "**/__pycache__": true,
