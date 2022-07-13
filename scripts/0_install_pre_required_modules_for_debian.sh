@@ -20,14 +20,28 @@ sudo apt install --yes curl
 sudo apt install --yes build-essential
 
 sudo apt install --yes keepassxc
+
+# create 4000 group
+sudo groupadd -g 4000 sysadmin2
 # create normal user
-sudo useradd -m -s /bin/zsh $USERNAME
+sudo useradd -u 4000 -g 4000 -m -s /bin/zsh $USERNAME
 # change normal user to sudo 
 
 sudo usermod -aG sudo $USERNAME
 
+# add user to no password group
+
+echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > ~/green_sudoers
+sudo visudo -c -q -f /home/$(whoami)/green_sudoers && \
+sudo chmod 440 /home/$(whoami)/green_sudoers && \
+sudo cp /home/$(whoami)/green_sudoers /etc/sudoers.d/green_sudoers
+sudo rm /home/$(whoami)/green_sudoers
+
 echo create user $USERNAME success
 echo please manual to save the root and $USERNAME password to keepassxc 
+
+
+
 
 
 # create .zshrc
@@ -39,7 +53,7 @@ sudo chown $USERNAME:$USERNAME /home/$USERNAME/.zshrc
 echo we will switch to user $USERNAME
 sudo su $USERNAME
 
-
+cd ~
 
 # install rustup
 
