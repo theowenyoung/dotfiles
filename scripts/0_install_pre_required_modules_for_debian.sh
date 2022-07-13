@@ -7,19 +7,6 @@ sudo apt update & sudo apt upgrade --yes
 
 sudo apt install --yes sudo
 
-# create normal user
-sudo adduser --disabled-password --gecos "" $USERNAME
-
-# change normal user to sudo 
-
-sudo usermod -aG sudo $USERNAME
-
-echo create user $USERNAME success
-echo please manual to save the root and $USERNAME password to keepassxc 
-
-
-
-
 # install openssl for comtrya
 sudo apt install --yes pkg-config libssl-dev
 # install git
@@ -33,12 +20,26 @@ sudo apt install --yes curl
 sudo apt install --yes build-essential
 
 sudo apt install --yes keepassxc
+# create normal user
+sudo useradd -m -s /bin/zsh $USERNAME
+# change normal user to sudo 
+
+sudo usermod -aG sudo $USERNAME
+
+echo create user $USERNAME success
+echo please manual to save the root and $USERNAME password to keepassxc 
+
+
+
 
 # su to normal user to install rust
 
 echo we will switch to user $USERNAME
 sudo su $USERNAME
 
+# create init zshrc
+
+touch ~/.zshrc
 
 
 
@@ -64,9 +65,6 @@ chsh -s $(which zsh)
 # change to home
 cd ~
 
-# create init zshrc
-
-touch ~/.zshrc
 
 # to zsh 
-zsh
+#zsh
