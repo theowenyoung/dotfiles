@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e;
 
 ENV_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/env.sh
 
@@ -8,13 +9,11 @@ source $ENV_PATH;
 
 module_path=$ROOT_DIR/modules;
 
-$module_path/helix/install_helix_debian.sh
+$module_path/comtrya/install_comtrya_binary.sh;
 
 $module_path/jq/install_jq_debian.sh
 
 $module_path/miller/install_miller_debian.sh
-
-$module_path/shadowsocks-rust/install_shadowsocks-rust.sh
 
 $module_path/navi/install_navi.sh
 
@@ -26,16 +25,4 @@ $module_path/acme/install_acme.sh
 
 $module_path/bat/install_bat_debian.sh
 
-$module_path/podman/install_podman_debian.sh
-
-$module_path/pip3/install_pip3_debian.sh
-
-$module_path/podman-compose/install_podman-compose.sh
-
-$module_path/dufs/install_dufs_debian.sh
-
 $module_path/tmux/install_tmux_debian.sh
-
-$module_path/meilisearch/install_meilisearch.sh
-
-$module_path/navi/install_navi.sh

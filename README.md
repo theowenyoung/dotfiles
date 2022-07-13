@@ -200,23 +200,8 @@ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@ip
 bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/dotfiles/main/scripts/0_install_pre_required_modules_for_debian.sh)
 ```
 
-> This will install keepassxc,git,zsh,curl,build-essential,rust,cargo,comtrya
-> and create normal user `green`
-
-
-
-Now you should be in zsh 
-
-### 1. Optional: Give normal user NO-PASSWORD permission (so run sudo won't need password)
-
-```bash
-sudo visudo
-``` 
-
-```bash
-green ALL=(ALL) NOPASSWD:ALL
-```
-
+> This will install keepassxc,git,zsh,curl,build-essential
+> and create normal user `green` with sudo privileges.
 
 
 ### 2. Clone dotfiles repo and private dotfiles repo
