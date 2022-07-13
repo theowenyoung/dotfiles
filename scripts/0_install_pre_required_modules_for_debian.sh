@@ -2,13 +2,13 @@
 set -e
 USERNAME="green"
 
-sudo apt update & sudo apt upgrade
+sudo apt update & sudo apt upgrade --yes
 
 
 sudo apt install --yes sudo
 
 # create normal user
-sudo adduser $USERNAME
+sudo adduser --disabled-password $USERNAME
 
 # change normal user to sudo 
 
