@@ -22,7 +22,7 @@ sudo apt install --yes build-essential
 sudo apt install --yes keepassxc
 
 # create 4000 group
-sudo groupadd -g 4000 sysadmin2
+sudo groupadd -g 4000 green
 # create normal user
 sudo useradd -u 4000 -g 4000 -m -s /bin/zsh $USERNAME
 # change normal user to sudo 
