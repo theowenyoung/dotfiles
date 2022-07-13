@@ -8,7 +8,7 @@ sudo apt update & sudo apt upgrade --yes
 sudo apt install --yes sudo
 
 # create normal user
-sudo adduser --disabled-password $USERNAME
+sudo adduser --disabled-password --gecos "" $USERNAME
 
 # change normal user to sudo 
 
