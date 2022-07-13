@@ -1,21 +1,18 @@
 #!/bin/sh
+set -e
 USERNAME="green"
 
-apt update & apt upgrade
+sudo apt update & sudo apt upgrade
 
 
-apt install --yes sudo
-
-# change root password 
-
-passwd $(whoami)
+sudo apt install --yes sudo
 
 # create normal user
-adduser $USERNAME
+sudo adduser $USERNAME
 
 # change normal user to sudo 
 
-usermod -aG sudo $USERNAME
+sudo usermod -aG sudo $USERNAME
 
 echo create user $USERNAME success
 echo please manual to save the root and $USERNAME password to keepassxc 
@@ -24,23 +21,23 @@ echo please manual to save the root and $USERNAME password to keepassxc
 
 
 # install openssl for comtrya
-apt install --yes pkg-config libssl-dev
+sudo apt install --yes pkg-config libssl-dev
 # install git
-apt install --yes git
+sudo apt install --yes git
 # install zsh
 
-apt install --yes zsh
+sudo apt install --yes zsh
 
-apt install --yes curl
+sudo apt install --yes curl
 # install keepassxc
-apt install --yes build-essential
+sudo apt install --yes build-essential
 
-apt install --yes keepassxc
+sudo apt install --yes keepassxc
 
 # su to normal user to install rust
 
 echo we will switch to user $USERNAME
-su $USERNAME
+sudo su $USERNAME
 
 # install rustup
 
