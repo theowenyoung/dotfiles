@@ -1,21 +1,21 @@
 #!/bin/sh
 USERNAME="green"
 
-yum -y -y update
+sudo yum -y -y update
 
 
 # yum -y install sudo
 
 # change root password 
 
-passwd $(whoami)
+# sudo passwd $(whoami)
 
 # create normal user
-adduser $USERNAME
+sudo adduser $USERNAME
 
 # change normal user to sudo 
 
-usermod -aG sudo $USERNAME
+sudo usermod -aG sudo $USERNAME
 
 echo create user $USERNAME success
 echo please manual to save the root and $USERNAME password to keepassxc 
@@ -24,23 +24,23 @@ echo please manual to save the root and $USERNAME password to keepassxc
 
 
 # install openssl for comtrya
-yum -y install pkg-config libssl-dev
+sudo yum -y install pkg-config libssl-dev
 # install git
-yum -y install git
+sudo yum -y install git
 # install zsh
 
-yum -y install zsh
+sudo yum -y install zsh
 
-yum -y install curl
+sudo yum -y install curl
 # install keepassxc
-yum -y install build-essential
+sudo yum -y install build-essential
 
-yum -y install keepassxc
+sudo yum -y install keepassxc
 
 # su to normal user to install rust
 
-echo we will switch to user $USERNAME
-su $USERNAME
+sudo echo we will switch to user $USERNAME
+sudo su $USERNAME
 
 # install rustup
 
