@@ -30,16 +30,14 @@ echo create user $USERNAME success
 echo please manual to save the root and $USERNAME password to keepassxc 
 
 
-
+# create .zshrc
+sudo touch /home/$USERNAME/.zshrc
+sudo chown $USERNAME:$USERNAME /home/$USERNAME/.zshrc
 
 # su to normal user to install rust
 
 echo we will switch to user $USERNAME
 sudo su $USERNAME
-
-# create init zshrc
-
-touch ~/.zshrc
 
 
 
