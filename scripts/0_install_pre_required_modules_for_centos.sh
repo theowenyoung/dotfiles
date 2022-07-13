@@ -1,10 +1,10 @@
 #!/bin/sh
 USERNAME="green"
 
-yum update --yes
+yum -y -y update
 
 
-# yum install --yes sudo
+# yum -y install sudo
 
 # change root password 
 
@@ -24,18 +24,18 @@ echo please manual to save the root and $USERNAME password to keepassxc
 
 
 # install openssl for comtrya
-yum install --yes pkg-config libssl-dev
+yum -y install pkg-config libssl-dev
 # install git
-yum install --yes git
+yum -y install git
 # install zsh
 
-yum install --yes zsh
+yum -y install zsh
 
-yum install --yes curl
+yum -y install curl
 # install keepassxc
-yum install --yes build-essential
+yum -y install build-essential
 
-yum install --yes keepassxc
+yum -y install keepassxc
 
 # su to normal user to install rust
 
