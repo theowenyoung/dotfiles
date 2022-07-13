@@ -39,18 +39,21 @@ sudo apt install --yes keepassxc
 echo we will switch to user $USERNAME
 sudo su $USERNAME
 
+
+
+
 # install rustup
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
-rustup default nightly
+# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
+# rustup default nightly
 
 # source cargo
 
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
 
 # install comtrya
 
-bash <(curl -s https://raw.githubusercontent.com/theowenyoung/dotfiles/main/modules/comtrya/install_comtrya.sh)
+bash <(curl -s https://raw.githubusercontent.com/theowenyoung/dotfiles/main/modules/comtrya/install_comtrya_binary.sh)
 
 
 

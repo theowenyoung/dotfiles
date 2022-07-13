@@ -197,7 +197,7 @@ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@ip
 ### 0. Install Pre Required Modules
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/dotfiles/main/scripts/0-install-pre-required-modules-for-debian.sh
+bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/dotfiles/main/scripts/0_install_pre_required_modules_for_debian.sh)
 ```
 
 > This will install keepassxc,git,zsh,curl,build-essential,rust,cargo,comtrya
