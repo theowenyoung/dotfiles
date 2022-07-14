@@ -8,6 +8,9 @@ source $ENV_PATH;
 
 # install comtrya
 module_path=$ROOT_DIR/modules;
+
+script_path=$ROOT_DIR/scripts;
+
 $module_path/comtrya/install_comtrya_binary.sh;
 
 # import secrets
@@ -37,7 +40,7 @@ $module_path/git/git_https_to_ssh.sh
 
 # run link all dotfiles
 
-$module_path/comtrya/link_all.sh
+$script_path/link_all.sh
  
 # thats all
 

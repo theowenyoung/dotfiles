@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+set -e;
 
 cd -- ~/dotfiles
 
