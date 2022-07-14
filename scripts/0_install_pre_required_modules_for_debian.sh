@@ -51,10 +51,10 @@ usermod -aG sudo $USERNAME
 # add user to no password group
 # https://superuser.com/posts/1027257/revisions
 echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > ~/green_sudoers
-visudo -c -q -f /home/$(whoami)/green_sudoers && \
-chmod 440 /home/$(whoami)/green_sudoers && \
-cp /home/$(whoami)/green_sudoers /etc/sudoers.d/green_sudoers
-rm /home/$(whoami)/green_sudoers
+visudo -c -q -f ~/green_sudoers && \
+chmod 440 ~/green_sudoers && \
+cp ~/green_sudoers /etc/sudoers.d/green_sudoers
+rm ~/green_sudoers
 # change password
 passwd $USERNAME
 
