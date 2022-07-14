@@ -66,6 +66,10 @@ echo please save it to keepassxc
 touch /home/$USERNAME/.zshrc
 chown $USERNAME:$USERNAME /home/$USERNAME/.zshrc
 
+# give user systemd service privilege
+
+loginctl enable-linger $USERNAME
+
 # su to normal user to install rust
 
 echo we will switch to user $USERNAME
