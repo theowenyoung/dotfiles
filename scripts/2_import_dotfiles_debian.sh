@@ -6,34 +6,38 @@ echo $ENV_PATH
 # import common env, like ROOT_DIR
 source $ENV_PATH;
 
+# install comtrya
+module_path=$ROOT_DIR/modules;
+$module_path/comtrya/install_comtrya_binary.sh;
+
 # import secrets
-$ROOT_DIR/modules/secret/import_ssh_key.sh
+$module_path/secret/import_ssh_key.sh
 
 
 # import temp envs
 
-$ROOT_DIR/modules/secret/import_temp_env.sh
+$module_path/secret/import_temp_env.sh
 
 
 # copy ssh public key to authorized-keys
-$ROOT_DIR/modules/ssh/append_ssh_pub_key_to_authorized-keys.sh
+$module_path/ssh/append_ssh_pub_key_to_authorized-keys.sh
 
 
 # change repo remote origin to ssh address
 
 cd -- $ROOT_DIR
-$ROOT_DIR/modules/git/git_https_to_ssh.sh
+$module_path/git/git_https_to_ssh.sh
 
 
 # change private repo url to ssh
 cd -- $DOTFILES_PRIVATE_PATH
-$ROOT_DIR/modules/git/git_https_to_ssh.sh
+$module_path/git/git_https_to_ssh.sh
 
 
 
 # run link all dotfiles
 
-$ROOT_DIR/modules/comtrya/link_all.sh
+$module_path/comtrya/link_all.sh
  
 # thats all
 
