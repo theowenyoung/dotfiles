@@ -39,7 +39,7 @@ $module_path/git/git_https_to_ssh.sh
 
 # run link all dotfiles
 
-$script_path/link.sh
+$script_path/link.sh all
  
 # thats all
 

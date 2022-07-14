@@ -226,6 +226,7 @@ cd ~/dotfiles
 # first unlink all things
 ./scripts/unlink.sh
 ./scripts/1_install_required_modules_for_debian.sh
+source ~/.zshenv
 ```
 
 
@@ -234,6 +235,12 @@ cd ~/dotfiles
 
 ```bash
 ./scripts/2_import_dotfiles_debian.sh
+```
+
+### 5. Change sshd config(only once)
+
+```bash
+INIT=true ./scripts/link.sh sshd
 ```
 
 </details>
