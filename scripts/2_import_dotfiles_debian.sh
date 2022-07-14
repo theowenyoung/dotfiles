@@ -10,6 +10,7 @@ source $ENV_PATH;
 module_path=$ROOT_DIR/modules;
 
 script_path=$ROOT_DIR/scripts;
+private_path=$ROOT_DIR/private;
 
 # import secrets
 $script_path/import_ssh_key.sh
@@ -21,7 +22,7 @@ $script_path/import_temp_env.sh
 
 
 # copy ssh public key to authorized-keys
-$module_path/ssh/append_ssh_pub_key_to_authorized-keys.sh
+cat $private_path/ssh/files/id_ed25519.pub >> ~/.ssh/authorized_keys
 
 
 # change repo remote origin to ssh address
