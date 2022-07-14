@@ -1,6 +1,4 @@
 # My zsh includes
-# Tab completion
-autoload -Uz compinit && compinit -u
 
 
 
@@ -17,6 +15,8 @@ if [ -d "$EXTRA_DIR" ]; then
 
 fi
 
+# Tab completion
+autoload -Uz compinit && compinit -u
 
 # load general config
 source ~/.zsh/general_config.zsh

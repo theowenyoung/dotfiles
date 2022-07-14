@@ -43,8 +43,12 @@ sudo visudo -c -q -f /home/$(whoami)/green_sudoers && \
 sudo chmod 440 /home/$(whoami)/green_sudoers && \
 sudo cp /home/$(whoami)/green_sudoers /etc/sudoers.d/green_sudoers
 sudo rm /home/$(whoami)/green_sudoers
+# change password
+sudo passwd $USERNAME
 
 echo create user $USERNAME success
+
+echo please save it to keepassxc
 
 # create .zshrc
 sudo touch /home/$USERNAME/.zshrc
