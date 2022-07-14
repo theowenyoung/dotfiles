@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 mkdir -p ~/.ssh
 # covert password to json
 data=$(keepassxc-cli export -f csv $DOTFILES_PRIVATE_PATH/keepassxc/dev.kdbx);
