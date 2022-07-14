@@ -26,3 +26,7 @@ rm -rf ~/.config/systemd
 rm -rf ~/Library/Application\ Support/tiny
 rm -rf ~/Library/Application\ Support/navi
 touch ~/.zshrc
+# link zshenv
+ln -s ~/dotfiles/scripts/zshenv.zsh ~/.zshenv
+
+echo unlink done! Please restart your terminal or run `source ~/.zshrc`

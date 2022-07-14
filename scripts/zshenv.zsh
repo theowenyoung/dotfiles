@@ -1,12 +1,26 @@
-#############################
-### Environment variables ###
-#############################
+## path
 
 
-# global dotfiles path  variables
+export PATH=./node_modules/.bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/share/pnpm"
+export PATH="$PATH:$HOME/.npm-packages/bin"
+export PATH=$PATH:/opt/local/bin
+export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/bin
+export PATH=$PATH:/usr/sbin
+export PATH=$PATH:/sbin
+
+## fpath
+fpath=($HOME/.zsh/functions $fpath)
+
+## env
 
 export DOTFILES_ROOT_PATH="$HOME/dotfiles"
-export DOTFILES_PRIVATE_PATH="$HOME/dotfiles/private" 
+export DOTFILES_PRIVATE_PATH="$HOME/dotfiles/private"
+export HOSTNAME=$(hostname)
 
 DOTFILES_FUNCTIONS_PATH="$DOTFILES_ROOT_PATH/scripts/common.sh"
 if [ -f "$DOTFILES_FUNCTIONS_PATH" ]; then
@@ -53,3 +67,11 @@ export LC_ALL='en_US.UTF-8';
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
+
+
+## functions
+# comtrya apply shortcut
+
+function ca (){
+  $DOTFILES_ROOT_PATH/scripts/link.sh "$@"
+}

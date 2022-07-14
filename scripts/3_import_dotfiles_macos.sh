@@ -2,9 +2,10 @@
 
 set -e;
 
-ENV_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/env.sh
-# import common env, like ROOT_DIR
-source $ENV_PATH;
+# source
+source ~/.zshenv
+
+ROOT_DIR=$DOTFILES_ROOT_PATH;
 
 # import secrets
 $ROOT_DIR/modules/secret/import_ssh_key.sh
@@ -29,7 +30,7 @@ $ROOT_DIR/modules/git/git_https_to_ssh.sh
 
 # run link all dotfiles
 
-$ROOT_DIR/modules/comtrya/link_all.sh
+$ROOT_DIR/modules/comtrya/link.sh
  
 ssh-add --apple-use-keychain
 

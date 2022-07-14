@@ -62,12 +62,12 @@ alias cmd='command'
 alias ss='source ~/.zshrc'
 
 # GNU and BSD (macOS) ls flags aren't compatible
-ls --version &>/dev/null
-if [ $? -eq 0 ]; then
-  lsflags="--color --group-directories-first -F"
+
+if [ "$OSTYPE" = "linux-gnu" ]; then  # Is this the Ubuntu system?
+    lsflags='--color --group-directories-first -F'
 else
-  lsflags="-GF"
-  export CLICOLOR=1
+    lsflags='-GF'
+    export CLICOLOR=1
 fi
 
 # Aliases

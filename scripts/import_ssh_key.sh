@@ -1,5 +1,11 @@
 #!/bin/bash
 set -e;
+
+# source
+source ~/.zshenv
+
+ROOT_DIR=$DOTFILES_ROOT_PATH;
+
 mkdir -p ~/.ssh
 # covert password to json
 data=$(keepassxc-cli export -f csv $DOTFILES_PRIVATE_PATH/keepassxc/dev.kdbx);

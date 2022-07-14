@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e;
 
-ENV_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/env.sh
-echo $ENV_PATH
-# import common env, like ROOT_DIR
-source $ENV_PATH;
+# source
+source ~/.zshenv
+
+ROOT_DIR=$DOTFILES_ROOT_PATH;
 
 # install comtrya
 module_path=$ROOT_DIR/modules;
@@ -39,7 +39,7 @@ $module_path/git/git_https_to_ssh.sh
 
 # run link all dotfiles
 
-$script_path/link_all.sh
+$script_path/link.sh
  
 # thats all
 

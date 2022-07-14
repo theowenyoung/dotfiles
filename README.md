@@ -41,8 +41,6 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 │       │   ├── alias_debian.zsh
 │       │   ├── general_config.zsh
 │       │   ├── includes
-│       │   │   ├── 1_env.zsh
-│       │   │   ├── 2_path.zsh
 │       │   │   ├── 3_function.zsh
 │       │   │   ├── 4_aliases.zsh
 │       │   │   ├── 5_fzf_keybinding.zsh
@@ -50,7 +48,6 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 │       │   │   ├── 7_git_prompt.zsh
 │       │   │   └── 8_ssh_zsh_completion.zsh
 │       │   ├── path_macos.zsh
-│       │   ├── zshenv.zsh
 │       │   └── zshrc.zsh
 │       ├── install_zsh_debian.sh
 │       └── zsh.yml
@@ -73,10 +70,10 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
     ├── 2_install_required_modules_macos.sh
     ├── 3_import_dotfiles_macos.sh
     ├── 4_install_modules_macos.sh
-    ├── env.sh
+    ├── zshenv.zsh
     ├── import_ssh_key.sh
     ├── import_temp_env.sh
-    ├── link_all.sh
+    ├── link.sh
     ├── test.sh
     └── unlink.sh
 ```
@@ -127,7 +124,7 @@ git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dot
 
 
 ```bash
-./scripts/1_configure_macos.sh
+./modules/macos/configure_macos.sh
 ```
 
 

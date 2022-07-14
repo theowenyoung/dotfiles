@@ -1,6 +1,6 @@
 .PHONY: link
 link:
-	./scripts/link_all.sh
+	./scripts/link.sh all
 .PHONY: unlink
 unlink:
 	./scripts/unlink.sh
