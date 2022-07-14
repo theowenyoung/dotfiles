@@ -29,4 +29,4 @@ touch ~/.zshrc
 # link zshenv
 ln -s ~/dotfiles/scripts/zshenv.zsh ~/.zshenv
 
-echo unlink done! Please restart your terminal or run `source ~/.zshrc`
+echo unlink done! Please restart your terminal or run 'source ~/.zshrc'
