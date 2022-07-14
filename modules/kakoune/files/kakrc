@@ -11,9 +11,12 @@ colorscheme gruvbox
 # set-face global CurWord default,rgb:4a4a4a
 
 hook global WinCreate .* %{
-   add-highlighter window/ number-lines -relative -hlcursor
-	 add-highlighter window/ number-lines -hlcursor
+  editorconfig-load
+  add-highlighter window/ number-lines -relative -hlcursor
+  add-highlighter window/ number-lines -hlcursor
 }
+
+
 # delete the *scratch* buffer as soon as another is created, but only if it's empty
 hook global BufCreate '^\*scratch\*$' %{
     exec '%d'
@@ -30,7 +33,7 @@ hook global BufCreate '^\*scratch\*$' %{
 # set-option global ui_options terminal_status_on_top=true
 
 # indentation
-set-option global tabstop     2
+set-option global tabstop     4
 set-option global indentwidth 2
 
 set-option global scrolloff 6,6
