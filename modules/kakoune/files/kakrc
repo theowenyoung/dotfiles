@@ -1,19 +1,16 @@
 colorscheme gruvbox
-# add-highlighter global/ number-lines -relative
-# add-highlighter global/ wrap -word -indent
 
-# add-highlighter global/ regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+rb
-# add-highlighter global/ regex @\b(todo|fixme|xxx|note)\b 0:default+rb
+## option
+# set-option global ui_options terminal_status_on_top=true
 
-# # Highlight the word under the cursor
-# # ───────────────────────────────────
-# declare-option -hidden regex curword
-# set-face global CurWord default,rgb:4a4a4a
+set-option global scrolloff 6,6
+
 add-highlighter global/ number-lines -relative -hlcursor
 add-highlighter global/ number-lines -hlcursor
 
-hook global WinCreate .* %{
+hook global BufCreate .* %{
   editorconfig-load
+  autoconfigtab
 }
 
 
@@ -29,14 +26,6 @@ hook global BufCreate '^\*scratch\*$' %{
     }
 }
 
-## option
-# set-option global ui_options terminal_status_on_top=true
-
-# indentation
-set-option global tabstop     4
-set-option global indentwidth 2
-
-set-option global scrolloff 6,6
 
 
 # mapping
@@ -103,28 +92,12 @@ hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window
 hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
 
 
-# define-command -hidden displayline_down %{ evaluate-commands -itersel %{
-#     try %{
-#         execute-keys -draft <semicolon> <a-l> "<a-k>\A.{%val{window_width},}<ret>"
-#         execute-keys %val{window_width} l
-#     } catch %{
-#         execute-keys j
-#     }
-# } }
 
 
 ## command
 define-command -docstring "save and quit" x "write-all; quit"
 define-command mkdir %{ nop %sh{ mkdir -p $(dirname $kak_buffile) }}
 define-command -docstring "quit without saving" qq "quit!"
-# define-command trim-whitespaces -docstring "Remove trailing whitespace from every line" %{
-#    try %{
-#         exec -draft '%s\h+$<ret>d'
-#         echo -markup "{Information}trimmed"
-#     } catch %{
-#         echo -markup "{Information}nothing to trim"
-#     }
-# }
 
 
 
@@ -167,13 +140,6 @@ plug "andreyorst/plug.kak" noload
 
 plug "andreyorst/smarttab.kak" defer smarttab %{
     set-option global softtabstop 2
-} config %{
-    # these languages will use `expandtab' behavior
-    hook global WinSetOption filetype=(javascript|typescript|rust|markdown|kak|lisp|scheme|sh|perl) expandtab
-    # these languages will use `noexpandtab' behavior
-    hook global WinSetOption filetype=(makefile|gas|go) noexpandtab
-    # these languages will use `smarttab' behavior
-    hook global WinSetOption filetype=(c|cpp) smarttab
 }
 
 plug "alexherbo2/auto-pairs.kak" %{
