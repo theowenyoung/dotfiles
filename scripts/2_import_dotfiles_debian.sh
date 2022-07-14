@@ -22,8 +22,8 @@ $script_path/import_temp_env.sh
 
 
 # copy ssh public key to authorized-keys
-cat $private_path/ssh/files/id_ed25519.pub >> ~/.ssh/authorized_keys
 
+printf '%s\n' "$(cat $private_path/ssh/files/id_ed25519.pub)" >> ~/.ssh/authorized_keys
 
 # change repo remote origin to ssh address
 
