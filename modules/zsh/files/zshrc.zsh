@@ -20,3 +20,8 @@ autoload -Uz compinit && compinit -u
 
 # load general config
 source ~/.zsh/general_config.zsh
+
+# pnpm
+export PNPM_HOME="/home/green/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
