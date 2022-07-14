@@ -1,5 +1,0 @@
-actions:
-  - action: file.copy
-    from: dot_envrc
-    to: "{{user.home_dir}}/inbox/dashflare/.envrc"
-    template: true
