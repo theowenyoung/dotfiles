@@ -32,7 +32,7 @@ $module_path/git/git_https_to_ssh.sh
 
 
 # change private repo url to ssh
-cd -- $DOTFILES_PRIVATE_PATH
+cd -- $private_path
 $module_path/git/git_https_to_ssh.sh
 
 
