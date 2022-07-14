@@ -11,15 +11,13 @@ module_path=$ROOT_DIR/modules;
 
 script_path=$ROOT_DIR/scripts;
 
-$module_path/comtrya/install_comtrya_binary.sh;
-
 # import secrets
-$module_path/secret/import_ssh_key.sh
+$script_path/import_ssh_key.sh
 
 
 # import temp envs
 
-$module_path/secret/import_temp_env.sh
+$script_path/import_temp_env.sh
 
 
 # copy ssh public key to authorized-keys
