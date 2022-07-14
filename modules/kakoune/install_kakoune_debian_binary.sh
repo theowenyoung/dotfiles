@@ -11,6 +11,6 @@ tar -xf kakoune-v2021.11.08-2-linux.tar.bz2
 
 cp kakoune-v2021.11.08-2-linux/bin/kak ~/.local/bin
 
-cp -r kakoune-v2021.11.08-2-linux/share/kak ~/.local/share/kak
+cp -r kakoune-v2021.11.08-2-linux/share/kak ~/.local/share
 
 echo "success"
