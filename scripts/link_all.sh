@@ -32,7 +32,8 @@ else
 fi
 
 # run private first
-~/.local/bin/comtrya $VERBOSE -d private apply
+cd -- $ROOT_DIR/private
+~/.local/bin/comtrya $VERBOSE apply
 
 # ensure new zshenv
 
@@ -40,8 +41,8 @@ source ~/.zshrc
 source $FILE
 
 
+cd -- $ROOT_DIR
 
-
-~/.local/bin/comtrya $VERBOSE -d modules apply
+~/.local/bin/comtrya $VERBOSE apply
 
 echo 'please run source ~/.zshrc'
