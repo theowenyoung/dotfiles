@@ -218,22 +218,20 @@ Then, clone the private repo, should get [github personal_token](https://github.
 git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dotfiles/private
 ```
 
-### 3. Install Apps
+### 3. Install required Apps
 
 
 ```bash
 cd ~/dotfiles
-./scripts/1_install_modules_for_debian.sh
+./scripts/1_install_required_modules_for_debian.sh
 ```
 
 
-### 4. Link and Copy dotfiles to the right places
+### 4.Import dotfiles
 
 
 ```bash
-cd ~/dotfiles
-make link
-source ~/.zshrc
+./scripts/2_import_dotfiles_debian.sh
 ```
 
 </details>

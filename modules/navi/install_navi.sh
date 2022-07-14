@@ -22,4 +22,4 @@ tar -xzf ${PRE_BINARY_NAME}${PRE_BINARY_NAME_SUFFIX}
 mv $ALIAS_NAME ~/.local/bin/${ALIAS_NAME}
 
 # add execute permission
-chmod +x ~/.local/bin/gost
+chmod +x ~/.local/bin/${ALIAS_NAME}

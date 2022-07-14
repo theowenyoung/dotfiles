@@ -6,6 +6,7 @@ ENV_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/en
 # import common env, like ROOT_DIR
 source $ENV_PATH;
 
+mkdir -p ~/.local/bin;
 
 module_path=$ROOT_DIR/modules;
 
