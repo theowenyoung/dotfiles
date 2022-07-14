@@ -223,6 +223,8 @@ git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dot
 
 ```bash
 cd ~/dotfiles
+# first unlink all things
+./scripts/unlink.sh
 ./scripts/1_install_required_modules_for_debian.sh
 ```
 
