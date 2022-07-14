@@ -1,6 +1,10 @@
 #!/bin/zsh
-
 set -e;
+
+ENV_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/env.sh
+echo $ENV_PATH
+# import common env, like ROOT_DIR
+source $ENV_PATH;
 
 cd -- ~/dotfiles
 
@@ -12,7 +16,7 @@ fi
 
 
 # first source the important env
-source ./modules/zsh/files/includes/1_env.zsh
+source $ROOT_DIR/modules/zsh/files/includes/1_env.zsh
 
 cd -- $ROOT_DIR/modules
 # first, always run zsh first, cause zsh has some global env that could be dependent by other scripts.
