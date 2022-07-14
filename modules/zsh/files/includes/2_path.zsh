@@ -12,6 +12,5 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/sbin
 
 
-fpath=($HOME/.zsh/functions)
-fpath=($fpath /usr/share/zsh/site-functions)
-fpath=($fpath /usr/share/zsh/5.8.1/functions)
+fpath=($HOME/.zsh/functions $fpath)
+
