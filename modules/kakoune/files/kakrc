@@ -9,8 +9,8 @@ colorscheme gruvbox
 # # ───────────────────────────────────
 # declare-option -hidden regex curword
 # set-face global CurWord default,rgb:4a4a4a
-add-highlighter global number-lines -relative -hlcursor
-add-highlighter global number-lines -hlcursor
+add-highlighter global/ number-lines -relative -hlcursor
+add-highlighter global/ number-lines -hlcursor
 
 hook global WinCreate .* %{
   editorconfig-load
