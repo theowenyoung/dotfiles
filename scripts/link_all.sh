@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -e;
 
-ENV_PATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/env.sh
+ENV_PATH=$( cd -- "$( dirname -- "${(%):-%N}" )" &> /dev/null && pwd )/env.sh
 echo $ENV_PATH
 # import common env, like ROOT_DIR
 source $ENV_PATH;

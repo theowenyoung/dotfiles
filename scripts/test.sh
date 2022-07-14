@@ -1,8 +1,5 @@
-#!/bin/bash
-
-
-#~/dotfiles/scripts/{test1,test2}.sh
-for script in ~/dotfiles/scripts/{test1,test2}.sh 
-  do sh "$script"; 
-done
-bash
+#!/bin/zsh
+set -e;
+echo ${(%):-%N};
+ENV_PATH=$( cd -- "$( dirname -- "${(%):-%N}" )" &> /dev/null && pwd )/env.sh
+echo $ENV_PATH
