@@ -28,4 +28,6 @@ $module_path/bat/install_bat_debian.sh
 
 $module_path/tmux/install_tmux_debian.sh
 
+$module_path/editorconfig/install_editorconfig_debian.sh
+
 $module_path/kakoune/install_kakoune_debian.sh
