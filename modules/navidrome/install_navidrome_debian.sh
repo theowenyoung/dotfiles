@@ -25,3 +25,5 @@ mv $ALIAS_NAME ~/.local/bin/${ALIAS_NAME}
 
 # add execute permission
 chmod +x ~/.local/bin/${ALIAS_NAME}
+
+mkdir -p ~/data/music
