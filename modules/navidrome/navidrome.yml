@@ -3,7 +3,7 @@ actions:
     where: os.name=="linux" && env.HOSTNAME=="jp3"
     from: navidrome.toml
     to: "{{user.home_dir}}/.config/navidrome/navidrome.toml"
-    template: false
+    template: true
   - action: file.copy
     where: os.name=="linux" && env.HOSTNAME=="jp3"
     from: navidrome.service.tmpl
