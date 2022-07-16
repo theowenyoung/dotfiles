@@ -8,3 +8,5 @@
 ca navidrome
 ca caddy
 ```
+
+Then go to url to add admin user.

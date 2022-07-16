@@ -299,6 +299,20 @@ This will install the following workflows:
 
 See [qmk readme](./modules/qmk/readme.md)
 
+
+
+### Oracle Cloud Init
+
+It sucks of oracle cloud security rules, see [question](https://stackoverflow.com/questions/54794217/opening-port-80-on-oracle-cloud-infrastructure-compute-node) to enable oracle cloud access.
+
+You need to manual open port:
+
+```bash
+sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
+sudo netfilter-persistent save
+```
+
 ## Resource
 
 - [Ten Things I Wish I’d Known About bash](https://zwischenzugs.com/2018/01/06/ten-things-i-wish-id-known-about-bash/)
