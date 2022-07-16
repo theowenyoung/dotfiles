@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo apt -y install transmission
+sudo apt -y install transmission-cli
