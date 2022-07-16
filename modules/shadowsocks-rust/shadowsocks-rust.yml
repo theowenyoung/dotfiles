@@ -8,6 +8,7 @@ actions:
     where: os.name=="linux"
     from: redirect_iptables.sh.tmpl
     to: "{{user.home_dir}}/.config/ss/redirect_iptables.sh"
+    chmod: 700
     template: true
   - action: file.copy
     from: ss.service.tmpl
