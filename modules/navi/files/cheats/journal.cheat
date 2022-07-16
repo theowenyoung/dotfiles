@@ -4,22 +4,22 @@
 % journalctl, linux
 
 # Show all messages from this boot
-journalctl -b
+sudo journalctl -b
 
 # Show all messages from last boot
-journalctl -b -1
+sudo journalctl -b -1
 
 # Follow new messages (like `tail -f` for traditional syslog)
-journalctl -f
+sudo journalctl -f
 
 # Show all messages by a specific unit
-journalctl -u <unit>
+sudo journalctl -u <unit>
 
 # Filter messages within a time range (either timestamp or placeholders like "yesterday")
-journalctl --since <now_today_yesterday_tomorrow> --until {{YYYY-MM-DD HH:MM:SS}}
+sudo journalctl --since <now_today_yesterday_tomorrow> --until {{YYYY-MM-DD HH:MM:SS}}
 
 # Show all messages by a specific process
-journalctl _PID=<pid>
+sudo journalctl _PID=<pid>
 
 # Show all messages by a specific executable
-journalctl <path_to_executable>
+sudo journalctl <path_to_executable>
