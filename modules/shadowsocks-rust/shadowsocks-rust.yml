@@ -5,6 +5,11 @@ actions:
     to: "{{user.home_dir}}/.config/ss/config.json"
     template: true
   - action: file.copy
+    where: os.name=="linux"
+    from: redirect_iptables.sh.tmpl
+    to: "{{user.home_dir}}/.config/ss/redirect_iptables.sh"
+    template: true
+  - action: file.copy
     from: ss.service.tmpl
     where: os.name=="linux"
     to: "{{user.home_dir}}/.config/systemd/user/ss.service"
