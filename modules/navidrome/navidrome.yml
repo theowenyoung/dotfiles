@@ -1,0 +1,16 @@
+actions:
+  - action: file.copy
+    where: os.name=="linux" && env.HOSTNAME=="jp3"
+    from: navidrome.toml
+    to: "{{user.home_dir}}/.config/navidrome/navidrome.toml"
+    template: false
+  - action: file.copy
+    where: os.name=="linux" && env.HOSTNAME=="jp3"
+    from: navidrome.service.tmpl
+    to: "{{user.home_dir}}/.config/systemd/user/navidrome.service"
+    template: true
+  - action: command.run
+    where: os.name=="linux" && env.HOSTNAME=="jp3"
+    command: "{{env.DOTFILES_ROOT_PATH}}/modules/systemd/restart_service.sh"
+    args:
+      - navidrome

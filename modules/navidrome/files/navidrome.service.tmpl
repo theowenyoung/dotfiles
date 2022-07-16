@@ -1,0 +1,11 @@
+[Unit]
+Description=service
+After=network.target
+AssertPathExists=%h/.local/bin/navidrome
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/navidrome --configfile %h/.config/navidrome/navidrome.toml
+Restart=on-failure
+WorkingDirectory=%h/.config/navidrome
+[Install]
+WantedBy=default.target
