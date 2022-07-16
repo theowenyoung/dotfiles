@@ -35,3 +35,5 @@ $module_path/xclip/install_xclip_debian.sh
 $module_path/kakoune/install_kakoune_debian_binary.sh
 
 $module_path/caddy/install_caddy_debian.sh
+
+$module_path/iptables-persistent/install-iptables-persistent_debian.sh
