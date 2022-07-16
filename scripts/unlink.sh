@@ -25,6 +25,7 @@ rm -rf ~/.config/caddy
 rm -rf ~/.config/systemd
 rm -rf ~/Library/Application\ Support/tiny
 rm -rf ~/Library/Application\ Support/navi
+rm -rf ~/.spotdl/config.json
 touch ~/.zshrc
 # link zshenv
 ln -s ~/dotfiles/scripts/zshenv.zsh ~/.zshenv
