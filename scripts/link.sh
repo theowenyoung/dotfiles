@@ -2,15 +2,15 @@
 set -e
 
 
-if [[ -L "$HOME/.zshenv" ]]; then
+if [[ -L "$HOME/.zsh/global.zsh" ]]; then
 else
-  echo ".zshenv not a link, will remove it and link it"
-  # link zshenv
-  ln -s ~/dotfiles/scripts/zshenv.zsh ~/.zshenv
+  echo "~/.zsh/global.zsh not a link, will remove it and link it"
+  mkdir -p ~/.zsh
+  ln -s ~/dotfiles/modules/zsh/files/global.zsh ~/.zsh/global.zsh
 fi
 
 # source
-source ~/.zshenv
+source ~/.zsh/global.zsh
 
 ROOT_DIR=$DOTFILES_ROOT_PATH;
 

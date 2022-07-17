@@ -1,8 +1,4 @@
 actions:
-  # this will be handle by link all, which is the most special file, defined the most imporntant env
-  # - action: file.link
-  #   source: zshenv.zsh
-  #   target: "{{user.home_dir}}/.zshenv" 
   - action: file.link
     source: path_macos.zsh
     where: os.name == "macos"

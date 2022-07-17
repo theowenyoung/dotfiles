@@ -2,7 +2,7 @@
 
 rm -rf ~/.zsh
 rm ~/.zshrc
-rm ~/.zshenv
+rm -f ~/.zshenv
 rm ~/.tmux.conf
 rm ~/.curlrc
 rm ~/.gitignore
@@ -26,8 +26,11 @@ rm -rf ~/.config/systemd
 rm -rf ~/Library/Application\ Support/tiny
 rm -rf ~/Library/Application\ Support/navi
 rm -rf ~/.spotdl/config.json
+
+mkdir -p ~/.zsh
+# link zshrc
+ln -s ~/dotfiles/modules/zsh/files/global.zsh ~/.zsh/global.zsh
+
 touch ~/.zshrc
-# link zshenv
-ln -s ~/dotfiles/scripts/zshenv.zsh ~/.zshenv
 
 echo unlink done! Please restart your terminal or run 'source ~/.zshrc'

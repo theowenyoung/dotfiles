@@ -47,7 +47,8 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 │       │   │   ├── 6_fzf_completion.zsh
 │       │   │   ├── 7_git_prompt.zsh
 │       │   │   └── 8_ssh_zsh_completion.zsh
-│       │   ├── path_macos.zsh
+│       │   ├── global.zsh
+│       │   ├── path_ubuntu.zsh
 │       │   └── zshrc.zsh
 │       ├── install_zsh_debian.sh
 │       └── zsh.yml
@@ -70,7 +71,6 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
     ├── 2_install_required_modules_macos.sh
     ├── 3_import_dotfiles_macos.sh
     ├── 4_install_modules_macos.sh
-    ├── zshenv.zsh
     ├── import_ssh_key.sh
     ├── import_temp_env.sh
     ├── link.sh
@@ -226,7 +226,7 @@ cd ~/dotfiles
 # first unlink all things
 ./scripts/unlink.sh
 ./scripts/1_install_required_modules_for_debian.sh
-source ~/.zshenv
+source ~/.zshrc
 ```
 
 

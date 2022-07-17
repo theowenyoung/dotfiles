@@ -3,7 +3,7 @@
 set -e;
 
 # source
-source ~/.zshenv
+source ~/.zsh/global.zsh
 
 ROOT_DIR=$DOTFILES_ROOT_PATH;
 
