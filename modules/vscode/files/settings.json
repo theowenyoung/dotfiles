@@ -70,7 +70,7 @@
     "yaml": false,
     "plaintext": false,
     "markdown": true,
-    "typescript": false
+    "typescript": true
   },
   "dart.debugExternalPackageLibraries": true,
   "dart.debugSdkLibraries": false,
