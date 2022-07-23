@@ -1,5 +1,8 @@
 # Custom
 
+## make
+
+alias m="make"
 
 ## http server
 #
@@ -77,9 +80,10 @@ alias la="ls ${lsflags} -la"
 alias h="history"
 alias hg="history -1000 | grep -i"
 alias ,="cd .."
-alias m="less"
+alias l="less"
 
 # GIT
 # Do this: git config --global url.ssh://git@github.com/.insteadOf https://github.com
 alias gd="git diff"
 alias gs="git status 2>/dev/null"
+alias gv="git remote -v"
