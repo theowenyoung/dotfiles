@@ -10,13 +10,9 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+
   "go.formatTool": "goimports",
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+
   "tabnine.experimentalAutoImports": true,
   "files.associations": {
     "*.cjson": "jsonc",
@@ -26,9 +22,7 @@
   "workbench.startupEditor": "newUntitledFile",
   "editor.formatOnSave": true,
   "prettier.requireConfig": true,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+
   "git.ignoreMissingGitWarning": true,
   "editor.suggest.showInterfaces": false,
   "search.useIgnoreFiles": false,
@@ -39,9 +33,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+
   "[makefile]": {
     "editor.insertSpaces": false,
     "editor.detectIndentation": false
@@ -76,9 +68,7 @@
   "dart.debugSdkLibraries": false,
   "dart.openDevTools": "flutter",
   "spellright.notificationClass": "warning",
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+
   "markdown.extension.syntax.plainTheme": true,
   "markdown.extension.toc.levels": "1..3",
   "foam.edit.linkReferenceDefinitions": "withExtensions",
@@ -461,5 +451,11 @@
     "editor.defaultFormatter": "eseom.nunjucks-template"
   },
   "editor.unicodeHighlight.ambiguousCharacters": false,
-  "dance.defaultMode": "insert"
+  "dance.defaultMode": "insert",
+  "task.problemMatchers.neverPrompt": {
+    "shell": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

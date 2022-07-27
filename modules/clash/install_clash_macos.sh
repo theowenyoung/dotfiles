@@ -18,3 +18,10 @@ mv ${file_name} ~/.local/bin/${NAME}
 
 # add execute permission
 chmod +x ~/.local/bin/${NAME}
+
+# clone ui files to ~/.local/share/clash/ui/
+mkdir -p ~/.local/share/clash/
+cd -- ~/.local/share/clash/
+git clone https://github.com/Dreamacro/clash-dashboard.git ui
+cd -- ui
+git checkout gh-pages

@@ -1,5 +1,8 @@
 # Custom
 
+## clash
+alias cl="clash -d ~/.config/clash"
+
 ## make
 
 alias m="make"
