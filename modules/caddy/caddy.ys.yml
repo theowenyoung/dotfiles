@@ -3,10 +3,14 @@
 - use: template.copy
   args:
     - ${__dirname}/files/caddy.service
-    - /etc/systemd/system/caddy.service
+    - /tmp/caddy.service
     - homedir: ${env.HOME}
+- use: :sudo cp /tmp/caddy.service /etc/systemd/system/caddy.service
+- use: Deno.remove
+  args: /tmp/caddy.service
+
 - use: fs.copy
   args:
     - ${__dirname}/files/disallow_robots.txt
     - ${env.HOME}/data/robots.txt
-- use: :${build.env.DOTFILES_ROOT_PATH}/modules/systemd/restart_root_service.sh caddy
+- use: :sudo ${build.env.DOTFILES_ROOT_PATH}/modules/systemd/restart_root_service.sh caddy
