@@ -22,8 +22,8 @@ Requires=network-online.target
 
 [Service]
 Type=notify
-ExecStart={{homedir}}/.local/bin/caddy run --environ --config {{homedir}}/.config/caddy/Caddyfile
-ExecReload={{homedir}}/.local/bin/caddy reload --config {{homedir}}/.config/caddy/Caddyfile --force
+ExecStart={{{homedir}}}/.local/bin/caddy run --environ --config {{{homedir}}}/.config/caddy/Caddyfile
+ExecReload={{{homedir}}}/.local/bin/caddy reload --config {{{homedir}}}/.config/caddy/Caddyfile --force
 TimeoutStopSec=5s
 LimitNOFILE=1048576
 LimitNPROC=512
