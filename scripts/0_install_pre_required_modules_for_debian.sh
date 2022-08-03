@@ -28,6 +28,8 @@ apt install --yes git
 
 apt install --yes zsh
 
+apt install --yes unzip
+
 # install keepassxc
 apt install --yes build-essential
 
