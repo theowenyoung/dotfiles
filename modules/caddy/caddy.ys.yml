@@ -2,7 +2,7 @@
   if: env.INIT!=="true" || Deno.build.os!=="linux"
 - use: template.copy
   args:
-    - ${__dirname}/files/caddy.service
+    - ${__dirname}/files/caddy.ys.service
     - /tmp/caddy.service
     - homedir: ${env.HOME}
 - use: :sudo cp /tmp/caddy.service /etc/systemd/system/caddy.service
