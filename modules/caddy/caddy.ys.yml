@@ -1,0 +1,12 @@
+- use: return
+  if: env.INIT!=="true" || Deno.build.os!=="linux"
+- use: template.copy
+  args:
+    - ${__dirname}/files/caddy.service
+    - /etc/systemd/system/caddy.service
+    - homedir: ${env.HOME}
+- use: fs.copy
+  args:
+    - ${__dirname}/files/disallow_robots.txt
+    - ${env.HOME}/data/robots.txt
+- use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_root_service.sh caddy

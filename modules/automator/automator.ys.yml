@@ -1,0 +1,13 @@
+- if: Deno.build.os!=="darwin"
+  use: return
+- loop:
+    - open_macos_mail
+    - open_alacritty
+    - open_keepassxc
+    - open_microsoft_edge
+    - open_system_preferences
+    - open_vscode
+  use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/${item}.workflow
+    - ${env.HOME}/Library/Services/${item}.workflow

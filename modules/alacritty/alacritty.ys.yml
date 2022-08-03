@@ -1,0 +1,5 @@
+- use: fs.ensureSymlink
+  if: Deno.build.os==="darwin"
+  args:
+    - ${__dirname}/files/alacritty.yml
+    - ${env.HOME}/.config/alacritty/alacritty.yml

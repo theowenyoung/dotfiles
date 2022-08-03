@@ -1,5 +1,18 @@
-# Custom
 
+alias yy="YS_DEV=1 deno run -A ~/yamlscript/ys.ts"
+
+# Custom
+pr(){
+	export HTTP_PROXY="http://127.0.0.1:7890"
+	export HTTPS_PROXY="http://127.0.0.1:7890"
+	export SOCKS_PROXY="socks://127.0.0.1:7891"
+}
+
+rp(){
+	unset HTTP_PROXY
+	unset HTTPS_PROXY
+	unset SOCKS_PROXY
+}
 ## clash
 alias cl="clash -d ~/.config/clash"
 

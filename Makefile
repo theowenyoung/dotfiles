@@ -1,3 +1,7 @@
+.PHONY: ys
+ys:
+	YAMLSCRIPT_DEV=1 deno run -A ../yamlscript/ys.ts run -d ./private/ -d ./modules/
+
 .PHONY: link
 link:
 	./scripts/link.sh all

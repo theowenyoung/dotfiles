@@ -1,0 +1,8 @@
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/broot_alias.zsh
+    - ${env.HOME}/.zsh/extra/broot_alias.zsh
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/conf.hjson
+    - ${env.HOME}/.config/broot/conf.hjson
