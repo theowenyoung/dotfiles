@@ -7,7 +7,7 @@
     - TEMP_MEILISEARCH_HTTP_ADDR: ${env.TEMP_MEILISEARCH_HTTP_ADDR}
       TEMP_MEILISEARCH_API_KEY: ${env.TEMP_MEILISEARCH_API_KEY}
       home_dir: ${user.homeDir}
-- use: fsExtry.copy
+- use: fsExtra.copy
   args:
     - ${__dirname}/files/meilisearch.service.tmpl
     - ${user.homeDir}/.config/systemd/user/meilisearch.service

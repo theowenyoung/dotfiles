@@ -7,7 +7,7 @@
     - TEMP_GOST_USER: ${env.TEMP_GOST_USER}
       TEMP_GOST_PASSWORD: ${env.TEMP_GOST_PASSWORD}
       TEMP_GOST_PORT: ${env.TEMP_GOST_PORT}
-- use: fsExtry.copy
+- use: fsExtra.copy
   args:
     - ${__dirname}/files/gost.service.tmpl
     - ${user.homeDir}/.config/systemd/user/gost.service.tmpl
