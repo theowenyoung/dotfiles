@@ -1,0 +1,15 @@
+- use: return
+  if: Deno.build.os!=="linux"
+- use: template.copy
+  args:
+    - ${__dirname}/files/gost.json.tmpl
+    - ${user.homeDir}/.config/gost/gost.json
+    - TEMP_GOST_USER: ${env.TEMP_GOST_USER}
+      TEMP_GOST_PASSWORD: ${env.TEMP_GOST_PASSWORD}
+      TEMP_GOST_PORT: ${env.TEMP_GOST_PORT}
+- use: fs.copy
+  args:
+    - ${__dirname}/files/gost.service.tmpl
+    - ${user.homeDir}/.config/systemd/user/gost.service.tmpl
+    - overwrite: true
+- use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh gost

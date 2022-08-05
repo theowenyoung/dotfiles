@@ -1,0 +1,15 @@
+- use: return
+  if: Deno.build.os!=="linux"
+- use: template.copy
+  args:
+    - ${__dirname}/files/dot_env.tmpl
+    - ${user.homeDir}/.config/meilisearch/.env
+    - TEMP_MEILISEARCH_HTTP_ADDR: ${env.TEMP_MEILISEARCH_HTTP_ADDR}
+      TEMP_MEILISEARCH_API_KEY: ${env.TEMP_MEILISEARCH_API_KEY}
+      home_dir: ${user.homeDir}
+- use: fs.copy
+  args:
+    - ${__dirname}/files/meilisearch.service.tmpl
+    - ${user.homeDir}/.config/systemd/user/meilisearch.service
+    - overwrite: true
+- use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh meilisearch

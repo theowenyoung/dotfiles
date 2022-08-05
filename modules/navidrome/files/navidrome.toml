@@ -1,2 +1,2 @@
-MusicFolder = "{{user.home_dir}}/data/music"
+MusicFolder = "{{{home_dir}}}/data/music"
 Port=10009

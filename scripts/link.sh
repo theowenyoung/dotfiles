@@ -2,6 +2,9 @@
 set -e
 
 
+
+
+
 if [[ -L "$HOME/.zsh/global.zsh" ]]; then
 else
   echo "~/.zsh/global.zsh not a link, will remove it and link it"
@@ -14,7 +17,6 @@ source ~/.zsh/global.zsh
 
 ROOT_DIR=$DOTFILES_ROOT_PATH;
 
-cd -- $ROOT_DIR;
 
 VERBOSE="-vv"
 
@@ -22,7 +24,9 @@ if [ "$1" = "-v"  ]; then
   VERBOSE="-vv"
 fi
 
-
+function ys(){
+  YS_DEV=1 deno run -A --unstable ~/yamlscript/ys.ts $*
+}
 
 UNIT="$1";
 
@@ -40,26 +44,29 @@ fi
 if [ "$UNIT" = "all" ]
   then
     cd -- $DOTFILES_ROOT_PATH
-    comtrya -vv -d modules apply
-    cd -- $DOTFILES_PRIVATE_PATH
-    comtrya -vv apply
+    ys run -A
+    # cd -- $DOTFILES_ROOT_PATH
+    # comtrya -vv -d modules apply
+    # cd -- $DOTFILES_PRIVATE_PATH
+    # comtrya -vv apply
 else
 
     if [ -z "$UNIT" ]
     then
+        echo yesss
         # apply current
-        comtrya -vv apply
+        ys run -A
     else
-
       # check if file exist
-      public_file=$DOTFILES_ROOT_PATH/modules/$UNIT/$UNIT.yml
-      private_file=$DOTFILES_PRIVATE_PATH/$UNIT/$UNIT.yml
+      public_file=$DOTFILES_ROOT_PATH/modules/$UNIT/$UNIT.ys.yml
+      private_file=$DOTFILES_PRIVATE_PATH/$UNIT/$UNIT.ys.yml
       echo check $private_file if exist
       if [ -f "$private_file" ]
       then
         echo private file exist
         cd -- $DOTFILES_PRIVATE_PATH
-        comtrya -vv apply -m "$UNIT.$UNIT"
+        ys run $private_file
+        # comtrya -vv apply -m "$UNIT.$UNIT"
       fi
       echo check $public_file if exist
       if [ -f "$public_file" ]
@@ -67,7 +74,8 @@ else
         echo public file exist
         cd -- $DOTFILES_ROOT_PATH
         module_name="modules.$UNIT.$UNIT";
-        comtrya -vv apply -m $module_name
+        # comtrya -vv apply -m $module_name
+        ys run $public_file
       fi
 
       fi

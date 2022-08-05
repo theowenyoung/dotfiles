@@ -10,7 +10,7 @@
 export PATH=./node_modules/.bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$DENO_INSTALL/bin"
+export PATH="$PATH:$HOME/.deno/bin"
 export PATH="$PATH:$HOME/.local/share/pnpm"
 export PATH="$PATH:$HOME/.npm-packages/bin"
 export PATH=$PATH:/opt/local/bin
@@ -87,8 +87,8 @@ export SAVEHIST=$HISTSIZE
 
 
 ## functions
-# comtrya apply shortcut
+# run yamlscript shortcut
 
-function ca (){
+function li (){
   $DOTFILES_ROOT_PATH/scripts/link.sh "$@"
 }
