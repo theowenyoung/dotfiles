@@ -1,0 +1,21 @@
+- use: return
+  if: os.name!=="linux"
+- use: template.copy
+  args:
+    - ${__dirname}/files/config.json.tmpl
+    - ${user.homeDir}/.config/ss/config.json
+    - TEMP_SS_PORT: ${env.TEMP_SS_PORT}
+      TEMP_SS_PASSWORD: ${env.TEMP_SS_PASSWORD}
+- use: template.copy
+  args:
+    - ${__dirname}/files/redirect_iptables.sh.tmpl
+    - ${user.homeDir}/.config/ss/redirect_iptables.sh
+    - TEMP_SS_PORT: ${env.TEMP_SS_PORT}
+      TEMP_SS_START_PORT: ${env.TEMP_SS_START_PORT}
+      TEMP_SS_END_PORT: ${env.TEMP_SS_END_PORT}
+    - mode: 700
+- use: fsExtra.copy
+  args:
+    - ${__dirname}/files/ss.service.tmpl
+    - ${user.homeDir}/.config/systemd/user/ss.service
+- use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh ss

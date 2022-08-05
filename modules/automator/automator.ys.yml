@@ -10,4 +10,4 @@
   use: fs.ensureSymlink
   args:
     - ${__dirname}/files/${item}.workflow
-    - ${env.HOME}/Library/Services/${item}.workflow
+    - ${user.homeDir}/Library/Services/${item}.workflow

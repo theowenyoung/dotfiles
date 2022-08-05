@@ -1,0 +1,8 @@
+# <https://stackoverflow.com/a/38980986>
+- use: return
+  if: os.name!=="linux"
+- use: fsExtra.copy
+  args:
+    - ${__dirname}/files/ssh-agent.service
+    - ${user.homeDir}/.config/systemd/user/ssh-agent.service
+- use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh ssh-agent

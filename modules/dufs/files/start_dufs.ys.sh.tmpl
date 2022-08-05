@@ -1,0 +1,11 @@
+#!/bin/sh
+
+~/.local/bin/dufs \
+  --bind 127.0.0.1 \
+  --hidden .git,.DS_Store,robots.txt \
+  --allow-upload \
+  -a /@{{{TEMP_SELF_HOSTED_USERNAME}}}:{{{TEMP_SELF_HOSTED_PASSWORD}}}@* \
+  -p 10004  \
+  --allow-delete \
+  --allow-search \
+  ~/data

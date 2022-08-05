@@ -1,6 +1,6 @@
 #!/bin/sh
-sudo iptables -t nat -A PREROUTING -p tcp --dport {{env.TEMP_SS_START_PORT}}:{{env.TEMP_SS_END_PORT}} -j REDIRECT --to-port {{env.TEMP_SS_PORT}}
-sudo iptables -t nat -A PREROUTING -p udp --dport {{env.TEMP_SS_START_PORT}}:{{env.TEMP_SS_END_PORT}} -j REDIRECT --to-port {{env.TEMP_SS_PORT}}
+sudo iptables -t nat -A PREROUTING -p tcp --dport {{{env.TEMP_SS_START_PORT}}}:{{{env.TEMP_SS_END_PORT}}} -j REDIRECT --to-port {{{env.TEMP_SS_PORT}}}
+sudo iptables -t nat -A PREROUTING -p udp --dport {{{env.TEMP_SS_START_PORT}}}:{{{env.TEMP_SS_END_PORT}}} -j REDIRECT --to-port {{{env.TEMP_SS_PORT}}}
 
 # save iptables when restart
 sudo iptables-save > /etc/iptables/rules.v4

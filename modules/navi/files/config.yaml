@@ -20,7 +20,7 @@ finder:
 
 cheats:
   paths: 
-    - "{{user.home_dir}}/.config/navi/cheats"
+    - "{{{home_dir}}}/.config/navi/cheats"
 
 # search:
   # tags: git,!checkout # equivalent to the --tag-rules option

@@ -1,0 +1,8 @@
+- use: template.copy
+  args:
+    - ${__dirname}/files/config.yml
+    - ${user.homeDir}/Library/Application Support/tiny/config.yml
+    - TEMP_MAIN_IRC_NICKNAME: ${env.TEMP_MAIN_IRC_NICKNAME}
+      TEMP_MAIN_IRC_REALNAME: ${env.TEMP_MAIN_IRC_REALNAME}
+      TEMP_MAIN_IRC_PASSWORD: ${env.TEMP_MAIN_IRC_PASSWORD}
+      home_dir: ${user.homeDir}

@@ -1,5 +1,8 @@
 
-alias yy="YS_DEV=1 deno run -A ~/yamlscript/ys.ts"
+
+alias yb="YS_DEV=1 deno run -A --unstable ~/yamlscript/ys.ts build"
+alias yy="YS_DEV=1 deno run -A --unstable ~/yamlscript/ys.ts run"
+alias ys="YS_DEV=1 deno run -A --unstable ~/yamlscript/ys.ts"
 
 # Custom
 pr(){
@@ -14,7 +17,7 @@ rp(){
 	unset SOCKS_PROXY
 }
 ## clash
-alias cl="clash -d ~/.config/clash"
+alias cl="sudo clash -d ~/.config/clash"
 
 ## make
 

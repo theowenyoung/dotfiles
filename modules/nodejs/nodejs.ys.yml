@@ -1,0 +1,9 @@
+- use: template.copy
+  args:
+    - ${__dirname}/files/dot_npmrc
+    - ${user.homeDir}/.npmrc
+    - home_dir: ${user.homeDir}
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/pnpm_env.zsh
+    - ${user.homeDir}/.zsh/extra/pnpm_env.zsh

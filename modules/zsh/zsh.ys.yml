@@ -1,0 +1,23 @@
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/path_macos.zsh
+    - ${user.homeDir}/.zsh/extra/path_macos.zsh
+  if: os.name == "darwin"
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/alias_debian.zsh
+    - ${user.homeDir}/.zsh/extra/alias_debian.zsh
+  if: os.name=="linux"
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/includes
+    - ${user.homeDir}/.zsh/includes
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/general_config.zsh
+    - ${user.homeDir}/.zsh/general_config.zsh
+- use: :rm ${user.homeDir}/.zshrc
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/zshrc.zsh
+    - ${user.homeDir}/.zshrc

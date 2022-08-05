@@ -1,12 +1,12 @@
 - use: fs.ensureSymlink
   args:
     - ${__dirname}/files/kakrc
-    - ${env.HOME}/.config/kak/kakrc
+    - ${user.homeDir}/.config/kak/kakrc
 - use: fs.ensureSymlink
   args:
     - ${__dirname}/files/colors
-    - ${env.HOME}/.config/kak/colors
+    - ${user.homeDir}/.config/kak/colors
 - use: fs.ensureSymlink
   args:
     - ${__dirname}/files/kak-lsp.toml
-    - ${env.HOME}/.config/kak-lsp/kak-lsp.toml
+    - ${user.homeDir}/.config/kak-lsp/kak-lsp.toml

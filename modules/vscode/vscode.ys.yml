@@ -1,0 +1,14 @@
+- use: return
+  if: os.name!=="macos"
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/settings.json
+    - ${user.homeDir}/Library/Application Support/Code/User/settings.json
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/snippets
+    - ${user.homeDir}/Library/Application Support/Code/User/snippets
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/keybindings.json
+    - ${user.homeDir}/Library/Application Support/Code/User/keybindings.json

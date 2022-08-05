@@ -1,0 +1,4 @@
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/kitty.conf
+    - "${user.homeDir}/.config/kitty/kitty.conf"

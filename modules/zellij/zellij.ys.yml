@@ -1,0 +1,4 @@
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/config.yaml
+    - ${user.homeDir}/.config/zellij/config.yaml

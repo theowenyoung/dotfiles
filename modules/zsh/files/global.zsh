@@ -10,7 +10,7 @@
 export PATH=./node_modules/.bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$DENO_INSTALL/bin"
+export PATH="$PATH:$HOME/.deno/bin"
 export PATH="$PATH:$HOME/.local/share/pnpm"
 export PATH="$PATH:$HOME/.npm-packages/bin"
 export PATH=$PATH:/opt/local/bin
@@ -60,7 +60,6 @@ fi
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-
 # ssh agent for debian
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

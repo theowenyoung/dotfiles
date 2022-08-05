@@ -1,0 +1,12 @@
+- use: return
+  if: os.name!=="linux" || os.hostname!=="jp3"
+- use: template.copy
+  args:
+    - ${__dirname}/files/navidrome.toml
+    - ${user.homeDir}/.config/navidrome/navidrome.toml
+    - home_dir: ${user.homeDir}
+- use: fsExtra.copy
+  args:
+    - ${__dirname}/files/navidrome.service.tmpl
+    - ${user.homeDir}/.config/systemd/user/navidrome.service
+- use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh navidrome

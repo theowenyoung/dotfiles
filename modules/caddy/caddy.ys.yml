@@ -4,7 +4,7 @@
   args:
     - ${__dirname}/files/caddy.ys.service
     - /tmp/caddy.service
-    - homedir: ${env.HOME}
+    - homedir: ${user.homeDir}
 - use: :sudo cp /tmp/caddy.service /etc/systemd/system/caddy.service
 - use: Deno.remove
   args: /tmp/caddy.service
@@ -12,6 +12,6 @@
 - use: fs.copy
   args:
     - ${__dirname}/files/disallow_robots.txt
-    - ${env.HOME}/data/robots.txt
+    - ${user.homeDir}/data/robots.txt
     - overwrite: true
 - use: :sudo ${build.env.DOTFILES_ROOT_PATH}/modules/systemd/restart_root_service.sh caddy

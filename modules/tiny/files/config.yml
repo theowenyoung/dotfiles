@@ -1,18 +1,18 @@
 defaults:
   nicks: 
-    - "{{env.TEMP_MAIN_IRC_NICKNAME}}"
-  realname: "{{env.TEMP_MAIN_IRC_REALNAME}}"
-log_dir: "{{user.home_dir}}/.cache/tiny"    
+    - "{{{TEMP_MAIN_IRC_NICKNAME}}}"
+  realname: "{{{TEMP_MAIN_IRC_REALNAME}}}"
+log_dir: "{{{home_dir}}}/.cache/tiny"    
 servers:
   - addr: irc.ea.libera.chat
     port: 7000
-    realname: "{{env.TEMP_MAIN_IRC_REALNAME}}"
+    realname: "{{{TEMP_MAIN_IRC_REALNAME}}}"
     nickserv_ident: NickServ
     nicks: 
-      - "{{env.TEMP_MAIN_IRC_NICKNAME}}"
+      - "{{{TEMP_MAIN_IRC_NICKNAME}}}"
     sasl:
-      username: '{{env.TEMP_MAIN_IRC_NICKNAME}}'
-      password: '{{env.TEMP_MAIN_IRC_PASSWORD}}'      
+      username: '{{{TEMP_MAIN_IRC_NICKNAME}}}'
+      password: '{{{TEMP_MAIN_IRC_PASSWORD}}}'      
     tls: true
     join:
       - '#alacritty'

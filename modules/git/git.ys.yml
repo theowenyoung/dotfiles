@@ -1,0 +1,14 @@
+- use: template.copy
+  args:
+    - ${__dirname}/files/dot_gitconfig
+    - ${user.homeDir}/.gitconfig
+    - TEMP_MAIN_NAME: ${env.TEMP_MAIN_NAME}
+      TEMP_MAIN_EMAIL: ${env.TEMP_MAIN_EMAIL}
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/dot_gitignore
+    - ${user.homeDir}/.gitignore
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/git_alias.zsh
+    - ${user.homeDir}/.zsh/extra/git_alias.zsh

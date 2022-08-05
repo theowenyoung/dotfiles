@@ -1,4 +1,4 @@
-prefix={{user.home_dir}}/.npm-packages
+prefix={{{home_dir}}}/.npm-packages
 init-author-name=Owen Young
 init-author-email=theowenyoung@gmail.com
 init-author-url=https://www.owenyoung.com
