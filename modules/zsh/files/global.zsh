@@ -84,8 +84,8 @@ export SAVEHIST=$HISTSIZE
 
 
 ## functions
-# comtrya apply shortcut
+# run yamlscript shortcut
 
-function ca (){
+function li (){
   $DOTFILES_ROOT_PATH/scripts/link.sh "$@"
 }

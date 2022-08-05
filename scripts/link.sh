@@ -17,7 +17,6 @@ source ~/.zsh/global.zsh
 
 ROOT_DIR=$DOTFILES_ROOT_PATH;
 
-cd -- $ROOT_DIR;
 
 VERBOSE="-vv"
 
@@ -26,7 +25,7 @@ if [ "$1" = "-v"  ]; then
 fi
 
 function ys(){
-  YS_DEV=1 ~/.deno/bin/deno run -A --unstable ~/yamlscript/ys.ts $*
+  YS_DEV=1 deno run -A --unstable ~/yamlscript/ys.ts $*
 }
 
 UNIT="$1";
@@ -54,11 +53,10 @@ else
 
     if [ -z "$UNIT" ]
     then
+        echo yesss
         # apply current
-        # comtrya -vv apply
         ys run -A
     else
-
       # check if file exist
       public_file=$DOTFILES_ROOT_PATH/modules/$UNIT/$UNIT.ys.yml
       private_file=$DOTFILES_PRIVATE_PATH/$UNIT/$UNIT.ys.yml

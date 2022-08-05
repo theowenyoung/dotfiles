@@ -3,7 +3,7 @@
 Dotfiles, init scripts, etc, for now, it includes macOS, and Debian (my VPS), you shouldn't use it directly, cause it contains many personal habits, but you do can get some inspiratiions from it.
 
 
-I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtrya/comtrya) for linking dotfiles or using template to copy template dotfile to the dest location, 
+I use raw shell scripts to install apps, and [Yamlscript](https://github.com/yamlscript/yamlscript) for linking dotfiles or using template to copy template dotfile to the dest location, 
 [Keepassxc](https://github.com/keepassxreboot/keepassxc) for password manager, 
 [tmux](https://github.com/tmux/tmux) for window manager,
 [Alacritty](https://github.com/alacritty/alacritty) for terminal,
@@ -78,7 +78,7 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
     └── unlink.sh
 ```
 
-> `modules` for all apps, every app should contains an install script, and optional `files` folder, and `app.yml` for [Comtrya](https://github.com/comtrya/comtrya).
+> `modules` for all apps, every app should contains an install script, and optional `files` folder, and `app.ys.yml` for [Yamlscript](https://github.com/yamlscript/yamlscript).
 >
 > `private` for private data, I sync it to a github private repo, inlucde keepassxc encrypted file, and other personal file.
 > Though it's a individual repo, I still clone it in `dotfiles` folder, and ignore it in `.gitignore`, cause it's convenient to apply changes.
@@ -90,7 +90,7 @@ I use raw shell scripts to install apps, and [Comtrya](https://github.com/comtry
 1. `make link`: link or copy all dotfiles to the right place
 2. `make unlink`: unlink all things.
 3. `make backup`: backup qBittorrent.conf to dotfiles source, cause you may change the qbittorrent settings from web ui, and qBittorrent run with podman, the qBittorrent.conf file permission does not allow to link. 
-4. `ca`: short for `comtrya apply`,but a lot convinience, for example: `ca` for apply current module's dotfiles. `ca all`, apply all. `ca module_name`, apply module's dotfiles whatever your current work direction. 
+4. `li`: short for `./scripts/link.sh`,but a lot convinience, for example: `li` for apply current module's dotfiles. `li all`, apply all. `li module_name`, apply module's dotfiles whatever your current work direction. 
 
 
 ## MacOS Init
