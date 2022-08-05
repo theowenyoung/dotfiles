@@ -1,5 +1,5 @@
 - use: return
-  if: os.name!=="linux"
+  if: os.name!=="linux" || env.INIT!=="true"
 - use: template.copy
   args:
     - ${__dirname}/files/config.json.tmpl
