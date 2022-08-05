@@ -3,7 +3,7 @@
 Dotfiles, init scripts, etc, for now, it includes macOS, and Debian (my VPS), you shouldn't use it directly, cause it contains many personal habits, but you do can get some inspiratiions from it.
 
 
-I use raw shell scripts to install apps, and [Yamlscript](https://github.com/yamlscript/yamlscript) for linking dotfiles or using template to copy template dotfile to the dest location, 
+I use raw shell scripts to install apps, and [YAMLScript](https://github.com/yamlscript/yamlscript) for linking dotfiles or using template to copy template dotfile to the dest location, 
 [Keepassxc](https://github.com/keepassxreboot/keepassxc) for password manager, 
 [tmux](https://github.com/tmux/tmux) for window manager,
 [Alacritty](https://github.com/alacritty/alacritty) for terminal,
@@ -78,7 +78,7 @@ I use raw shell scripts to install apps, and [Yamlscript](https://github.com/yam
     └── unlink.sh
 ```
 
-> `modules` for all apps, every app should contains an install script, and optional `files` folder, and `app.ys.yml` for [Yamlscript](https://github.com/yamlscript/yamlscript).
+> `modules` for all apps, every app should contains an install script, and optional `files` folder, and `app.ys.yml` for [YAMLScript](https://github.com/yamlscript/yamlscript).
 >
 > `private` for private data, I sync it to a github private repo, inlucde keepassxc encrypted file, and other personal file.
 > Though it's a individual repo, I still clone it in `dotfiles` folder, and ignore it in `.gitignore`, cause it's convenient to apply changes.

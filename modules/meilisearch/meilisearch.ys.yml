@@ -12,4 +12,5 @@
     - ${__dirname}/files/meilisearch.service.tmpl
     - ${user.homeDir}/.config/systemd/user/meilisearch.service
     - overwrite: true
-- use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh meilisearch
+# do not need to deploy
+# - use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh meilisearch
