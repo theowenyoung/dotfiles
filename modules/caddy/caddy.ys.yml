@@ -9,7 +9,7 @@
 - use: Deno.remove
   args: /tmp/caddy.service
 
-- use: fs.copy
+- use: fsExtry.copy
   args:
     - ${__dirname}/files/disallow_robots.txt
     - ${user.homeDir}/data/robots.txt
