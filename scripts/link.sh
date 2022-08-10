@@ -24,9 +24,9 @@ if [ "$1" = "-v"  ]; then
   VERBOSE="-vv"
 fi
 
-# function ys(){
-#   YS_DEV=1 deno run -A --unstable ~/yamlscript/ys.ts $*
-# }
+function ys(){
+  YS_DEV=1 deno run -A --unstable ~/yamlscript/ys.ts $*
+}
 
 UNIT="$1";
 
