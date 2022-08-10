@@ -192,7 +192,13 @@ This should be run as root:
 
 ```bash
 # sudo su - root
-bash <(wget -qO- https://dotfiles.owenyoung.com/scripts/0_install_pre_required_modules_for_debian.sh)
+wget -qO- https://dotfiles.owenyoung.com/scripts/0_install_pre_required_modules_for_debian.sh | bash
+```
+
+or, if you need to create normal user:
+
+```bash
+wget -qO- https://dotfiles.owenyoung.com/scripts/0_install_pre_required_modules_for_debian.sh | bash -s -- --create
 ```
 
 > This will install keepassxc,git,zsh,curl,build-essential
@@ -211,6 +217,13 @@ Then, clone the private repo, should get [github personal_token](https://github.
 
 ```bash
 git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dotfiles/private
+```
+
+
+### 2.1 Install clash for proxy if needed
+
+```bash
+./modules/clash/install_clash_premium_debian.sh
 ```
 
 ### 3. Install required Apps
