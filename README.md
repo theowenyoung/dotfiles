@@ -224,7 +224,7 @@ git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dot
 
 ```bash
 ./modules/clash/install_clash_premium_debian.sh
-ln -s ~/dotfiles/private/clash/files/ruleset ~/.config/clash/ruleset && ~/.local/bin/clash -f ~/dotfiles/private/clash/files/config_linux.yaml
+ln -s ~/dotfiles/private/clash/files/ruleset ~/.config/clash/ruleset && sudo /home/green/.local/bin/clash -f /home/green/dotfiles/private/clash/files/config_linux.yaml
 ```
 
 ### 3. Install required Apps

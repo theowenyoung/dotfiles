@@ -1,5 +1,5 @@
 - use: return
-  if: env.INIT!=="true" || Deno.build.os!=="linux"
+  if: env.INIT!=="true" || Deno.build.os!=="linux" || os.hostname==='debianlocal'
 - use: template.copy
   args:
     - ${__dirname}/files/caddy.ys.service
