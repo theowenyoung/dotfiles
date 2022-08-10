@@ -77,6 +77,9 @@ sudo apt install --yes keepassxc
 touch /home/$USERNAME/.zshrc
 sudo chown $USERNAME:$USERNAME /home/$USERNAME/.zshrc
 
+# change user default shell to zsh
+sudo usermod --shell /bin/zsh $USERNAME
+
 # give user systemd service privilege
 
 sudo loginctl enable-linger $USERNAME
@@ -91,6 +94,6 @@ echo git clone https://github.com/theowenyoung/dotfiles.git ~/dotfiles
 echo "\n"
 
 echo git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dotfiles/private
-su - $USERNAME
+su - $USERNAME -s "/bin/zsh"
 
 

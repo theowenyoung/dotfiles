@@ -14,7 +14,7 @@ module_path=$ROOT_DIR/modules;
 
 $module_path/jq/install_jq_debian.sh
 
-# $module_path/miller/install_miller_debian.sh
+$module_path/miller/install_miller_debian.sh
 
 $module_path/navi/install_navi.sh
 
@@ -43,3 +43,6 @@ $module_path/deno/install_deno.sh
 # stay user systemd even exit settion
 
 $module_path/systemd/stay_user_systemd_service.sh
+
+# install yamlscript
+~/.deno/bin/deno install -A https://deno.land/x/yamlscript/ys.ts
