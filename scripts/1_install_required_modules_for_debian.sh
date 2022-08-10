@@ -10,11 +10,11 @@ mkdir -p ~/.local/bin;
 
 module_path=$ROOT_DIR/modules;
 
-$module_path/comtrya/install_comtrya_fork_debian.sh;
+# $module_path/comtrya/install_comtrya_fork_debian.sh;
 
 $module_path/jq/install_jq_debian.sh
 
-$module_path/miller/install_miller_debian.sh
+# $module_path/miller/install_miller_debian.sh
 
 $module_path/navi/install_navi.sh
 

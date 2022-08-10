@@ -5,7 +5,7 @@
     - ${__dirname}/files/navidrome.toml
     - ${user.homeDir}/.config/navidrome/navidrome.toml
     - home_dir: ${user.homeDir}
-- use: fsExtra.copy
+- use: fs.copy
   args:
     - ${__dirname}/files/navidrome.service.tmpl
     - ${user.homeDir}/.config/systemd/user/navidrome.service

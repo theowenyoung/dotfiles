@@ -4,7 +4,8 @@ set -e
 # check is sudo 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
-  exit
+  # exit
+  su root
 fi
 
 

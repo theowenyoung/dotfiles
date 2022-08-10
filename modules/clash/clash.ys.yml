@@ -1,0 +1,8 @@
+- use: return
+  if: Deno.build.os!=="linux" || os.hostname!=="debianlocal"
+- use: fs.copy
+  args:
+    - ${__dirname}/files/clash.service.tmpl
+    - ${user.homeDir}/.config/systemd/user/clash.service.tmpl
+    - overwrite: true
+- use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh clash

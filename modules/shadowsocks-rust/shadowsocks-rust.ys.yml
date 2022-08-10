@@ -14,7 +14,7 @@
       TEMP_SS_START_PORT: ${env.TEMP_SS_START_PORT}
       TEMP_SS_END_PORT: ${env.TEMP_SS_END_PORT}
     - mode: 700
-- use: fsExtra.copy
+- use: fs.copy
   args:
     - ${__dirname}/files/ss.service.tmpl
     - ${user.homeDir}/.config/systemd/user/ss.service

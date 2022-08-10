@@ -1,7 +1,7 @@
 # <https://stackoverflow.com/a/38980986>
 - use: return
   if: os.name!=="linux"
-- use: fsExtra.copy
+- use: fs.copy
   args:
     - ${__dirname}/files/ssh-agent.service
     - ${user.homeDir}/.config/systemd/user/ssh-agent.service

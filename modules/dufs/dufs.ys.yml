@@ -7,7 +7,7 @@
     - TEMP_SELF_HOSTED_USERNAME: ${env.TEMP_SELF_HOSTED_USERNAME}
       TEMP_SELF_HOSTED_PASSWORD: ${env.TEMP_SELF_HOSTED_PASSWORD}
 - use: :chmod +x ${user.homeDir}/.config/dufs/start_dufs.sh
-- use: fsExtra.copy
+- use: fs.copy
   args:
     - ${__dirname}/files/dufs.service
     - ${user.homeDir}/.config/systemd/user/dufs.service
