@@ -5,7 +5,7 @@ set -e
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   # exit
-  su root
+  su - root
 fi
 
 
@@ -79,15 +79,15 @@ if [ "$1" = "--create" ]; then
   # su to normal user to install rust
 
   echo we will switch to user $USERNAME
-  su - $USERNAME
 fi
 
+su - $USERNAME
 
 
-  echo now you can run the following "command" to install dotfiles
+echo now you can run the following "command" to install dotfiles
 
-  echo git clone https://github.com/theowenyoung/dotfiles.git ~/dotfiles
+echo git clone https://github.com/theowenyoung/dotfiles.git ~/dotfiles
 
-  echo "\n"
+echo "\n"
 
-  echo git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dotfiles/private
+echo git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dotfiles/private
