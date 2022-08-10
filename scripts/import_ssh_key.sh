@@ -1,5 +1,11 @@
 #!/bin/bash
 set -e;
+TARGET="$HOME/.ssh/id_ed25519"
+# check if target exist
+if [ -f "$TARGET" ]; then
+  echo "$TARGET exist, skip"
+  exit;
+fi
 
 # source
 source ~/.zsh/global.zsh
@@ -16,7 +22,6 @@ data=$(keepassxc-cli export -f csv $DOTFILES_PRIVATE_PATH/keepassxc/dev.kdbx);
 
 # import ssh 
 # write ssh private key to ~/.ssh/id_ed25519
-TARGET="$HOME/.ssh/id_ed25519"
 
 json=$(printf "$data" | mlr --c2j --jlistwrap cat)
 
