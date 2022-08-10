@@ -196,8 +196,8 @@ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@ip
 This should be run as root:
 
 ```bash
-sudo su - root
-bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/dotfiles/main/scripts/0_install_pre_required_modules_for_debian.sh)
+# sudo su - root
+sudo bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/dotfiles/main/scripts/0_install_pre_required_modules_for_debian.sh)
 ```
 
 > This will install keepassxc,git,zsh,curl,build-essential

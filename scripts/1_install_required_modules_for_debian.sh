@@ -38,7 +38,8 @@ $module_path/caddy/install_caddy_debian.sh
 
 $module_path/iptables-persistent/install-iptables-persistent_debian.sh
 
+$module_path/deno/install_deno.sh
 
 # stay user systemd even exit settion
 
-$module_path/systemd/install_systemd_debian.sh
+$module_path/systemd/stay_user_systemd_service.sh
