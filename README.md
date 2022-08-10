@@ -11,6 +11,13 @@ I use raw shell scripts to install apps, and [YAMLScript](https://github.com/yam
 [alfred](https://www.alfredapp.com/) for translation, calculate, launch center, workflow.
 [navi](https://github.com/denisidoro/navi) for cheatsheets
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [MacOS Init](#macos-init)
+- [Debian Init](#debian-init)
+- [Apps Notes](#apps-notes)
+
 ## Introduction
 
 ### Home Structure
@@ -95,9 +102,6 @@ I use raw shell scripts to install apps, and [YAMLScript](https://github.com/yam
 
 ## MacOS Init
 
-<details>
-<summary>Details</summary>
-
 
 ### 0. Install xcode command line tools
 
@@ -173,17 +177,8 @@ open vscode -> hyper+v
 ```
 
 
-</details>
-
-
-
-
 ## Deiban Init
 
-
-<details>
-
-<summary>Details</summary>
 
 ssh to the machine(force use password, consider it's a new machine):
 
@@ -197,7 +192,7 @@ This should be run as root:
 
 ```bash
 # sudo su - root
-sudo bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/dotfiles/main/scripts/0_install_pre_required_modules_for_debian.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/theowenyoung/dotfiles/main/scripts/0_install_pre_required_modules_for_debian.sh)
 ```
 
 > This will install keepassxc,git,zsh,curl,build-essential
@@ -243,8 +238,6 @@ source ~/.zshrc
 INIT=true ./scripts/link.sh sshd
 ```
 
-</details>
-
 
 
 ## Apps Notes
@@ -267,14 +260,8 @@ dev.kdbx
 
 Alfred config is so messed, so I make the alfred syncing folder to `~/syncing/alfred`, then mamual to set it up.
 
-<details>
-<summary>Settings</summary>
-
 Hot Key: <cmd><space>
 Disable system Hot Key: Spotlight Hot Key, in Keyboard shortcut settings.
-
-</details>
-
 
 
 
