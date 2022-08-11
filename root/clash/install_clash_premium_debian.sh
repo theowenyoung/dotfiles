@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e;
 NAME="clash"
 REPO_NAME="Dreamacro/clash"
 latest_version="2022.07.07"
@@ -28,7 +29,7 @@ if [ -d "/etc/opt/caddy/ui" ]; then
 else
   echo "ui not exists, we will clone it"
   sudo git clone https://github.com/Dreamacro/clash-dashboard.git ui
-
+fi
 cd -- ui
 sudo git pull
 sudo git checkout gh-pages
@@ -38,5 +39,4 @@ sudo git checkout gh-pages
 
 sudo cp ~/dotfiles/root/clash/files/start_clash_debian.sh /opt/clash/bin/start_clash_debian.sh
 sudo cp ~/dotfiles/root/clash/files/clash.service /etc/systemd/system/clash.service
-
 sudo ~/dotfiles/modules/systemd/restart_root_service.sh clash
