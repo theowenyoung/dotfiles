@@ -13,7 +13,6 @@ sudo mkdir -p /etc/opt/clash
 sudo ln -sf /home/green/dotfiles/private/clash/files/config_linux.yaml /etc/opt/clash/config_linux.yaml
 sudo ln -sf /home/green/dotfiles/private/clash/files/ruleset /etc/opt/clash/ruleset
 
-/opt/clash/bin/clash -d /etc/opt/clash -f /etc/opt/clash/config_linux.yaml
 
 
 # backup /etc/resolv.conf
@@ -37,3 +36,5 @@ iptables -t nat -A CLASH -p tcp -j REDIRECT --to-ports 7892
 sudo /sbin/iptables-save > /etc/iptables/rules.v4
 sudo /sbin/ip6tables-save > /etc/iptables/rules.v6
 cat /etc/iptables/rules.v4
+
+/opt/clash/bin/clash -d /etc/opt/clash -f /etc/opt/clash/config_linux.yaml
