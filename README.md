@@ -223,10 +223,7 @@ git clone https://theowenyoung:<token>@github.com/theowenyoung/private.git ~/dot
 ### 2.1 Install clash for proxy if needed
 
 ```bash
-./modules/clash/install_clash_premium_debian.sh
-ln -s ~/dotfiles/private/clash/files/ruleset ~/.config/clash/ruleset && sudo /home/green/.local/bin/clash -f /home/green/dotfiles/private/clash/files/config_linux.yaml -d /home/green/.config/clash &
-
-sudo sh -c "echo nameserver 127.0.0.1 > /etc/resolv.conf"
+./root/clash/install_clash_premium_debian.sh
 ```
 
 ### 3. Install required Apps
