@@ -1,5 +1,5 @@
 - use: return
-  if: Deno.build.os!=="linux"
+  if: Deno.build.os!=="linux" || os.hostname==="debianlocal"
 - use: template.copy
   args:
     - ${__dirname}/files/dot_env.tmpl

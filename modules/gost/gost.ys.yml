@@ -1,5 +1,6 @@
 - use: return
-  if: Deno.build.os!=="linux"
+  if: Deno.build.os!=="linux" || os.hostname==="debianlocal"
+    use: return
 - use: template.copy
   args:
     - ${__dirname}/files/gost.json.tmpl
