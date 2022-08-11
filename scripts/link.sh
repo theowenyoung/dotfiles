@@ -43,11 +43,13 @@ fi
     # check if exist
 if [ "$UNIT" = "all" ]
   then
+    cd -- $DOTFILES_PRIVATE_PATH
+    ys run -A
     cd -- $DOTFILES_ROOT_PATH
     ys run -A
+    # ys run -A
     # cd -- $DOTFILES_ROOT_PATH
     # comtrya -vv -d modules apply
-    # cd -- $DOTFILES_PRIVATE_PATH
     # comtrya -vv apply
 else
 
