@@ -1,0 +1,11 @@
+[Unit]
+Description=Clash
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/clash/bin/start_clash_debian.sh
+
+[Install]
+WantedBy=multi-user.target
