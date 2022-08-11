@@ -11,7 +11,7 @@ file_name=clash-linux-amd64-v3-${latest_version}
 download_url="https://dotfiles.owenyoung.com/assets/${file_name}.gz";
 
 # check is file exists
-if [ -f "${file_name}.gz" ]; then
+if [ -f "/tmp/${file_name}.gz" ]; then
   echo "file ${file_name}.gz exists"
 else
   echo "file ${file_name}.gz not exists, download it"
