@@ -5,12 +5,14 @@ function cleanup {
   EXIT_CODE=$?
   set +e # disable termination on error
   # check if /etc/resolv.conf.bak exists
+  echo cleanup dns and ipforward
   if [ -f "/etc/resolv.conf.bak" ]; then
     echo "file /etc/resolv.conf.bak exists, restore it"
     sudo cp /etc/resolv.conf.bak /etc/resolv.conf
   else
     echo "file /etc/resolv.conf.bak not exists"
   fi
+  sysctl -w net.ipv4.ip_forward=0
   exit $EXIT_CODE
 }
 trap cleanup EXIT
@@ -47,5 +49,7 @@ END
 )
 echo "$dnsresolv" > /etc/resolv.conf
 
+# set ip forward
+sysctl -w net.ipv4.ip_forward=1
 
 /opt/clash/bin/clash -d /etc/opt/clash -f /etc/opt/clash/config_linux.yaml
