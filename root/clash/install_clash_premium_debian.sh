@@ -9,9 +9,16 @@ file_name=clash-linux-amd64-v3-${latest_version}
 # download_url="https://download.fastgit.org/Dreamacro/clash/releases/download/premium/${file_name}.gz";
 # download_url="https://github.com/Dreamacro/clash/releases/download/premium/${file_name}.gz";
 download_url="https://dotfiles.owenyoung.com/assets/${file_name}.gz";
-echo start download $download_url;
-# curl -O -L https://github.com/Dreamacro/clash/releases/download/premium/${file_name}.gz
-curl -O -L "$download_url"
+
+# check is file exists
+if [ -f "${file_name}.gz" ]; then
+  echo "file ${file_name}.gz exists"
+else
+  echo "file ${file_name}.gz not exists, download it"
+  echo start download $download_url;
+  curl -O -L "$download_url"
+fi
+
 gzip -d ${file_name}.gz
 sudo mkdir -p /opt/clash/bin/
 sudo mv ${file_name} /opt/clash/bin/${NAME}

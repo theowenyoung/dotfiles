@@ -10,8 +10,8 @@ fi
 
 sudo mkdir -p /etc/opt/clash 
 
-sudo ln -s ~/dotfiles/private/clash/files/config_linux.yaml /etc/opt/clash/config_linux.yaml
-sudo ln -s ~/dotfiles/private/clash/files/ruleset /etc/opt/clash/ruleset
+sudo ln -sf ~/dotfiles/private/clash/files/config_linux.yaml /etc/opt/clash/config_linux.yaml
+sudo ln -sf ~/dotfiles/private/clash/files/ruleset /etc/opt/clash/ruleset
 
 /opt/clash/bin/clash -d /etc/opt/clash -f /etc/opt/clash/config_linux.yaml
 
