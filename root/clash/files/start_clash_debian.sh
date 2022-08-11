@@ -1,5 +1,19 @@
 #!/bin/bash
-set -e;
+set -e -o pipefail
+
+function cleanup {
+  EXIT_CODE=$?
+  set +e # disable termination on error
+  # check if /etc/resolv.conf.bak exists
+  if [ -f "/etc/resolv.conf.bak" ]; then
+    echo "file /etc/resolv.conf.bak exists, restore it"
+    sudo cp /etc/resolv.conf.bak /etc/resolv.conf
+  else
+    echo "file /etc/resolv.conf.bak not exists"
+  fi
+  exit $EXIT_CODE
+}
+trap cleanup EXIT
 
 # check is root
 if [ "$(id -u)" != "0" ]; then
