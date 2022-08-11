@@ -5,6 +5,7 @@ Requires=network-online.target
 
 [Service]
 Type=simple
+ExecStartPre=/bin/sleep 10
 ExecStart=/opt/clash/bin/start_clash_debian.sh
 #ExecStopPost=/opt/clash/bin/stop_post_clash_debian.sh
 [Install]
