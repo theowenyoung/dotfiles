@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e;
 NAME="clash"
 REPO_NAME="Dreamacro/clash"
