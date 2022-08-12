@@ -19,6 +19,7 @@ rp(){
 ## clash
 alias cl="sudo clash -d ~/.config/clash"
 alias rcl="sudo systemctl restart clash"
+alias mergeclash="~/dotfiles/root/clash/merge_clash_config.sh"
 ## make
 
 alias m="make"
