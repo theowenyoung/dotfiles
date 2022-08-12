@@ -27,11 +27,11 @@ sudo mv ${file_name} /opt/clash/bin/${NAME}
 sudo chmod +x /opt/clash/bin/${NAME}
 
 # copy ui
-sudo mkdir -p /etc/opt/caddy/
-cd -- /etc/opt/caddy/
+sudo mkdir -p /etc/opt/clash/
+cd -- /etc/opt/clash/
 
 # check is ui exists
-if [ -d "/etc/opt/caddy/ui" ]; then
+if [ -d "/etc/opt/clash/ui" ]; then
   echo "ui exists"
 else
   echo "ui not exists, we will clone it"
