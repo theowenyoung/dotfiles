@@ -14,7 +14,7 @@ cd /tmp
 file_name="caddy_${latest_version}_linux_amd64"
 curl -O -L https://github.com/$REPO_NAME/releases/download/v${latest_version}/${file_name}.tar.gz
 tar -xf ${file_name}.tar.gz
-mv ${NAME} ~/.local/bin/${NAME}
+mv ${NAME} /opt/caddy/bin/${NAME}
 
 # add execute permission
-chmod +x ~/.local/bin/${NAME}
+chmod +x /opt/caddy/bin/${NAME}
