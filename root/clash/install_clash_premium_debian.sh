@@ -45,6 +45,6 @@ sudo git checkout gh-pages
 # create system server
 
 sudo ln -sf /home/green/dotfiles/root/clash/files/start_clash_debian.sh /opt/clash/bin/start_clash_debian.sh
-sudo ln -sf /home/green/dotfiles/root/clash/files/stop_post_clash_debian.sh /opt/clash/bin/stop_post_clash_debian.sh
+
 sudo cp /home/green/dotfiles/root/clash/files/clash.service /etc/systemd/system/clash.service
 sudo /home/green/dotfiles/modules/systemd/restart_root_service.sh clash
