@@ -40,6 +40,16 @@ fi
 
 # backup /etc/resolv.conf
 
+
+# check /tmp/clash_started is first time run this script, if so sleep 10s to wait for network to be ready
+
+if [ ! -f "/tmp/clash_started" ]; then
+  echo "file /tmp/clash_started not exists, sleep 10s to wait for network to be ready"
+  sleep 10
+fi
+# create /tmp/clash_started
+touch /tmp/clash_started
+
 # change the dns server to 127.0.0.1
 
 dnsresolv=$(cat <<-END
