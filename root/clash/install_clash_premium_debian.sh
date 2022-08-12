@@ -35,7 +35,7 @@ if [ -d "/etc/opt/clash/ui" ]; then
   echo "ui exists"
 else
   echo "ui not exists, we will clone it"
-  sudo git clone https://github.com/Dreamacro/clash-dashboard.git ui
+  sudo git clone https://github.com/theowenyoung/clash-dashboard.git ui
 fi
 cd -- ui
 sudo git pull
