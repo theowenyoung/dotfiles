@@ -38,8 +38,13 @@ alias sstart="systemctl --user start"
 alias sstop="systemctl --user stop"
 alias srestart="systemctl --user restart"
 alias sreload="systemctl --user daemon-reload"
-alias jlog="journalctl --user -n 30 -f -u"
-
+alias jlog="journalctl --user -n 100 -f -u"
+alias suj="sudo journalctl --user -n 100 -f -u"
+alias sustatus="sudo systemctl --user status"
+alias sustart="sudo systemctl --user start"
+alias sustop="sudo systemctl --user stop"
+alias surestart="sudo systemctl --user restart"
+alias sureload="sudo systemctl --user daemon-reload"
 ## process grep
 alias pgr="ps aux | grep "
 
