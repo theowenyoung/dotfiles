@@ -313,6 +313,20 @@ sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
 sudo netfilter-persistent save
 ```
 
+### debian disable sleep when display is off
+
+```bash
+sudo vi /etc/systemd/logind.conf
+```
+
+```bash
+HandleLidSwitch=ignore
+```
+```bash
+sudo systemctl restart systemd-logind
+```
+
+
 ## Resource
 
 - [Ten Things I Wish I’d Known About bash](https://zwischenzugs.com/2018/01/06/ten-things-i-wish-id-known-about-bash/)

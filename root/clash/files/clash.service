@@ -5,7 +5,7 @@ Requires=network-online.target
 Wants=network-online.target
 [Service]
 Type=simple
-ExecStartPre=/bin/sleep 2
+ExecStartPre=/bin/sleep 5
 ExecStart=/opt/clash/bin/start_clash_debian.sh
 [Install]
 WantedBy=multi-user.target

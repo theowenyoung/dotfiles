@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd -- ~/dotfiles/private/clash/files/ruleset;
-export HTTPS_PROXY=http://127.0.0.1:7890;
+# export HTTPS_PROXY=http://127.0.0.1:7890;
 # apple
 curl -O -L https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt;
 
