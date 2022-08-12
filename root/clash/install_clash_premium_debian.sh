@@ -33,10 +33,10 @@ cd -- /etc/opt/clash/
 # check is ui exists
 if [ -d "/etc/opt/clash/ui" ]; then
   echo "ui exists"
-else
-  echo "ui not exists, we will clone it"
-  sudo git clone https://github.com/Dreamacro/clash-dashboard.git ui
+  # delete it
+  sudo rm -rf /etc/opt/clash/ui
 fi
+sudo git clone https://github.com/theowenyoung/clash-dashboard.git ui
 cd -- ui
 sudo git pull
 sudo git checkout gh-pages
