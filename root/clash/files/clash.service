@@ -2,10 +2,10 @@
 Description=Clash
 After=network.target network-online.target
 Requires=network-online.target
-
+Wants=network-online.target
 [Service]
 Type=simple
-ExecStartPre=/bin/sleep 10
+ExecStartPre=/bin/sleep 3
 ExecStart=/opt/clash/bin/start_clash_debian.sh
 #ExecStopPost=/opt/clash/bin/stop_post_clash_debian.sh
 [Install]

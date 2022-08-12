@@ -54,7 +54,12 @@ ACME_ENV_FILE="$HOME/.acme.sh/acme.sh.env"
 if [ -f "$ACME_ENV_FILE" ]; then
   . $ACME_ENV_FILE
 fi
+case "$OSTYPE" in
+	  linux*)    export XDG_RUNTIME_DIR="/run/user/$UID";;
+esac
+# ssh agent for debian
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 # xdg env
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -63,12 +68,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
 
 
-case "$OSTYPE" in
-	  linux*)    export XDG_RUNTIME_DIR="/run/user/$UID";;
-esac
-# ssh agent for debian
 
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # fzf
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"

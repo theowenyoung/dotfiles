@@ -49,6 +49,11 @@ END
 )
 echo "$dnsresolv" > /etc/resolv.conf
 
+
+# from https://lancellc.gitbook.io/clash/start-clash/clash-tun-mode/setup-system-stack-in-fake-ip-mode
+
+
+
 # set ip forward
 sysctl -w net.ipv4.ip_forward=1
 
