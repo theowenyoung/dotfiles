@@ -14,6 +14,7 @@ export PATH="$PATH:$HOME/.deno/bin"
 export PATH="$PATH:$HOME/.local/share/pnpm"
 export PATH="$PATH:$HOME/.npm-packages/bin"
 export PATH=$PATH:/opt/local/bin
+export PATH=$PATH:/opt/local/sbin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/bin
