@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -e;
 cd -- ~/dotfiles/private/clash/files/;
 
 a=$(yq -o=json -I=0 me.yaml); b=$(yq -o=json -I=0 b.yaml);
