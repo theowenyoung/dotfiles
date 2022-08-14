@@ -326,6 +326,16 @@ HandleLidSwitch=ignore
 sudo systemctl restart systemd-logind
 ```
 
+### Traceroute with ip info
+
+```bash
+./scripts/traceroute.sh <ip>
+```
+
+
+## Apps
+
+
 
 ## Resource
 
