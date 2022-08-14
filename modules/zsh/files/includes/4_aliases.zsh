@@ -20,6 +20,12 @@ rp(){
 alias cl="sudo clash -d ~/.config/clash"
 alias rcl="sudo systemctl restart clash"
 alias mergeclash="~/dotfiles/root/clash/merge_clash_config.sh"
+
+## caddy
+
+alias rca="sudo systemctl restart caddy"
+
+
 ## make
 
 alias m="make"
