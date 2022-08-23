@@ -5,7 +5,7 @@ if [ "$OSTYPE" != "linux-gnu" ]; then
   echo "This script only support linux"
   exit 1
 fi
-
+sudo mkdir -p /etc/opt/caddy/
 # check hostname
 if [ "$HOSTNAME" = "greencloud1" ]; then
   sudo ln -sf $DOTFILES_PRIVATE_PATH/caddy/files/Caddyfile.txt /etc/opt/caddy/Caddyfile
