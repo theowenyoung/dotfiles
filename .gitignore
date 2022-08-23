@@ -1,5 +1,6 @@
 # custom
-
+config.yml
+service-config.yml
 .secrets
 .env
 *.env
