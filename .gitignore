@@ -5,7 +5,7 @@
 *.env
 private/
 dist
-
+temp.txt
 # nodejs
 gs
 logs
