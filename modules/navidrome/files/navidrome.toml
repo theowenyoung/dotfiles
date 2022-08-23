@@ -1,2 +1,3 @@
 MusicFolder = "{{{home_dir}}}/data/music"
-Port=10009
+Port = 10009
+ScanSchedule = '@every 12h'
