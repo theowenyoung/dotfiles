@@ -13,3 +13,19 @@
     - ${user.homeDir}/.config/systemd/user/dufs.service
     - overwrite: true
 - use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh dufs
+
+- use: return;
+  if: Deno.build.os!=='jp3'
+- use: template.copy
+  args:
+    - ${__dirname}/files/start_storage_dufs.sh.tmpl
+    - ${user.homeDir}/.config/dufs/start_storage_dufs.sh
+    - TEMP_SELF_HOSTED_USERNAME: ${env.TEMP_SELF_HOSTED_USERNAME}
+      TEMP_SELF_HOSTED_PASSWORD: ${env.TEMP_SELF_HOSTED_PASSWORD}
+- use: :chmod +x ${user.homeDir}/.config/dufs/start_storage_dufs.sh
+- use: fs.copy
+  args:
+    - ${__dirname}/files/storage_dufs.service
+    - ${user.homeDir}/.config/systemd/user/storage_dufs.service
+    - overwrite: true
+- use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh storage_dufs

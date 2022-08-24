@@ -1,0 +1,11 @@
+[Unit]
+Description=service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.config/dufs/start_storage_dufs.sh
+Restart=on-failure
+WorkingDirectory=%h/.config/dufs
+[Install]
+WantedBy=default.target
