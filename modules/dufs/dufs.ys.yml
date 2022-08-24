@@ -15,7 +15,7 @@
 - use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh dufs
 
 - use: return
-  if: Deno.build.os!=='jp3'
+  if: os.hostname!=='jp3'
 - use: template.copy
   args:
     - ${__dirname}/files/start_storage_dufs.sh.tmpl
