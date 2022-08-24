@@ -16,6 +16,9 @@
 
 - use: return
   if: os.hostname!=='jp3'
+- use: fs.ensureDir
+  args:
+    - ${user.homeDir}/storage
 - use: template.copy
   args:
     - ${__dirname}/files/start_storage_dufs.sh.tmpl
