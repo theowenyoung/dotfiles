@@ -14,7 +14,7 @@
     - overwrite: true
 - use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh dufs
 
-- use: return;
+- use: return
   if: Deno.build.os!=='jp3'
 - use: template.copy
   args:
