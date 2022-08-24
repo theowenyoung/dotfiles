@@ -11,5 +11,4 @@
   args:
     - ${__dirname}/files/gost.service.tmpl
     - ${user.homeDir}/.config/systemd/user/gost.service.tmpl
-    - overwrite: true
 - use: :${env.DOTFILES_ROOT_PATH}/modules/systemd/restart_service.sh gost

@@ -40,6 +40,7 @@ else
   echo "can not found .temp.env, do you run scripts/import_temp_env.sh first?"
   exit 1
 fi
+
     # check if exist
 if [ "$UNIT" = "all" ]
   then
