@@ -6,5 +6,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 ExecStart=/opt/clash/bin/start_clash_debian.sh
+LimitNOFILE=1048576
+LimitNPROC=512
 [Install]
 WantedBy=multi-user.target

@@ -332,6 +332,33 @@ sudo systemctl restart systemd-logind
 ./scripts/traceroute.sh <ip>
 ```
 
+### Open BBR
+
+
+current:
+
+```bash
+sysctl net.ipv4.tcp_available_congestion_control
+```
+
+aws linux:
+
+```bash
+sudo modprobe tcp_bbr
+sudo modprobe sch_fq
+sudo sysctl -w net.ipv4.tcp_congestion_control=bbr
+```
+
+forever:
+
+```bash
+echo "tcp_bbr" | sudo tee -a /etc/modules-load.d/modules.conf
+echo "net.core.default_qdisc=fq" | sudo tee -a /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+sysctl net.ipv4.tcp_congestion_control
+```
+
 
 ## Apps
 
