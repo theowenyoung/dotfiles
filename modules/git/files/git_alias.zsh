@@ -5,6 +5,7 @@ function gc() { git clone ssh://git@github.com/"$*" }
 function gg() { git commit -m "$*" -a }
 function gp() { git commit -a -m "$*" && git push }
 function ga() { git add . }
+function gp1() { git commit -a -m "$1" && git push }
 
 
 alias gpull="git pull"
