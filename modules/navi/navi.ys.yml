@@ -5,7 +5,7 @@
 - use: template.copy
   args:
     - ${__dirname}/files/config.yaml
-    - ${user.configDir}/navi/config.yaml
+    - ${user.homeDir}/.config/navi/config.yaml
     - home_dir: ${user.homeDir}  
 - use: fs.ensureSymlink
   args:

@@ -29,6 +29,10 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 export DENO_INSTALL="$HOME/.deno"
 # denoend
 
+# navi
+
+export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
+
 ## fpath
 fpath=($HOME/.zsh/functions $fpath)
 
