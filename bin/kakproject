@@ -1,0 +1,23 @@
+#!/bin/bash
+# get file path from nnn
+file_path=$1
+
+# clear dead session for kak
+kak -clear
+
+# current working directory
+# STARTED is set by k
+cwd=${STARTED:-$PWD}
+
+# get server name, which is the current directory
+server_name=$(basename $cwd)
+
+# socket_file may be empty if no kakoune daemon is running
+socket_file=$(kak -l | grep $server_name || echo "")
+if [[ -z "${socket_file}" ]]; then        
+    # Create new kakoune daemon for current dir
+    kak -d -s $server_name &
+fi
+
+# open file in kak with client0 , witch is the default client
+echo "evaluate-commands -try-client client0 edit ${file_path}" | kak -p $server_name

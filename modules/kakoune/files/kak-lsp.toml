@@ -1,4 +1,4 @@
-snippet_support = false
+snippet_support = true
 verbosity = 2
 
 [server]
@@ -18,27 +18,36 @@ filetypes = ["c", "cpp"]
 roots = ["compile_commands.json", ".clangd", ".git", ".hg"]
 command = "clangd"
 
+[language.clojure]
+filetypes = ["clojure"]
+roots = ["project.clj", ".git", ".hg"]
+command = "clojure-lsp"
+settings_section = "_"
+[language.clojure.settings._]
+# See https://clojure-lsp.io/settings/#all-settings
+# source-paths-ignore-regex = ["resources.*", "target.*"]
+
 [language.crystal]
 filetypes = ["crystal"]
 roots = ["shard.yml"]
-command = "scry"
+command = "crystalline"
 
 [language.css]
 filetypes = ["css"]
 roots = ["package.json", ".git", ".hg"]
-command = "vscode-css-language-server"
+command = "vscode-css-languageserver"
 args = ["--stdio"]
 
 [language.less]
 filetypes = ["less"]
 roots = ["package.json", ".git", ".hg"]
-command = "vscode-css-language-server"
+command = "vscode-css-languageserver"
 args = ["--stdio"]
 
 [language.scss]
 filetypes = ["scss"]
 roots = ["package.json", ".git", ".hg"]
-command = "vscode-css-language-server"
+command = "vscode-css-languageserver"
 args = ["--stdio"]
 
 [language.d]
@@ -51,7 +60,10 @@ command = "dls"
 filetypes = ["dart"]
 roots = ["pubspec.yaml", ".git", ".hg"]
 command = "sh"
-args = ["-c", "dart $(dirname $(command -v dart))/snapshots/analysis_server.dart.snapshot --lsp"]
+args = [
+    "-c",
+    "dart $(dirname $(command -v dart))/snapshots/analysis_server.dart.snapshot --lsp",
+]
 
 [language.elixir]
 filetypes = ["elixir"]
@@ -109,7 +121,7 @@ settings_section = "_"
 
 [language.html]
 filetypes = ["html"]
-roots = ["package.json",".git"]
+roots = ["package.json"]
 command = "vscode-html-languageserver"
 args = ["--stdio"]
 
@@ -143,15 +155,16 @@ args = ["--stdio"]
 # # See https://github.dev/eclipse/eclipse.jdt.ls
 # # "java.format.insertSpaces" = true
 
-[language.javascript]
+[language.jsx] # works for javascript as well
 filetypes = ["javascript"]
-roots = ["package.json",".git","node_modules"]
+roots = ["package.json", "tsconfig.json", ".git", ".hg"]
 command = "typescript-language-server"
 args = ["--stdio"]
+
 [language.json]
 filetypes = ["json"]
 roots = ["package.json"]
-command = "vscode-json-language-server"
+command = "vscode-json-languageserver"
 args = ["--stdio"]
 
 # Requires Julia package "LanguageServer"
@@ -293,9 +306,10 @@ filetypes = ["ruby"]
 roots = ["Gemfile"]
 command = "solargraph"
 args = ["stdio"]
-[language.ruby.settings]
+settings_section = "_"
+[language.ruby.settings._]
 # See https://github.com/castwide/solargraph/blob/master/lib/solargraph/language_server/host.rb
-# "solargraph.completion" = true
+# diagnostics = false
 
 # [language.rust]
 # filetypes = ["rust"]
@@ -319,16 +333,13 @@ args = ["stdio"]
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
 command = "sh"
-args = [
-    "-c",
-    """
+args = ["-c", """
         if path=$(rustup which rust-analyzer 2>/dev/null); then
             "$path"
         else
             rust-analyzer
         fi
-    """,
-]
+    """]
 settings_section = "rust-analyzer"
 [language.rust.settings.rust-analyzer]
 # See https://rust-analyzer.github.io/manual.html#configuration
@@ -351,8 +362,8 @@ command = "typescript-language-server"
 args = ["--stdio"]
 
 # [language.typescript]
-# filetypes = ["typescript"]
-# roots = ["package.json", "tsconfig.json", ".git", ".hg"]
+# filetypes = ["typescript", "javascript"]
+# roots = ["deno.json"]
 # command = "deno"
 # args = ["lsp"]
 # [language.typescript.settings.deno]
@@ -367,7 +378,7 @@ args = ["--stdio"]
 [language.yaml.settings]
 # See https://github.com/redhat-developer/yaml-language-server#language-server-settings
 # Defaults are at https://github.com/redhat-developer/yaml-language-server/blob/master/src/yamlSettings.ts
-yaml.format.enable = true
+# yaml.format.enable = true
 
 [language.zig]
 filetypes = ["zig"]
@@ -384,15 +395,21 @@ command = "zls"
 # - Rust Analyzer: https://github.com/rust-analyzer/rust-analyzer/blob/master/crates/ide/src/syntax_highlighting.rs
 [semantic_tokens]
 faces = [
-    {face="documentation", token="comment", modifiers=["documentation"]},
-    {face="comment", token="comment"},
-    {face="function", token="function"},
-    {face="keyword", token="keyword"},
-    {face="module", token="namespace"},
-    {face="operator", token="operator"},
-    {face="string", token="string"},
-    {face="type", token="type"},
-    {face="default+d", token="variable", modifiers=["readonly"]},
-    {face="default+d", token="variable", modifiers=["constant"]},
-    {face="variable", token="variable"},
+    { face = "documentation", token = "comment", modifiers = [
+        "documentation",
+    ] },
+    { face = "comment", token = "comment" },
+    { face = "function", token = "function" },
+    { face = "keyword", token = "keyword" },
+    { face = "module", token = "namespace" },
+    { face = "operator", token = "operator" },
+    { face = "string", token = "string" },
+    { face = "type", token = "type" },
+    { face = "default+d", token = "variable", modifiers = [
+        "readonly",
+    ] },
+    { face = "default+d", token = "variable", modifiers = [
+        "constant",
+    ] },
+    { face = "variable", token = "variable" },
 ]

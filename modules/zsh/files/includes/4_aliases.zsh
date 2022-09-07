@@ -16,6 +16,16 @@ rp(){
 	unset HTTPS_PROXY
 	unset SOCKS_PROXY
 }
+
+
+ 
+## kakoune
+killkak ()
+{
+  echo kill | kak -p $@
+}
+
+
 ## clash
 alias cl="sudo clash -d ~/.config/clash"
 alias rcl="sudo systemctl restart clash"

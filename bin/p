@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e;
+kak -clear
+server_name="$(basename `PWD`)"
+# socket_file may be empty if no kakoune daemon is running
+socket_file=$(kak -l | grep $server_name || echo "")
+if [[ -z "${socket_file}" ]]; then        
+    # Create new kakoune daemon for current dir
+    kak -d -s $server_name &
+fi
+# start a new kakoune client in a new 80% pane
+tmux split-window -d -h -l 80% -c '#{pane_current_path}' "kak -c $server_name $@"
+# start nnn in current pane with -e edit mode
+STARTED="$PWD" VISUAL="projectkak" NNN_OPTS="e" nnn

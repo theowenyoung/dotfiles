@@ -7,7 +7,20 @@ set-option global scrolloff 6,6
 
 add-highlighter global/ number-lines -relative -hlcursor
 add-highlighter global/ number-lines -hlcursor
+add-highlighter global/ regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+b
+add-highlighter global/ wrap -width 80
+evaluate-commands %sh{
+    plugins="$kak_config/plugins"
+    mkdir -p "$plugins"
+    [ ! -e "$plugins/plug.kak" ] && \
+        git clone -q https://github.com/andreyorst/plug.kak.git "$plugins/plug.kak"
+    printf "%s\n" "source '$plugins/plug.kak/rc/plug.kak'"
+}
+plug "andreyorst/plug.kak" noload
 
+plug "andreyorst/smarttab.kak" defer smarttab %{
+    set-option global softtabstop 2
+}
 hook global BufCreate .* %{
   editorconfig-load
   autoconfigtab
@@ -35,7 +48,6 @@ map global normal '#' :comment-line<ret>
 
 # user mode
 map global user -docstring 'next lint error' n ':lint-next-error<ret>'
-map global user -docstring 'lsp mode' l ':enter-user-mode lsp<ret>'
 
 #map global normal <space> , -docstring 'leader'
 # map global normal , ""
@@ -128,19 +140,9 @@ evaluate-commands %sh{
 
 
 
-evaluate-commands %sh{
-    plugins="$kak_config/plugins"
-    mkdir -p "$plugins"
-    [ ! -e "$plugins/plug.kak" ] && \
-        git clone -q https://github.com/andreyorst/plug.kak.git "$plugins/plug.kak"
-    printf "%s\n" "source '$plugins/plug.kak/rc/plug.kak'"
-}
-plug "andreyorst/plug.kak" noload
 
 
-plug "andreyorst/smarttab.kak" defer smarttab %{
-    set-option global softtabstop 2
-}
+
 
 plug "alexherbo2/auto-pairs.kak" %{
     enable-auto-pairs
@@ -149,36 +151,84 @@ plug "alexherbo2/auto-pairs.kak" %{
 }
 
 
-# plug "kak-lsp/kak-lsp" config %{
-#     # uncomment to enable debugging
-#     # eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
-#     # set global lsp_cmd "kak-lsp -c ~/.config/kak-lsp/kak-lsp.toml -s %val{session} -vvv --log /tmp/kak-lsp.log"
-#     # this is not necessary; the `lsp-enable-window` will take care of it
-#     # eval %sh{${kak_opt_lsp_cmd} --kakoune -s $kak_session}
-#     set global lsp_diagnostic_line_error_sign '║'
-#     set global lsp_diagnostic_line_warning_sign '┊'
-#     define-command ne -docstring 'go to next error/warning from lsp' %{ lsp-find-error --include-warnings }
-#     define-command pe -docstring 'go to previous error/warning from lsp' %{ lsp-find-error --previous --include-warnings }
-#     define-command ee -docstring 'go to current error/warning from lsp' %{ lsp-find-error --include-warnings; lsp-find-error --previous --include-warnings }
-#     define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
-#     hook global WinSetOption filetype=(yaml|html|css|rust|javascript|typescript) %{
-#         # set-option window lsp_auto_highlight_references false
-#         # set-option window lsp_hover_anchor false
-#         # lsp-auto-hover-enable
-#         echo -debug "Enabling LSP for filtetype %opt{filetype}"
-#         lsp-enable-window
-#     }
-#     hook global WinSetOption filetype=(rust) %{
-#         set window lsp_server_configuration rust.clippy_preference="on"
-#     }
-#     # hook global WinSetOption filetype=rust %{
-#     #     hook window BufWritePre .* %{
-#     #         evaluate-commands %sh{
-#     #             test -f rustfmt.toml && printf lsp-formatting-sync
-#     #         }
-#     #     }
-#     # }
-#     hook global KakEnd .* lsp-exit
-# }
+plug "kak-lsp/kak-lsp" config %{
 
+    # uncomment to enable debugging
+    # eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
+    # set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+
+    # this is not necessary; the `lsp-enable-window` will take care of it
+    # eval %sh{${kak_opt_lsp_cmd} --kakoune -s $kak_session}
+
+    set global lsp_diagnostic_line_error_sign '║'
+    set global lsp_diagnostic_line_warning_sign '┊'
+
+    define-command ne -docstring 'go to next error/warning from lsp' %{ lsp-find-error --include-warnings }
+    define-command pe -docstring 'go to previous error/warning from lsp' %{ lsp-find-error --previous --include-warnings }
+    define-command ee -docstring 'go to current error/warning from lsp' %{ lsp-find-error --include-warnings; lsp-find-error --previous --include-warnings }
+
+    define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
+    hook global WinSetOption filetype=(c|cpp|cc|rust|javascript|typescript) %{
+        set-option window lsp_auto_highlight_references true
+        set-option window lsp_hover_anchor false
+        lsp-auto-hover-enable
+        echo -debug "Enabling LSP for filtetype %opt{filetype}"
+        lsp-enable-window
+    }
+
+    hook global WinSetOption filetype=(rust) %{
+        set window lsp_server_configuration rust.clippy_preference="on"
+    }
+
+    hook global WinSetOption filetype=rust %{
+        hook window BufWritePre .* %{
+            evaluate-commands %sh{
+                test -f rustfmt.toml && printf lsp-formatting-sync
+            }
+        }
+    }
+
+    hook global KakEnd .* lsp-exit
+}
+
+map global user l %{:enter-user-mode lsp<ret>} -docstring "LSP mode"
+map global insert <tab> '<a-;>:try lsp-snippets-select-next-placeholders catch %{ execute-keys -with-hooks <lt>tab> }<ret>' -docstring 'Select next snippet placeholder'
+map global object a '<a-semicolon>lsp-object<ret>' -docstring 'LSP any symbol'
+map global object <a-a> '<a-semicolon>lsp-object<ret>' -docstring 'LSP any symbol'
+map global object e '<a-semicolon>lsp-object Function Method<ret>' -docstring 'LSP function or method'
+map global object k '<a-semicolon>lsp-object Class Interface Struct<ret>' -docstring 'LSP class interface or struct'
 evaluate-commands %sh{ [ -f $kak_config/local.kak ] && echo "source $kak_config/local.kak" }
+# Source a local project kak config if it exists
+# Make sure it is set as a kak filetype
+hook global BufCreate (.*/)?(\.kakrc\.local) %{
+    set-option buffer filetype kak
+}
+try %{ source .kakrc.local }
+
+
+
+def ide %{
+    rename-client main
+    set global jumpclient main
+
+    new rename-client tools
+    set global toolsclient tools
+
+    new rename-client docs
+    set global docsclient docs
+}
+
+plug "andreyorst/fzf.kak" config %{
+  map global normal <c-p> ': fzf-mode<ret>'
+  map global user -docstring 'fzf mode' f ': fzf-mode<ret>'
+} defer "fzf" %{
+} defer "fzf-file" %{
+  set-option global fzf_preview false
+  set-option global fzf_file_command "find . \( -path '*/.svn*' -o \
+                                                -path '*/.git*' -o \
+                                                -path '*/.cache*' -o \
+                                                -path '*/.mypy_cache*' \) -prune -o \
+                                                -type f \
+                                                -not -name '*.o' \
+                                                -print"
+}

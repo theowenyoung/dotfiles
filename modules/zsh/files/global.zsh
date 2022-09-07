@@ -8,6 +8,7 @@
 
 
 export PATH=./node_modules/.bin
+export PATH=$PATH:$HOME/dotfiles/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.deno/bin"
@@ -32,6 +33,15 @@ export DENO_INSTALL="$HOME/.deno"
 # navi
 
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
+
+# nnn
+# export NNN_OPTS="e"
+export NNN_BMS="d:$HOME/Desktop;D:$HOME/Downloads/"
+# export NNN_PLUG='k:kak_open'
+# trash (needs trash-cli) instead of delete
+export NNN_TRASH=1        
+
+
 
 ## fpath
 fpath=($HOME/.zsh/functions $fpath)
