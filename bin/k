@@ -1,12 +1,9 @@
 #!/bin/bash
-set -e;
-kak -clear
-server_name="$(basename `PWD`)"
-# socket_file may be empty if no kakoune daemon is running
-socket_file=$(kak -l | grep $server_name || echo "")
-if [[ -z "${socket_file}" ]]; then        
-    # Create new kakoune daemon for current dir
-    kak -d -s $server_name &
+session_name="$(get-kak-session-name)"
+is_session_exist=$(kak -l | grep $session_name || echo "")
+if [[ -z "${is_session_exist}" ]]; then
+  # Create new kakoune daemon for current dir
+  kak -d -s $session_name &
+  sleep 0.1
 fi
-
-kak -c $server_name $@
+kak -c $session_name $@

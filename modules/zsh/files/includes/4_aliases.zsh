@@ -18,11 +18,107 @@ rp(){
 }
 
 
- 
+# broot alias, must be set <https://dystroy.org/broot/install-br/>
+function br {
+    local cmd cmd_file code
+    cmd_file=$(mktemp)
+    if broot --outcmd "$cmd_file" "$@"; then
+        cmd=$(<"$cmd_file")
+        rm -f "$cmd_file"
+        eval "$cmd"
+    else
+        code=$?
+        rm -f "$cmd_file"
+        return "$code"
+    fi
+}
+function b {
+  # start with br
+  local kak_session_name=$(get-kak-session-name)
+  br --listen $kak_session_name;
+}
+nnn_cd()
+{
+    if ! [ -z "$NNN_PIPE" ]; then
+        printf "%s\0" "0c${PWD}" > "${NNN_PIPE}" !&
+    fi
+}
+
+trap nnn_cd EXIT
+
+n ()
+{
+    # Block nesting of nnn in subshells
+    if [[ "${NNNLVL:-0}" -ge 1 ]]; then
+        echo "nnn is already running"
+        return
+    fi
+
+    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
+    # see. To cd on quit only on ^G, remove the "export" and make sure not to
+    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
+    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    # The backslash allows one to alias n to nnn if desired without making an
+    # infinitely recursive alias
+    START_DIR="$PWD" VISUAL="kakproject" \nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
+
+
+
+# open project with broot and kakoune
+p(){
+  # check is in tmux
+  if [[ -z "${TMUX}" ]]; then
+      echo "Not in tmux"
+      exit 1
+  fi
+  session_name="$(get-kak-session-name)"
+  is_session_exist=$(kak -l | grep $session_name || echo "")
+  if [[ -z "${is_session_exist}" ]]; then
+    # Create new kakoune daemon for current dir
+    kak -d -s $session_name &
+    sleep 0.1
+  fi
+  # check current tmux panes number, if panes length is 1, then create a new pane, xargs for trim output
+  local panes=$(tmux list-panes -F "#{pane_active} #{pane_current_command}" | wc -l | xargs)
+
+  # if panes number is 1, then create a new pane
+  if [[ $panes -eq 1 ]]; then
+      tmux split-window -d -h -l 80% -c '#{pane_current_path}' "kak -c $session_name $@"
+  fi
+  # then start broot
+  b
+}
+
 ## kakoune
 killkak ()
 {
   echo kill | kak -p $@
+}
+
+## killallkak
+#
+killallkak ()
+{
+
+kak -l | while read line ; do
+    killkak $line
+done
+
 }
 
 

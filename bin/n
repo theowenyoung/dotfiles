@@ -1,2 +1,0 @@
-#!/bin/bash
-STARTED="$PWD" VISUAL="kakproject" NNN_OPTS="e" nnn

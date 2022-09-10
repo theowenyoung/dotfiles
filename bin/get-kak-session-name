@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e;
+kak -clear
+git_root=$(git rev-parse --show-toplevel || echo "")
+# current working directory
+cwd="unknown"
+
+# check if there is git_root
+if [[ ! -z "$git_root" ]]; then
+    cwd=${git_root}
+fi
+session_name="$(basename $cwd)"
+
+echo $session_name;

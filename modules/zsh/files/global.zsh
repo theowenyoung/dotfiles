@@ -35,12 +35,13 @@ export DENO_INSTALL="$HOME/.deno"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 
 # nnn
-# export NNN_OPTS="e"
+export NNN_OPTS="e"
 export NNN_BMS="d:$HOME/Desktop;D:$HOME/Downloads/"
-# export NNN_PLUG='k:kak_open'
 # trash (needs trash-cli) instead of delete
-export NNN_TRASH=1        
-
+export NNN_TRASH=1
+NNN_PLUG_DEFAULT='x:togglex;o:fzopen;c:-fzcd'
+NNN_PLUG="$NNN_PLUG_DEFAULT"
+export NNN_PLUG
 
 
 ## fpath
@@ -86,7 +87,7 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 
 # fzf
-export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+export FZF_DEFAULT_COMMAND="fd  --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,\*\*/.DS_Store} --hidden --type f -I"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 export FZF_DEFAULT_OPTS='--reverse --color="info:#000000,spinner:#000000" --prompt="  "'

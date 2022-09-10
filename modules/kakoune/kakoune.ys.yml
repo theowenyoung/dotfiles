@@ -4,6 +4,18 @@
     - ${user.homeDir}/.config/kak/kakrc
 - use: fs.ensureSymlink
   args:
+    - ${__dirname}/files/common.kak
+    - ${user.homeDir}/.config/kak/common.kak
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/plugins.kak
+    - ${user.homeDir}/.config/kak/plugins.kak
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/connect.kak
+    - ${user.homeDir}/.config/kak/connect.kak
+- use: fs.ensureSymlink
+  args:
     - ${__dirname}/files/colors
     - ${user.homeDir}/.config/kak/colors
 - use: fs.ensureSymlink

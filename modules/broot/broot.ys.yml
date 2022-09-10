@@ -4,5 +4,5 @@
     - ${user.homeDir}/.zsh/extra/broot_alias.zsh
 - use: fs.ensureSymlink
   args:
-    - ${__dirname}/files/conf.hjson
-    - ${user.homeDir}/.config/broot/conf.hjson
+    - ${__dirname}/files/conf.toml
+    - ${user.homeDir}/.config/broot/conf.toml
