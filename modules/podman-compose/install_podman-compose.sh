@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -e
 
 # https://github.com/containers/podman-compose/tree/0.1.x#versions
 
