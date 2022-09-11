@@ -35,6 +35,8 @@ function br {
 function b {
   # start with br
   local kak_session_name=$(get-kak-session-name)
+  # fisrt delete sock file if exist
+  rm -f "/tmp/broot-server-$kak_session_name.sock"
   br --listen $kak_session_name;
 }
 nnn_cd()

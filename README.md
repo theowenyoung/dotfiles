@@ -276,6 +276,20 @@ Alfred config is so messed, so I make the alfred syncing folder to `~/syncing/al
 Hot Key: <cmd><space>
 Disable system Hot Key: Spotlight Hot Key, in Keyboard shortcut settings.
 
+### iterm2
+
+Also, the other alternative like alacritty or wezterm, they have their own problem. iterm2 still is the most convinient one.
+
+Gruvbox theme: <https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Gruvbox%20Dark.itermcolors>
+Option -> Esc+
+Startup style: Full Screen
+
+### Terminal
+
+
+Gruvbox theme: https://github.com/morhetz/gruvbox-contrib/blob/master/osx-terminal/Gruvbox-dark.terminal
+Option as meta
+Window Size: 300 100
 
 
 #### Workflows

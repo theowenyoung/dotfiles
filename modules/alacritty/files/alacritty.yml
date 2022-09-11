@@ -3,7 +3,6 @@ window:
   startup_mode: Fullscreen
 # https://github.com/alexherbo2/alacritty-extended-keys/blob/master/keys.yml
 key_bindings:
-
   # Support for CSI u mode:
 
   # Control + <key> ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
@@ -105,7 +104,7 @@ key_bindings:
   - { key: Y, mods: Alt, chars: "\x1by" }
   - { key: Z, mods: Alt, chars: "\x1bz" }
 
-  # Alt + Shift + <letter> ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+  # # Alt + Shift + <letter> ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 
   - { key: A, mods: Alt|Shift, chars: "\x1bA" }
   - { key: B, mods: Alt|Shift, chars: "\x1bB" }
@@ -134,7 +133,7 @@ key_bindings:
   - { key: Y, mods: Alt|Shift, chars: "\x1bY" }
   - { key: Z, mods: Alt|Shift, chars: "\x1bZ" }
 
-  # Alt + <number> ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+  # # Alt + <number> ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 
   - { key: Key0, mods: Alt, chars: "\x1b0" }
   - { key: Key1, mods: Alt, chars: "\x1b1" }

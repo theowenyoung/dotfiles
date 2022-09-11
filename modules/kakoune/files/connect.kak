@@ -1,3 +1,6 @@
 hook global BufCreate '.*' %{
-    echo -debug test 1111 %val{filename}
+    evaluate-commands  %sh{
+        broot --send $(get-kak-session-name) -c ":focus $PWD/$kak_bufname"
+
+    }
 }

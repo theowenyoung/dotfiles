@@ -1,15 +1,12 @@
-colorscheme gruvbox
-
-
 # options
 # Grep
-
+colorscheme gruvbox
 when %sh{ [ -n "$(command -v rg)" ] && echo true || echo false } %{
     set-option global grepcmd 'rg -L --with-filename --column'
 }
 
+set-option global ui_options terminal_status_on_top=true
 set-option global scrolloff 6,6
-
 
 # highlighter
 hook global WinCreate .* %{ try %{
@@ -26,7 +23,7 @@ hook global BufSetOption filetype=grep %{
 }
 
 # Use main client as jumpclient
-set-option global jumpclient main
+set-option global jumpclient client0
 
 # delete the *scratch* buffer as soon as another is created, but only if it's empty
 hook global BufCreate '^\*scratch\*$' %{
@@ -43,7 +40,6 @@ hook global BufCreate '^\*scratch\*$' %{
 
 # normal mapping
 map global normal '#' :comment-line<ret>
-map global normal <c-a-tab> ": buffer-next<ret>" -docstring 'next buffer'
 map global normal <c-a-d> ": buffer *debug* <ret>" -docstring 'open buffer debug'
 
 
@@ -51,16 +47,14 @@ map global normal <c-a-d> ": buffer *debug* <ret>" -docstring 'open buffer debug
 map global user n -docstring 'next lint error' ':lint-next-error<ret>'
 map global user f ':lsp-formatting' -docstring "lsp format"
 map global user X ":evaluate-commands -buffer * %{ delete-buffer! }<ret>" -docstring "Close all buffers"
-map global user b ': open-buffer-picker<ret>' -docstring 'buffer'
 map global user j ': displayline_down<ret>' -docstring 'next display line'
 
 ## Goto mode
 
 
 
-map global goto b ': open-file-picker<ret>' -docstring 'file'
+map global goto f ': open-file-picker<ret>' -docstring 'file'
 # Goto mode mappings
-map -docstring "next buffer" global normal <c-a-b> ': buffer-next<ret>'
 # map -docstring "previous buffer" global normal 'c-a-s-tab' ': buffer-previous<ret>'
 map -docstring "search tag in current file"     global goto '['     '<esc><c-s>: smart-select w; symbol<ret>'
 map -docstring "search tag in global tags file" global goto ']'     '<esc><c-s>: smart-select w; ctags-search<ret>'
@@ -83,19 +77,21 @@ define-command -override open-file-picker -docstring 'open file picker' %{
 
 
 
-map -docstring 'buffer' global goto b '<a-;>: open-buffer-picker<ret>'
+map -docstring 'open buffer picker' global goto b '<a-;>: open-buffer-picker<ret>'
+map -docstring 'open buffer picker' global normal <c-a-b> '<a-;>: open-buffer-picker<ret>'
 
 
 
-# define-command -override open-buffer-picker -docstring 'open buffer picker' %{
 
-#   prompt buffer: -buffer-completion %{
+define-command -override open-buffer-picker -docstring 'open buffer picker' %{
 
-#     buffer %val{text}
+  prompt buffer: -buffer-completion %{
 
-#   }
+    buffer %val{text}
 
-# }
+  }
+
+}
 
 
 
@@ -112,8 +108,6 @@ define-command -override open-grep-prompt -docstring 'open grep prompt' %{
 
 
   prompt grep: -shell-script-candidates %{
-
-
     echo "write '$kak_response_fifo'" > "$kak_command_fifo"
     cat "$kak_response_fifo" | kak -f 's[\w-]{4,}<ret>y%<a-R>a<ret>'
   } %{
@@ -171,17 +165,4 @@ evaluate-commands %sh{
 # Make sure it is set as a kak filetype
 hook global BufCreate (.*/)?(\.kakrc\.local) %{
     set-option buffer filetype kak
-}
-
-
-
-def ide %{
-    rename-client main
-    set global jumpclient main
-
-    new rename-client tools
-    set global toolsclient tools
-
-    new rename-client docs
-    set global docsclient docs
 }

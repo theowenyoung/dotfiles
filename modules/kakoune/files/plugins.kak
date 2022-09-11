@@ -5,62 +5,33 @@ evaluate-commands %sh{
         git clone -q https://github.com/andreyorst/plug.kak.git "$plugins/plug.kak"
     printf "%s\n" "source '$plugins/plug.kak/rc/plug.kak'"
 }
-# set-option global plug_always_ensure true
-# set-option global plug_profile true
 plug "andreyorst/plug.kak" noload
 
+
+plug 'delapouite/kakoune-buffers' %{
+  map global normal ^ q
+  map global normal <a-^> Q
+  map global normal q b
+  map global normal Q B
+  map global normal <a-q> <a-b>
+  map global normal <a-Q> <a-B>
+  map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers'
+  map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
+  map global buffers <a-d> " delete-buffer!<ret>" -docstring "delete-buffer force"
+  map global normal <c-a-w> " delete-buffer!<ret>" -docstring "delete-buffer force"
+  alias global bd delete-buffer
+  alias global bf buffer-first
+  alias global bl buffer-last
+}
+# plug "andreyorst/powerline.kak" defer powerline_gruvbox %{
+#     powerline-theme gruvbox
+# } config %{
+#     powerline-start
+# }
 plug "occivink/kakoune-find" config %{
     define-command -docstring "grep-apply-changes: apply changes specified in current *grep* buffer to their respective files" \
     grep-apply-changes %{ find-apply-changes -force }
 }
-
-plug "andreyorst/fzf.kak" config %{
-  map global normal <c-p> ': fzf-mode<ret>f'
-  map global normal <minus> ': fzf-mode<ret>'
-} defer fzf %{
-    set-option global fzf_preview false
-    set-option global fzf_preview_width '60%'
-    when %sh{ [ -n "$(command -v bat)"  ] && echo true || echo false } %{
-        set-option global fzf_highlight_command bat
-    }
-} defer fzf-project %{
-    set-option global fzf_project_use_tilda true
-} defer fzf-file %{
-    declare-option str-list fzf_exclude_files "*.o" "*.bin" "*.obj" ".*cleanfiles"
-    declare-option str-list fzf_exclude_dirs ".git" ".svn"
-    set-option global fzf_file_command %sh{
-        if [ -n "$(command -v fd)" ]; then
-            eval "set -- ${kak_quoted_opt_fzf_exclude_files:-} ${kak_quoted_opt_fzf_exclude_dirs:-}"
-            while [ $# -gt 0 ]; do
-                exclude="$exclude --exclude '$1'"
-                shift
-            done
-            cmd="fd . --no-ignore --type f --follow --hidden $exclude"
-        else
-            eval "set -- $kak_quoted_opt_fzf_exclude_files"
-            while [ $# -gt 0 ]; do
-                exclude="$exclude -name '$1' -o"
-                shift
-            done
-            eval "set -- $kak_quoted_opt_fzf_exclude_dirs"
-            while [ $# -gt 0 ]; do
-                exclude="$exclude -path '*/$1' -o"
-                shift
-            done
-            cmd="find . \( ${exclude% -o} \) -prune -o -type f -follow -print"
-        fi
-        echo "$cmd"
-    }
-}
-
-# plug "kakounedotcom/prelude.kak";
-
-# plug "kakounedotcom/connect.kak"  config %{
-#     require-module connect
-#     require-module connect-fzf
-#     require-module connect-nnn
-#     map global normal <c-t> ': connect-terminal<ret>'
-# }
 
 plug "andreyorst/smarttab.kak" config %{
     hook global WinSetOption filetype=(makefile|gas) noexpandtab

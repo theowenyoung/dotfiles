@@ -6,6 +6,16 @@ modal = true
 [special-paths]
 "**/.git" = "hide"
 "**/.DS_Store" = "hide"
+
+# rm
+[[verbs]]
+invocation = "rm"
+external = "trash -rf {file}"
+leave_broot = false
+
+
+
+
 # not text file
 [[verbs]]
 invocation = "edit"
