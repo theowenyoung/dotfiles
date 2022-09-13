@@ -1,6 +1,9 @@
-hook global BufCreate '.*' %{
+hook global WinDisplay '.*' %{
     evaluate-commands  %sh{
-        broot --send $(get-kak-session-name) -c ":focus $PWD/$kak_bufname"
+        if [[ -f "$kak_bufname" ]]
+        then
+          broot --send $(get-kak-session-name) -c ":focus $PWD/$kak_bufname"
+        fi
 
     }
 }

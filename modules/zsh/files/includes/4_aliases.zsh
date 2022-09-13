@@ -100,7 +100,7 @@ p(){
 
   # if panes number is 1, then create a new pane
   if [[ $panes -eq 1 ]]; then
-      tmux split-window -d -h -l 80% -c '#{pane_current_path}' "kak -c $session_name $@"
+      tmux split-window -d -h -l 80% -c '#{pane_current_path}' "kak -c $session_name $@" \; selectp -R \; split-window -l 20% -v -c "#{pane_current_path}"
   fi
   # then start broot
   b
@@ -138,9 +138,6 @@ alias rca="sudo systemctl restart caddy"
 
 alias m="make"
 
-## http server
-#
-alias hs="python3 -m http.server"
 
 ## zeje
 

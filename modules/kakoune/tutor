@@ -170,11 +170,12 @@ using the built-in `:doc` command.
                     minimize finger gymnastics. The previous shortcut could
                     thus also be written: `[ b`.
 
-                    ==[ MOVEMENT SELECTIONS
+                   o ==[ MOVEMENT SELECTIONS
+(word)
 
-                    If objects are an easy way to select content-agnostic
+                    If are an easy way to select content-agnostic
     .---,           data in a buffer, they can also be seen as a way to move
-    | [ |_.         about the buffer. As selecting objects will displace the
+    | [ |_.         about the bu!!!!. As selecting objects will displace the
     `---'  `.---,   anchor into a given direction, you can wrap or move around
             | p |   particular chunks of text without using the conventional
             `---'   means (e.g., arrow keys or jumps), turning them partially
@@ -208,7 +209,7 @@ using the built-in `:doc` command.
                     we want to be able to select all the lines individually
      .---, .---,    (`%`, `<a-s>` to split all the lines), keep those that
      |alt|+| s |    start with a bracketed time-stamp (`<a-k>^\[`), but
-     `---' `---'    exclude the debug messages (`<a-K>DEBUG`). Of course,
+     `---' `---'    exclude the debug messages (`<a-K>DEBUG`). Of,
                     it's possible to come up with a regular expression to
                     match those simple requirements, but it would take more
                     work to write it than to organically apply filters on a
@@ -220,7 +221,7 @@ using the built-in `:doc` command.
         .---,       Duplicating content can be achieved using a widely
         | y |       implemented concept: yanking and pasting. Yanking the
         `---'       current selection (`y`) into the copy register allows the
-        .---,       user to subsequently insert the copied text in the buffer
+        .---,       user to subsequently insert the copied text in the bu!!!!
         | p |       (`p`).
         `---'
         .---,       Note that the default "paste" primitive will insert the

@@ -38,10 +38,22 @@ hook global BufCreate '^\*scratch\*$' %{
 }
 
 
+
+# hook ts, js format
+hook global WinSetOption filetype=javascript %{
+    set-option window formatcmd "deno fmt --ext js -"
+}
+hook global WinSetOption filetype=typescript %{
+    set-option window formatcmd "deno fmt --ext ts -"
+}
 # normal mapping
 map global normal '#' :comment-line<ret>
-map global normal <c-a-d> ": buffer *debug* <ret>" -docstring 'open buffer debug'
-
+map global normal <a-d> ": buffer *debug* <ret>" -docstring 'open buffer debug'
+map global normal <c-a-d> ": delete-buffer! <ret>" -docstring 'delete buffer force'
+map global normal <c-a-t> ": format<ret>" -docstring "format"
+map global normal <c-n> ": edit -scratch<ret>" -docstring "new scratch"
+map global normal <c-a-b> '<a-;>: buffer-switcher<ret>' -docstring 'open buffer picker'
+map global normal <c-a-r> ': eval %val{selection} <ret>' -docstring "eval selection"
 
 ## user mode
 map global user n -docstring 'next lint error' ':lint-next-error<ret>'
@@ -50,9 +62,7 @@ map global user X ":evaluate-commands -buffer * %{ delete-buffer! }<ret>" -docst
 map global user j ': displayline_down<ret>' -docstring 'next display line'
 
 ## Goto mode
-
-
-
+map global goto b '<a-;>: open-buffer-picker<ret>' -docstring 'open buffer picker'
 map global goto f ': open-file-picker<ret>' -docstring 'file'
 # Goto mode mappings
 # map -docstring "previous buffer" global normal 'c-a-s-tab' ': buffer-previous<ret>'
@@ -77,8 +87,6 @@ define-command -override open-file-picker -docstring 'open file picker' %{
 
 
 
-map -docstring 'open buffer picker' global goto b '<a-;>: open-buffer-picker<ret>'
-map -docstring 'open buffer picker' global normal <c-a-b> '<a-;>: open-buffer-picker<ret>'
 
 
 
@@ -152,8 +160,8 @@ evaluate-commands %sh{
     fi
     printf "map global user -docstring 'paste (after) from clipboard' p '<a-!>%s<ret>'\n" "$paste"
     printf "map global user -docstring 'paste (before) from clipboard' P '!%s<ret>'\n" "$paste"
-    printf "map global user -docstring 'yank to primary' y '<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s primary}<ret>'\n" "$copy" "$backend"
-    printf "map global user -docstring 'yank to clipboard' Y '<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s clipboard}<ret>'\n" "$copy -selection clipboard" "$backend"
+    printf "map global user -docstring 'yank to primary' y 'y<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s primary}<ret>'\n" "$copy" "$backend"
+    printf "map global user -docstring 'yank to clipboard' Y 'y<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s clipboard}<ret>'\n" "$copy -selection clipboard" "$backend"
     printf "map global user -docstring 'replace from clipboard' R '|%s<ret>'\n" "$paste"
 }
 

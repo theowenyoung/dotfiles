@@ -3,7 +3,9 @@ evaluate-commands %sh{
         commands.kak
         common.kak
         plugins.kak
+        buffer-switcher.kak
         connect.kak
+
     "
     for file in $config_files; do
         printf "%s" "

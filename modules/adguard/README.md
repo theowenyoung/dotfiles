@@ -6,7 +6,6 @@
 /opt/AdGuardHome/AdGuardHome -s install
 ```
 
-
 ## Uninstall from systemd
 
 ```bash
@@ -15,7 +14,6 @@
 
 ## Start
 
-  
 ```bash
 /opt/AdGuardHome/AdGuardHome -s start
 ```

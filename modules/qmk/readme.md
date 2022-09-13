@@ -1,11 +1,9 @@
 # Redoxpro
 
-> Note, only right hand work for me, so change the `config.h` to right hand mode.
-
+> Note, only right hand work for me, so change the `config.h` to right hand
+> mode.
 
 ![Redoxpro keyboard layout](./files/redoxpro/redoxpro.png)
-
-
 
 ```bash
 brew install qmk/qmk/qmk

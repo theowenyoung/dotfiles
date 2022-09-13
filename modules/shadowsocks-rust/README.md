@@ -1,6 +1,5 @@
 # SS
 
-
 ```bash
 ./modules/shadowsocks-rust/install_shadowsocks-rust.sh
 ca shadowsocks-rust

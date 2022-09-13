@@ -46,6 +46,7 @@ leave_broot = false
 invocation = "create {subfilepath}"
 external = "kakproject {directory}/{subfilepath}"
 shortcut = "vi"
+leave_broot = false
 # down
 [[verbs]]
 invocation = "down"

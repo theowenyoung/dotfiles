@@ -22,3 +22,7 @@
   args:
     - ${__dirname}/files/kak-lsp.toml
     - ${user.homeDir}/.config/kak-lsp/kak-lsp.toml
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/buffer-switcher.kak
+    - ${user.homeDir}/.config/kak/buffer-switcher.kak

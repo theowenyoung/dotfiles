@@ -8,21 +8,15 @@ evaluate-commands %sh{
 plug "andreyorst/plug.kak" noload
 
 
-plug 'delapouite/kakoune-buffers' %{
-  map global normal ^ q
-  map global normal <a-^> Q
-  map global normal q b
-  map global normal Q B
-  map global normal <a-q> <a-b>
-  map global normal <a-Q> <a-B>
-  map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers'
-  map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
-  map global buffers <a-d> " delete-buffer!<ret>" -docstring "delete-buffer force"
-  map global normal <c-a-w> " delete-buffer!<ret>" -docstring "delete-buffer force"
-  alias global bd delete-buffer
-  alias global bf buffer-first
-  alias global bl buffer-last
-}
+# plug 'delapouite/kakoune-buffers' %{
+#   map global normal <a-b> ': enter-buffers-mode<ret>' -docstring 'buffers'
+#   map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
+#   map global buffers <a-d> " delete-buffer!<ret>" -docstring "delete-buffer force"
+#   map global normal <c-a-w> " delete-buffer!<ret>" -docstring "delete-buffer force"
+#   alias global bd delete-buffer
+#   alias global bf buffer-first
+#   alias global bl buffer-last
+# }
 # plug "andreyorst/powerline.kak" defer powerline_gruvbox %{
 #     powerline-theme gruvbox
 # } config %{
