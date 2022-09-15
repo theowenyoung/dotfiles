@@ -1,12 +1,43 @@
 # options
-# Grep
 colorscheme gruvbox
 when %sh{ [ -n "$(command -v rg)" ] && echo true || echo false } %{
     set-option global grepcmd 'rg -L --with-filename --column'
 }
-
+# Use main client as jumpclient
+set-option global jumpclient client0
+# set statusbar on top
 set-option global ui_options terminal_status_on_top=true
-set-option global scrolloff 6,6
+set-option global scrolloff 8,8
+# insert mode
+map global insert <c-a> "<esc>ghi" -docstring "go to line start"
+map global insert <c-e> "<esc>gli" -docstring "go to line end"
+# normal mapping
+map global normal '#' :comment-line<ret>
+map global normal <c-a-x> ": buffer *debug* <ret>" -docstring 'open buffer debug'
+map global normal <c-a-d> ": delete-buffer! <ret>" -docstring 'delete buffer force'
+map global normal <c-a-t> ": format<ret>" -docstring "format"
+map global normal <c-a-n> ": tmux-repl-vertical -l 15 <ret>" -docstring "start a new repl pane"
+map global normal <c-a-c> ": repl-send-text 'exit;\' <ret>" -docstring "close  new repl pane"
+map global normal <c-a-g> ': repl-send-text %val{selection} <ret>' -docstring "eval selection from bash"
+map global normal <c-n> ": edit -scratch<ret>" -docstring "new scratch"
+map global normal <c-a-b> '<a-;>: buffer-switcher<ret>' -docstring 'open buffer picker'
+map global normal <c-a-r> ': eval %val{selection} <ret>' -docstring "eval selection"
+## user mode
+map global user n -docstring 'next lint error' ':lint-next-error<ret>'
+map global user f ':lsp-formatting' -docstring "lsp format"
+map global user X ":evaluate-commands -buffer * %{ delete-buffer! }<ret>" -docstring "Close all buffers"
+map global user j ': displayline_down<ret>' -docstring 'next display line'
+
+## Goto mode
+map global goto b '<a-;>: open-buffer-picker<ret>' -docstring 'open buffer picker'
+map global goto f ': open-file-picker<ret>' -docstring 'file'
+# Goto mode mappings
+# map -docstring "previous buffer" global normal 'c-a-s-tab' ': buffer-previous<ret>'
+map -docstring "search tag in current file"     global goto '['     '<esc><c-s>: smart-select w; symbol<ret>'
+map -docstring "search tag in global tags file" global goto ']'     '<esc><c-s>: smart-select w; ctags-search<ret>'
+
+
+
 
 # highlighter
 hook global WinCreate .* %{ try %{
@@ -21,9 +52,6 @@ hook global WinCreate .* %{ try %{
 hook global BufSetOption filetype=grep %{
     remove-highlighter buffer/wrap
 }
-
-# Use main client as jumpclient
-set-option global jumpclient client0
 
 # delete the *scratch* buffer as soon as another is created, but only if it's empty
 hook global BufCreate '^\*scratch\*$' %{
@@ -46,33 +74,11 @@ hook global WinSetOption filetype=javascript %{
 hook global WinSetOption filetype=typescript %{
     set-option window formatcmd "deno fmt --ext ts -"
 }
-# normal mapping
-map global normal '#' :comment-line<ret>
-map global normal <a-d> ": buffer *debug* <ret>" -docstring 'open buffer debug'
-map global normal <c-a-d> ": delete-buffer! <ret>" -docstring 'delete buffer force'
-map global normal <c-a-t> ": format<ret>" -docstring "format"
-map global normal <c-n> ": edit -scratch<ret>" -docstring "new scratch"
-map global normal <c-a-b> '<a-;>: buffer-switcher<ret>' -docstring 'open buffer picker'
-map global normal <c-a-r> ': eval %val{selection} <ret>' -docstring "eval selection"
-
-## user mode
-map global user n -docstring 'next lint error' ':lint-next-error<ret>'
-map global user f ':lsp-formatting' -docstring "lsp format"
-map global user X ":evaluate-commands -buffer * %{ delete-buffer! }<ret>" -docstring "Close all buffers"
-map global user j ': displayline_down<ret>' -docstring 'next display line'
-
-## Goto mode
-map global goto b '<a-;>: open-buffer-picker<ret>' -docstring 'open buffer picker'
-map global goto f ': open-file-picker<ret>' -docstring 'file'
-# Goto mode mappings
-# map -docstring "previous buffer" global normal 'c-a-s-tab' ': buffer-previous<ret>'
-map -docstring "search tag in current file"     global goto '['     '<esc><c-s>: smart-select w; symbol<ret>'
-map -docstring "search tag in global tags file" global goto ']'     '<esc><c-s>: smart-select w; ctags-search<ret>'
 
 
 
 # Custom text objects
-map global object w 'c\s,\s<ret>' -docstring "select between whitespace"
+# map global object w 'c\s,\s<ret>' -docstring "select between whitespace"
 
 
 define-command -override open-file-picker -docstring 'open file picker' %{
@@ -108,19 +114,13 @@ map -docstring 'grep' global goto / '<a-;>: open-grep-prompt<ret>'
 
 
 define-command -override open-grep-prompt -docstring 'open grep prompt' %{
-
-
-
-  # Provides word completion
-
-
-
-  prompt grep: -shell-script-candidates %{
-    echo "write '$kak_response_fifo'" > "$kak_command_fifo"
-    cat "$kak_response_fifo" | kak -f 's[\w-]{4,}<ret>y%<a-R>a<ret>'
-  } %{
-    grep %val{text}
-  }
+    # Provides word completion
+    prompt grep: -shell-script-candidates %{
+        echo "write '$kak_response_fifo'" > "$kak_command_fifo"
+        cat "$kak_response_fifo" | kak -f 's[\w-]{4,}<ret>y%<a-R>a<ret>'
+      } %{
+        grep %val{text}
+      }
 }
 
 

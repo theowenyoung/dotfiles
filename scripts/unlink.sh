@@ -16,7 +16,9 @@ rm -rf ~/.config/nvim
 rm -rf ~/.config/helix/config.toml
 rm -rf ~/.config/alacritty
 rm -rf ~/.config/zellij
-rm -rf ~/.config/kak
+rm -rf ~/.config/kak/colors
+rm -rf ~/.config/kak/includes/
+rm -rf ~/.config/kak/kakrc
 rm -rf ~/.config/wezterm
 rm -rf ~/.config/systemd
 rm -rf ~/.config/ss

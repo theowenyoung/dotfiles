@@ -44,8 +44,8 @@ leave_broot = false
 # create file
 [[verbs]]
 invocation = "create {subfilepath}"
-external = "kakproject {directory}/{subfilepath}"
-shortcut = "vi"
+external = "touchandopen {directory}/{subfilepath}"
+shortcut = "cr"
 leave_broot = false
 # down
 [[verbs]]

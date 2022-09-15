@@ -3,11 +3,11 @@
 face global BufferSwitcherCurrent black,green
 declare-option -hidden str-list buffer_switcher_buflist
 # declare-user-mode buffer-switcher-menu
-
+declare-option -hidden bool buffer_switcher_is_show_help_info true
 
 define-command buffer-switcher %{
 eval -save-regs '"/' %{
-    reg / "^\Q%val{bufname}\E$"
+    reg / "^[+ ] \Q%val{bufname}\E$"
     set-option global buffer_switcher_buflist
     evaluate-commands -no-hooks -buffer * %{
         evaluate-commands %sh{
@@ -62,18 +62,26 @@ eval -save-regs '"/' %{
     map -docstring "force delete all buffers" buffer normal <Q> ': evaluate-commands -buffer * %{ delete-buffer! }<ret>'
     map -docstring "delete other buffers except current line or selections" buffer normal <e> ': echo yes<ret>'
     map -docstring "force delete other buffers except current line or selections" buffer normal <E> ': echo yes<ret>'
-    map -docstring "show help info" buffer normal <?> ': buffer-switcher-help<ret>'
+    map -docstring "toggle help info" buffer normal <?> ': buffer-switcher-help<ret>'
 
     # call help info first
     buffer-switcher-help
     hook global WinDisplay -once .* %{ try %{ delete-buffer *buffer-switcher* } }
 }
 }
-define-command -hidden buffer-switcher-help %{
-    info -title "Buffer Switcher Help" %{
-        d: delete current line or selected buffers
-        D: force delete current line or selected buffers
-    }
+define-command -hidden buffer-switcher-help %sh{
+    if [ "$kak_opt_buffer_switcher_is_show_help_info" = true ];then
+        USAGE=$(cat <<-END
+        info -title "Buffer Switcher Help" %{
+            d: delete current line or selected buffers
+            D: force delete current line or selected buffers
+        }
+        END
+        )
+        printf $USAGE;
+    else
+      printf 'exec <esc>'
+    fi
 }
 
 define-command -hidden buffer-switcher-switch %{
@@ -83,7 +91,14 @@ define-command -hidden buffer-switcher-switch %{
 }
 
 define-command -hidden buffer-switcher-select %{
-    exec ',;xH<a-;>LL'
+    eval %sh{
+    # get current selections line
+
+    # then chose them
+
+
+        #',;xH<a-;>LL'
+    }
 }
 define-command -hidden buffer-switcher-delete %{
     buffer-switcher-select

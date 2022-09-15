@@ -7,6 +7,13 @@ evaluate-commands %sh{
 }
 plug "andreyorst/plug.kak" noload
 
+plug "Delapouite/kakoune-mirror" %{
+  map global normal "'" ': enter-user-mode mirror<ret>'
+}
+# plug "jordan-yee/kakoune-repl-mode" config %{
+#     map global user <r> ': enter-user-mode repl<ret>' -docstring "repl mode"
+#     require-module repl-mode
+# }
 
 # plug 'delapouite/kakoune-buffers' %{
 #   map global normal <a-b> ': enter-buffers-mode<ret>' -docstring 'buffers'
