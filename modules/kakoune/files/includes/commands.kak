@@ -5,8 +5,7 @@ define-command -docstring "quit without saving" qq "quit!"
 
 
 
-define-command -hidden \
--docstring "smart-select <w|a-w>: select <word> if current selection is only one character." \
+define-command -hidden -docstring "smart-select <w|a-w>: select <word> if current selection is only one character." \
 smart-select -params 1 %{
     try %{
         execute-keys "<a-k>..<ret>"

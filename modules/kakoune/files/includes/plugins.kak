@@ -9,6 +9,7 @@ plug "andreyorst/plug.kak" noload
 
 plug "Delapouite/kakoune-mirror" %{
   map global normal "'" ': enter-user-mode mirror<ret>'
+  map global normal "<a-'>" ': enter-user-mode -lock mirror<ret>'
 }
 # plug "jordan-yee/kakoune-repl-mode" config %{
 #     map global user <r> ': enter-user-mode repl<ret>' -docstring "repl mode"

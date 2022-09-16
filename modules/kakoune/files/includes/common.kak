@@ -17,7 +17,7 @@ map global normal <c-a-x> ": buffer *debug* <ret>" -docstring 'open buffer debug
 map global normal <c-a-d> ": delete-buffer! <ret>" -docstring 'delete buffer force'
 map global normal <c-a-t> ": format<ret>" -docstring "format"
 map global normal <c-a-n> ": tmux-repl-vertical -l 15 <ret>" -docstring "start a new repl pane"
-map global normal <c-a-c> ": repl-send-text 'exit;\' <ret>" -docstring "close  new repl pane"
+map global normal <c-a-c> ': repl-send-text "exit<c-v><ret>" <ret>' -docstring 'close  new repl pane'
 map global normal <c-a-g> ': repl-send-text %val{selection} <ret>' -docstring "eval selection from bash"
 map global normal <c-n> ": edit -scratch<ret>" -docstring "new scratch"
 map global normal <c-a-b> '<a-;>: buffer-switcher<ret>' -docstring 'open buffer picker'
@@ -36,7 +36,8 @@ map global goto f ': open-file-picker<ret>' -docstring 'file'
 map -docstring "search tag in current file"     global goto '['     '<esc><c-s>: smart-select w; symbol<ret>'
 map -docstring "search tag in global tags file" global goto ']'     '<esc><c-s>: smart-select w; ctags-search<ret>'
 
-
+# object mode
+map global object 'l' '<esc>giGL' -docstring "select current line without"
 
 
 # highlighter
