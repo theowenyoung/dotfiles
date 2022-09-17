@@ -35,11 +35,12 @@ export DENO_INSTALL="$HOME/.deno"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 
 # nnn
+export NNN_OPENER="$HOME/dotfiles/nnn/files/plugins/nuke"
 export NNN_OPTS="e"
 export NNN_BMS="d:$HOME/Desktop;D:$HOME/Downloads/"
 # trash (needs trash-cli) instead of delete
 export NNN_TRASH=1
-NNN_PLUG_DEFAULT='x:togglex;o:fzopen;c:-fzcd'
+NNN_PLUG_DEFAULT='x:!chmod +x $nnn*;o:fzopen;c:-fzcd;k:-kakopen'
 NNN_PLUG="$NNN_PLUG_DEFAULT"
 export NNN_PLUG
 

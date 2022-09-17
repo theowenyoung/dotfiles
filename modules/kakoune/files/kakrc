@@ -2,21 +2,26 @@ evaluate-commands %sh{
     config_files="
         tmux-repl.kak
         plugins.kak
-        buffer-switcher.kak
         commands.kak
         common.kak
         connect.kak
     "
     for file in $config_files; do
         printf "%s" "
-            try %{
-                source %{${kak_config:?}/includes/$file}
-            } catch %{
-                echo -debug %val{error}
-            }
+            source %{${kak_config:?}/includes/$file}
         "
     done
+    # try to load override plugin developed by me
+
+    printf "%s" "
+        try %{
+            source ~/project/kakoune-buffer-manager/rc/buffer-manager.kak
+        } catch %{
+            echo -debug %val{error}
+        }
+    "
+
     [ -f $kak_config/local.kak ] && echo "source $kak_config/local.kak"
 
 }
-try %{ source .kakrc.local }
+try %{ source local.kak }

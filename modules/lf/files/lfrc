@@ -1,0 +1,30 @@
+# option
+set nopreview
+set ratios 1
+set relativenumber
+set hiddenfiles .*:!*.env:!.*ignore:!.*rc
+
+# map
+map <enter> ${{
+    if [ -d "$f" ]; then
+        lf -remote "send $id cd \"$f\""
+    else
+        kakproject "$f"
+    fi
+}}
+map o :open
+map l push <enter>
+map <right> push <enter>
+map <esc> push <left>
+map D :delete
+map a push :mkdir<space>
+map b push :touch<space>
+map <tab> :search-next
+
+# cmd
+
+cmd delete $trash "$f"
+cmd mkdir %mkdir -p "$@"
+cmd touch %{{
+    mkdir -p $(dirname "$1") && touch "$1" && kakproject "$PWD/$1"
+}}

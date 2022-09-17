@@ -11,3 +11,11 @@
   args:
     - ${__dirname}/files/colors
     - ${user.homeDir}/.config/kak/colors
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/kak-lsp.toml
+    - ${user.homeDir}/.config/kak-lsp/kak-lsp.toml
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/kak-lsp-deno.toml
+    - ${user.homeDir}/.config/kak-lsp/kak-lsp-deno.toml

@@ -1,0 +1,4 @@
+- use: fs.ensureSymlink
+  args:
+    - ${__dirname}/files/lfrc
+    - ${user.homeDir}/.config/lf/lfrc

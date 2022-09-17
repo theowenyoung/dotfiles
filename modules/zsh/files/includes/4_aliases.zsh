@@ -17,7 +17,6 @@ rp(){
 	unset SOCKS_PROXY
 }
 
-
 # broot alias, must be set <https://dystroy.org/broot/install-br/>
 function br {
     local cmd cmd_file code
@@ -103,7 +102,8 @@ p(){
       tmux split-window -d -h -l 80% -c '#{pane_current_path}' "kak -c $session_name $@" \; selectp -R
   fi
   # then start broot
-  b
+  # NNN_FIFO="/tmp/nnn_${session_name}.fifo" n
+  lf -command "\$printf \"set global lf_id \$id\" | kak -p $session_name"
 }
 
 ## kakoune
@@ -164,7 +164,7 @@ alias pos="port search"
 alias poi="sudo port -N install"
 alias s='ssh'
 
-alias lf='ls -lh $(fzf)'
+# alias lf='ls -lh $(fzf)'
 
 ## cd directory
 alias cf='cd $(fd --type directory | fzf)'

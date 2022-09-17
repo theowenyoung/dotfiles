@@ -11,25 +11,10 @@ plug "Delapouite/kakoune-mirror" %{
   map global normal "'" ': enter-user-mode mirror<ret>'
   map global normal "<a-'>" ': enter-user-mode -lock mirror<ret>'
 }
-# plug "jordan-yee/kakoune-repl-mode" config %{
-#     map global user <r> ': enter-user-mode repl<ret>' -docstring "repl mode"
-#     require-module repl-mode
-# }
 
-# plug 'delapouite/kakoune-buffers' %{
-#   map global normal <a-b> ': enter-buffers-mode<ret>' -docstring 'buffers'
-#   map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
-#   map global buffers <a-d> " delete-buffer!<ret>" -docstring "delete-buffer force"
-#   map global normal <c-a-w> " delete-buffer!<ret>" -docstring "delete-buffer force"
-#   alias global bd delete-buffer
-#   alias global bf buffer-first
-#   alias global bl buffer-last
-# }
-# plug "andreyorst/powerline.kak" defer powerline_gruvbox %{
-#     powerline-theme gruvbox
-# } config %{
-#     powerline-start
-# }
+plug "theowenyoung/kakoune-buffer-manager" config %{
+    map global normal <c-a-b> ': buffer-manager<ret>'
+}
 plug "occivink/kakoune-find" config %{
     define-command -docstring "grep-apply-changes: apply changes specified in current *grep* buffer to their respective files" \
     grep-apply-changes %{ find-apply-changes -force }
@@ -46,11 +31,11 @@ hook global BufCreate .* %{
   autoconfigtab
 }
 
-plug "alexherbo2/auto-pairs.kak" %{
-    enable-auto-pairs
-} config %{
-  set-option global auto_pairs ( ) { } [ ] '"' '"' "'" "'" ` ` “ ” ‘ ’ « » ‹ ›
-}
+# plug "alexherbo2/auto-pairs.kak" %{
+#     enable-auto-pairs
+# } config %{
+#   set-option global auto_pairs ( ) { } [ ] '"' '"' "'" "'" ` ` “ ” ‘ ’ « » ‹ ›
+# }
 
 
 plug "kak-lsp/kak-lsp" config %{
@@ -62,6 +47,7 @@ plug "kak-lsp/kak-lsp" config %{
     # this is not necessary; the `lsp-enable-window` will take care of it
     # eval %sh{${kak_opt_lsp_cmd} --kakoune -s $kak_session}
 
+
     set global lsp_diagnostic_line_error_sign '║'
     set global lsp_diagnostic_line_warning_sign '┊'
 
@@ -71,10 +57,22 @@ plug "kak-lsp/kak-lsp" config %{
 
     define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
     hook global WinSetOption filetype=(c|cpp|cc|rust|javascript|typescript) %{
-        set-option window lsp_auto_highlight_references true
-        set-option window lsp_hover_anchor false
-        lsp-auto-hover-enable
+        # set-option window lsp_auto_highlight_references true
+        # set-option window lsp_hover_anchor false
+        # lsp-auto-hover-enable
+        # check is there is special kak-lsp config file, if so, use it
+        eval %sh{
+
+            if [ ! -z "$kak_opt_lsp_toml_path" ]; then
+                # printf 'set global lsp_cmd "kak-lsp -vvv --log /tmp/kak-lsp2.log -s %s --config %s"\n' "$kak_session" "$kak_opt_lsp_toml_path"
+                printf 'set global lsp_cmd "kak-lsp -s %s --config %s"\n' "$kak_session" "$kak_opt_lsp_toml_path"
+                printf 'echo -debug kak_lsp will use %s as language config\n' "$kak_opt_lsp_toml_path"
+
+            fi
+        }
+
         echo -debug "Enabling LSP for filtetype %opt{filetype}"
+        echo -debug "lsp start cmd: %opt{lsp_cmd}"
         lsp-enable-window
     }
 

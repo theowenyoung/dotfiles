@@ -1,0 +1,9 @@
+#!/bin/sh
+
+printf yes
+printf "$NNN_PIPE";
+
+echo hhhhhh >> /tmp/n.log
+echo "$NNN_PIPE" >> /tmp/n.log
+
+printf "%s" "0c/etc" > "$NNN_PIPE"

@@ -3,6 +3,10 @@ colorscheme gruvbox
 when %sh{ [ -n "$(command -v rg)" ] && echo true || echo false } %{
     set-option global grepcmd 'rg -L --with-filename --column'
 }
+
+declare-option str lsp_toml_path ''
+declare-option str lf_id ''
+
 # Use main client as jumpclient
 set-option global jumpclient client0
 # set statusbar on top
@@ -11,19 +15,23 @@ set-option global scrolloff 8,8
 # insert mode
 map global insert <c-a> "<esc>ghi" -docstring "go to line start"
 map global insert <c-e> "<esc>gli" -docstring "go to line end"
+map global insert <c-a-g> "<esc><space>ld" -docstring "go to defination"
+
 # normal mapping
 map global normal '#' :comment-line<ret>
 map global normal <c-a-x> ": buffer *debug* <ret>" -docstring 'open buffer debug'
 map global normal <c-a-d> ": delete-buffer! <ret>" -docstring 'delete buffer force'
-map global normal <c-a-t> ": format<ret>" -docstring "format"
+map global normal <a-f> ": format<ret>" -docstring "format"
 map global normal <c-a-n> ": tmux-repl-vertical -l 15 <ret>" -docstring "start a new repl pane"
 map global normal <c-a-c> ': repl-send-text "exit<c-v><ret>" <ret>' -docstring 'close  new repl pane'
-map global normal <c-a-g> ': repl-send-text %val{selection} <ret>' -docstring "eval selection from bash"
+map global normal <c-a-g> "<esc><space>ld" -docstring "go to defination"
+
+map global normal <c-a-t> ': repl-send-text %val{selection} <ret>' -docstring "eval selection from bash"
 map global normal <c-n> ": edit -scratch<ret>" -docstring "new scratch"
-map global normal <c-a-b> '<a-;>: buffer-switcher<ret>' -docstring 'open buffer picker'
 map global normal <c-a-r> ': eval %val{selection} <ret>' -docstring "eval selection"
 ## user mode
-map global user n -docstring 'next lint error' ':lint-next-error<ret>'
+map global user n -docstring 'next error' '<space>ln'
+map global user h '<space>lh' -docstring "lsp help"
 map global user f ':lsp-formatting' -docstring "lsp format"
 map global user X ":evaluate-commands -buffer * %{ delete-buffer! }<ret>" -docstring "Close all buffers"
 map global user j ': displayline_down<ret>' -docstring 'next display line'
@@ -71,9 +79,11 @@ hook global BufCreate '^\*scratch\*$' %{
 # hook ts, js format
 hook global WinSetOption filetype=javascript %{
     set-option window formatcmd "deno fmt --ext js -"
+    hook buffer BufWritePre .* %{format}
 }
 hook global WinSetOption filetype=typescript %{
     set-option window formatcmd "deno fmt --ext ts -"
+    hook buffer BufWritePre .* %{format}
 }
 
 
@@ -174,4 +184,7 @@ evaluate-commands %sh{
 # Make sure it is set as a kak filetype
 hook global BufCreate (.*/)?(\.kakrc\.local) %{
     set-option buffer filetype kak
+}
+hook global BufCreate (.*/)?(lfrc) %{
+    set-option buffer filetype sh
 }
