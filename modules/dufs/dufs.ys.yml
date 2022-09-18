@@ -1,4 +1,4 @@
-- if: Deno.build.os!=='linux' || os.hostname==="debianlocal"
+- if: Deno.build.os!=='linux'
   use: return
 
 - use: template.copy
