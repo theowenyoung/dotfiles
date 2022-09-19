@@ -25,7 +25,6 @@ map global normal <a-f> ": format<ret>" -docstring "format"
 map global normal <c-a-n> ": tmux-repl-vertical -l 15 <ret>" -docstring "start a new repl pane"
 map global normal <c-a-c> ': repl-send-text "exit<c-v><ret>" <ret>' -docstring 'close  new repl pane'
 map global normal <c-a-g> "<esc><space>ld" -docstring "go to defination"
-
 map global normal <c-a-t> ': repl-send-text %val{selection} <ret>' -docstring "eval selection from bash"
 map global normal <c-n> ": edit -scratch<ret>" -docstring "new scratch"
 map global normal <c-a-r> ': eval %val{selection} <ret>' -docstring "eval selection"

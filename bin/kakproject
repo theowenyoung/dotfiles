@@ -4,7 +4,6 @@ if [ -z "${TMUX}" ]; then
     echo "Not in tmux"
     exit 1
 fi
-printf "lfid: %s" "$LF_ID" >> /tmp/n.log
 # get file path from nnn
 file_path=$1
 # get session name, which is the current directory

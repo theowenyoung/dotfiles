@@ -126,7 +126,7 @@ done
 
 ## clash
 alias cl="sudo clash -d ~/.config/clash"
-alias rcl="sudo systemctl restart clash"
+alias rcl="cd -- $HOME/dotfiles && make pull && mergeclash && sudo systemctl restart clash"
 alias mergeclash="~/dotfiles/root/clash/merge_clash_config.sh"
 
 ## caddy

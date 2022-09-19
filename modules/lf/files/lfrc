@@ -20,7 +20,7 @@ map D :delete
 map a push :mkdir<space>
 map b push :touch<space>
 map <tab> :search-next
-
+map gr $$f
 # cmd
 
 cmd delete $trash "$f"

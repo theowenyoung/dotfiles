@@ -51,7 +51,6 @@ plug "kak-lsp/kak-lsp" config %{
     set global lsp_diagnostic_line_error_sign '║'
     set global lsp_diagnostic_line_warning_sign '┊'
 
-    map global lsp <d> "<esc>: lsp-definition<ret><a-;>gi" -docstring "go to definition"
 
     define-command ne -docstring 'go to next error/warning from lsp' %{ lsp-find-error --include-warnings }
     define-command pe -docstring 'go to previous error/warning from lsp' %{ lsp-find-error --previous --include-warnings }
