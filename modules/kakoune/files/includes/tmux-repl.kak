@@ -10,7 +10,7 @@ provide-module -override tmux-repl %{
 
 declare-option -docstring "tmux pane id in which the REPL is running" str tmux_repl_id
 
-define-command -hidden -params 1.. tmux-repl-impl %{
+define-command -override -hidden -params 1.. tmux-repl-impl %{
     evaluate-commands %sh{
         if [ -z "$TMUX" ]; then
             echo 'fail This command is only available in a tmux session'
@@ -23,22 +23,22 @@ define-command -hidden -params 1.. tmux-repl-impl %{
     }
 }
 
-define-command tmux-repl-vertical -params 0.. -docstring "Create a new vertical pane for repl interaction" %{
+define-command -override tmux-repl-vertical -params 0.. -docstring "Create a new vertical pane for repl interaction" %{
     tmux-repl-impl 'split-window -v' %arg{@}
 }
 complete-command tmux-repl-vertical shell
 
-define-command tmux-repl-horizontal -params 0.. -docstring "Create a new horizontal pane for repl interaction" %{
+define-command -override tmux-repl-horizontal -params 0.. -docstring "Create a new horizontal pane for repl interaction" %{
     tmux-repl-impl 'split-window -h' %arg{@}
 }
 complete-command tmux-repl-horizontal shell
 
-define-command tmux-repl-window -params 0.. -docstring "Create a new window for repl interaction" %{
+define-command -override tmux-repl-window -params 0.. -docstring "Create a new window for repl interaction" %{
     tmux-repl-impl 'new-window' %arg{@}
 }
 complete-command tmux-repl-window shell
 
-define-command -params 0..1 tmux-repl-set-pane -docstring %{
+define-command -override -params 0..1 tmux-repl-set-pane -docstring %{
         tmux-repl-set-pane [pane number]: Set an existing tmux pane for repl interaction
         If the address of new pane is not given, next pane is used
         (To get the pane number in tmux,
@@ -67,7 +67,7 @@ define-command -params 0..1 tmux-repl-set-pane -docstring %{
     }
 }
 
-define-command -hidden tmux-send-text -params 0..1 -docstring %{
+define-command -override -hidden tmux-send-text -params 0..1 -docstring %{
         tmux-send-text [text]: Send text to the REPL pane.
         If no text is passed, then the selection is used
     } %{

@@ -3,7 +3,7 @@
 
 - use: template.copy
   args:
-    - ${__dirname}/files/start_dufs.sh.tmpl
+    - ${__dirname}/files/start_${os.hostname==="debianlocal"?"local_":""}dufs.sh.tmpl
     - ${user.homeDir}/.config/dufs/start_dufs.sh
 - use: :chmod +x ${user.homeDir}/.config/dufs/start_dufs.sh
 - use: fs.copy

@@ -2,14 +2,13 @@ evaluate-commands %sh{
     config_files="
         tmux-repl.kak
         plugins.kak
-        commands.kak
+        phantom.kak
+        snippets.kak
         common.kak
         connect.kak
     "
     for file in $config_files; do
-        printf "%s" "
-            source %{${kak_config:?}/includes/$file}
-        "
+        printf "%s\n" "source %{${kak_config:?}/includes/$file}"
     done
     # try to load override plugin developed by me
 

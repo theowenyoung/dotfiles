@@ -1,9 +1,10 @@
 # options
 colorscheme gruvbox
-when %sh{ [ -n "$(command -v rg)" ] && echo true || echo false } %{
-    set-option global grepcmd 'rg -L --with-filename --column'
+eval %sh{
+    if [ -n "$(command -v rg)" ]; then
+       printf "%s\n" "set-option global grepcmd 'rg -L --with-filename --column'"
+   fi
 }
-
 declare-option str lsp_toml_path ''
 declare-option str lf_id ''
 
@@ -12,12 +13,23 @@ set-option global jumpclient client0
 # set statusbar on top
 set-option global ui_options terminal_status_on_top=true
 set-option global scrolloff 8,8
+
+
+# change default map
+map global normal "<a-'>" '<a-`>' -docstring 'swap case'
 # insert mode
 map global insert <c-a> "<esc>ghi" -docstring "go to line start"
 map global insert <c-e> "<esc>gli" -docstring "go to line end"
 map global insert <c-a-g> "<esc><space>ld" -docstring "go to defination"
+map global insert <tab> '<a-;>:try lsp-snippets-select-next-placeholders catch %{ execute-keys -with-hooks <lt>tab> }<ret>' -docstring 'Select next snippet placeholder'
+map global insert <c-a-s> "<esc>: snippets<space>" -docstring "open snippets menu"
+map global insert <a-`> "<esc>: phantom-selection-iterate-next<ret>i"
+map global insert <a-~> "<esc>: phantom-selection-iterate-prev<ret>i"
+map global insert <c-a-s> "<esc>: snippets<space>" -docstring "open snippets menu"
 
 # normal mapping
+
+
 map global normal '#' :comment-line<ret>
 map global normal <c-a-x> ": buffer *debug* <ret>" -docstring 'open buffer debug'
 map global normal <c-a-d> ": delete-buffer! <ret>" -docstring 'delete buffer force'
@@ -28,12 +40,20 @@ map global normal <c-a-g> "<esc><space>ld" -docstring "go to defination"
 map global normal <c-a-t> ': repl-send-text %val{selection} <ret>' -docstring "eval selection from bash"
 map global normal <c-n> ": edit -scratch<ret>" -docstring "new scratch"
 map global normal <c-a-r> ': eval %val{selection} <ret>' -docstring "eval selection"
+map global normal <c-a-a> '*%s<ret>' -docstring "select all"
+map global normal <`>     ": phantom-selection-add-selection<ret>"
+map global normal <~>     ": phantom-selection-select-all; phantom-selection-clear<ret>"
+map global normal <a-`> ": phantom-selection-iterate-next<ret>"
+map global normal <a-~> ": phantom-selection-iterate-prev<ret>"
+
+
 ## user mode
 map global user n -docstring 'next error' '<space>ln'
 map global user h '<space>lh' -docstring "lsp help"
 map global user f ':lsp-formatting' -docstring "lsp format"
 map global user X ":evaluate-commands -buffer * %{ delete-buffer! }<ret>" -docstring "Close all buffers"
 map global user j ': displayline_down<ret>' -docstring 'next display line'
+map global user l %{:enter-user-mode lsp<ret>} -docstring "LSP mode"
 
 ## Goto mode
 map global goto b '<a-;>: open-buffer-picker<ret>' -docstring 'open buffer picker'
@@ -44,7 +64,11 @@ map -docstring "search tag in current file"     global goto '['     '<esc><c-s>:
 map -docstring "search tag in global tags file" global goto ']'     '<esc><c-s>: smart-select w; ctags-search<ret>'
 
 # object mode
-map global object 'l' '<esc>giGL' -docstring "select current line without"
+map global object 'l' '<esc>giGL' -docstring "select current line without new line"
+map global object a '<a-semicolon>lsp-object<ret>' -docstring 'LSP any symbol'
+map global object <a-a> '<a-semicolon>lsp-object<ret>' -docstring 'LSP any symbol'
+map global object e '<a-semicolon>lsp-object Function Method<ret>' -docstring 'LSP function or method'
+map global object k '<a-semicolon>lsp-object Class Interface Struct<ret>' -docstring 'LSP class interface or struct'
 
 
 # highlighter

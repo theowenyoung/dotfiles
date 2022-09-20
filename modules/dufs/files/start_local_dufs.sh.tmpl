@@ -1,0 +1,10 @@
+#!/bin/sh
+
+~/.local/bin/dufs \
+  --hidden '.git,.DS_Store,tmp,._.DS_Store,.*,*.log,*.lock' \
+  --allow-upload \
+  -a /@{{env.TEMP_SELF_HOSTED_USERNAME}}:{{env.TEMP_SELF_HOSTED_PASSWORD}}@* \
+  -p 10004  \
+  --allow-delete \
+  --allow-search \
+  ~/data
