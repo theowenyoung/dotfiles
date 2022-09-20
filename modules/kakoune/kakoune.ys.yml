@@ -19,7 +19,3 @@
   args:
     - ${__dirname}/files/kak-lsp-deno.toml
     - ${user.homeDir}/.config/kak-lsp/kak-lsp-deno.toml
-- use: fs.ensureSymlink
-  args:
-    - ${__dirname}/files/snippets
-    - ${user.homeDir}/.config/kak/snippets
