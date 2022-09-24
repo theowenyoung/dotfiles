@@ -1,0 +1,29 @@
+#!/bin/sh
+
+
+set -e
+# check is in tmux
+if [ -z "${TMUX}" ]; then
+    echo "Not in tmux"
+    exit 1
+fi
+
+filename=".";
+if [ ! -z "$1" ]; then
+    filename="$1"
+fi
+
+# split tmux to two pane
+tmux splitw -h -c '#{pane_current_path}' -l 80%
+
+# split a terminal pane
+tmux splitw -v -c '#{pane_current_path}'  -l 20%
+
+tmux selectp -t 1
+# get session name, which is the current directory
+session_name="$(get-current-project-socket)"
+#session_name="test"
+# start lf in the left pane
+# start nvim in the right pane
+tmux send -t 0 "lf" ENTER \; send -t 1 "nvim --listen "$session_name" \"$filename\"" ENTER\;
+

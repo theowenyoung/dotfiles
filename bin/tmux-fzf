@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+fname=""
+fname=$(fzf) || return
+$TMUX_EDITOR $fname

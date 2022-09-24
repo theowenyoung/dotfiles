@@ -1,5 +1,5 @@
 # Dotfiles
-
+  
 Dotfiles, init scripts, etc, for now, it includes macOS, and Debian (my VPS),
 you shouldn't use it directly, cause it contains many personal habits, but you
 do can get some inspiratiions from it.
@@ -14,6 +14,7 @@ using template to copy template dotfile to the dest location,
 [kakoune](https://github.com/mawww/kakoune) for modal editor.
 [alfred](https://www.alfredapp.com/) for translation, calculate, launch center,
 workflow. [navi](https://github.com/denisidoro/navi) for cheatsheets
+
 
 ## Table of Contents
 
@@ -39,6 +40,8 @@ workflow. [navi](https://github.com/denisidoro/navi) for cheatsheets
 > run repos from Github. `repos` for all personal repos. `syncing` for all other
 > settings that does not have a decent dotfiles, but still need to backup. So if
 > I want to reflush my sytem, I need to backup this folder.
+
+I really
 
 ### Dotfile Structure:
 

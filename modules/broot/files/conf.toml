@@ -38,7 +38,7 @@ invocation = "edit"
 shortcut = "e"
 apply_to = "file"
 key = "enter"
-external = "kakproject {file}"
+external = "$TMUX_EDITOR {file}"
 leave_broot = false
 
 # create file

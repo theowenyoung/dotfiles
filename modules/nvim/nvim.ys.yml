@@ -1,4 +1,4 @@
 - use: fs.ensureSymlink
   args:
-    - ${__dirname}/files/minimal_nvim
+    - ${__dirname}/files/NvChad
     - ${user.homeDir}/.config/nvim

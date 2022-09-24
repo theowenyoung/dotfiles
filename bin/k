@@ -1,5 +1,5 @@
 #!/bin/bash
-session_name="$(get-kak-session-name)"
+session_name="$(get-current-project-name)"
 is_session_exist=$(kak -l | grep $session_name || echo "")
 if [[ -z "${is_session_exist}" ]]; then
   # Create new kakoune daemon for current dir

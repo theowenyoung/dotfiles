@@ -25,15 +25,13 @@ map global insert <tab> '<a-;>:try lsp-snippets-select-next-placeholders catch %
 map global insert <c-a-s> "<esc>: snippets<space>" -docstring "open snippets menu"
 map global insert <a-`> "<esc>: phantom-selection-iterate-next<ret>i"
 map global insert <a-~> "<esc>: phantom-selection-iterate-prev<ret>i"
-map global insert <c-a-s> "<esc>: snippets<space>" -docstring "open snippets menu"
-
 # normal mapping
-
 
 map global normal '#' :comment-line<ret>
 map global normal <c-a-x> ": buffer *debug* <ret>" -docstring 'open buffer debug'
 map global normal <c-a-d> ": delete-buffer! <ret>" -docstring 'delete buffer force'
 map global normal <a-f> ": format<ret>" -docstring "format"
+map global normal <c-a-s> "<esc>: snippets<space>" -docstring "open snippets menu"
 map global normal <c-a-n> ": tmux-repl-vertical -l 15 <ret>" -docstring "start a new repl pane"
 map global normal <c-a-c> ': repl-send-text "exit<c-v><ret>" <ret>' -docstring 'close  new repl pane'
 map global normal <c-a-g> "<esc><space>ld" -docstring "go to defination"
@@ -41,7 +39,7 @@ map global normal <c-a-t> ': repl-send-text %val{selection} <ret>' -docstring "e
 map global normal <c-n> ": edit -scratch<ret>" -docstring "new scratch"
 map global normal <c-a-r> ': eval %val{selection} <ret>' -docstring "eval selection"
 map global normal <c-a-a> '*%s<ret>' -docstring "select all"
-map global normal <`>     ": phantom-selection-add-selection<ret>"
+map global normal '`'     ": phantom-selection-add-selection<ret>"
 map global normal <~>     ": phantom-selection-select-all; phantom-selection-clear<ret>"
 map global normal <a-`> ": phantom-selection-iterate-next<ret>"
 map global normal <a-~> ": phantom-selection-iterate-prev<ret>"
@@ -58,6 +56,8 @@ map global user l %{:enter-user-mode lsp<ret>} -docstring "LSP mode"
 ## Goto mode
 map global goto b '<a-;>: open-buffer-picker<ret>' -docstring 'open buffer picker'
 map global goto f ': open-file-picker<ret>' -docstring 'file'
+map -docstring 'grep' global goto / '<a-;>: open-grep-prompt<ret>'
+
 # Goto mode mappings
 # map -docstring "previous buffer" global normal 'c-a-s-tab' ': buffer-previous<ret>'
 map -docstring "search tag in current file"     global goto '['     '<esc><c-s>: smart-select w; symbol<ret>'
@@ -69,6 +69,37 @@ map global object a '<a-semicolon>lsp-object<ret>' -docstring 'LSP any symbol'
 map global object <a-a> '<a-semicolon>lsp-object<ret>' -docstring 'LSP any symbol'
 map global object e '<a-semicolon>lsp-object Function Method<ret>' -docstring 'LSP function or method'
 map global object k '<a-semicolon>lsp-object Class Interface Struct<ret>' -docstring 'LSP class interface or struct'
+
+# Enable <tab>/<s-tab> for insert completion selection
+# ──────────────────────────────────────────────────────
+
+hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
+hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
+# system clipboard handling
+evaluate-commands %sh{
+    if [ -n "$SSH_TTY" ]; then
+        copy='printf "\033]52;;%s\033\\" $(base64 | tr -d "\n") > /dev/tty'
+        paste='printf "paste unsupported through ssh"'
+        backend="OSC 52"
+    else
+        case $(uname) in
+            Linux)
+                if [ -n "$WAYLAND_DISPLAY" ]; then
+                    copy="wl-copy -p"; paste="wl-paste -p"; backend=Wayland
+                else
+                    copy="xclip -i"; paste="xclip -o"; backend=X11
+                fi
+                ;;
+            Darwin)  copy="pbcopy"; paste="pbpaste"; backend=OSX ;;
+        esac
+    fi
+    printf "map global user -docstring 'paste (after) from clipboard' p '<a-!>%s<ret>'\n" "$paste"
+    printf "map global user -docstring 'paste (before) from clipboard' P '!%s<ret>'\n" "$paste"
+    printf "map global user -docstring 'yank to primary' y 'y<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s primary}<ret>'\n" "$copy" "$backend"
+    printf "map global user -docstring 'yank to clipboard' Y 'y<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s clipboard}<ret>'\n" "$copy -selection clipboard" "$backend"
+    printf "map global user -docstring 'replace from clipboard' R '|%s<ret>'\n" "$paste"
+}
+
 
 
 # highlighter
@@ -97,8 +128,6 @@ hook global BufCreate '^\*scratch\*$' %{
     }
 }
 
-
-
 # hook ts, js format
 hook global WinSetOption filetype=javascript %{
     set-option window formatcmd "deno fmt --ext js -"
@@ -108,12 +137,6 @@ hook global WinSetOption filetype=typescript %{
     set-option window formatcmd "deno fmt --ext ts -"
     hook buffer BufWritePre .* %{format}
 }
-
-
-
-# Custom text objects
-# map global object w 'c\s,\s<ret>' -docstring "select between whitespace"
-
 
 define-command -override open-file-picker -docstring 'open file picker' %{
 
@@ -125,12 +148,6 @@ define-command -override open-file-picker -docstring 'open file picker' %{
 
 }
 
-
-
-
-
-
-
 define-command -override open-buffer-picker -docstring 'open buffer picker' %{
 
   prompt buffer: -buffer-completion %{
@@ -140,12 +157,6 @@ define-command -override open-buffer-picker -docstring 'open buffer picker' %{
   }
 
 }
-
-
-
-map -docstring 'grep' global goto / '<a-;>: open-grep-prompt<ret>'
-
-
 
 define-command -override open-grep-prompt -docstring 'open grep prompt' %{
     # Provides word completion
@@ -157,52 +168,6 @@ define-command -override open-grep-prompt -docstring 'open grep prompt' %{
       }
 }
 
-
-## hook
-# save on pressing enter
-hook global NormalKey <ret> w
-
-# Enable <tab>/<s-tab> for insert completion selection
-# ──────────────────────────────────────────────────────
-
-hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
-hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
-
-
-
-
-
-
-
-# system clipboard handling
-evaluate-commands %sh{
-    if [ -n "$SSH_TTY" ]; then
-        copy='printf "\033]52;;%s\033\\" $(base64 | tr -d "\n") > /dev/tty'
-        paste='printf "paste unsupported through ssh"'
-        backend="OSC 52"
-    else
-        case $(uname) in
-            Linux)
-                if [ -n "$WAYLAND_DISPLAY" ]; then
-                    copy="wl-copy -p"; paste="wl-paste -p"; backend=Wayland
-                else
-                    copy="xclip -i"; paste="xclip -o"; backend=X11
-                fi
-                ;;
-            Darwin)  copy="pbcopy"; paste="pbpaste"; backend=OSX ;;
-        esac
-    fi
-    printf "map global user -docstring 'paste (after) from clipboard' p '<a-!>%s<ret>'\n" "$paste"
-    printf "map global user -docstring 'paste (before) from clipboard' P '!%s<ret>'\n" "$paste"
-    printf "map global user -docstring 'yank to primary' y 'y<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s primary}<ret>'\n" "$copy" "$backend"
-    printf "map global user -docstring 'yank to clipboard' Y 'y<a-|>%s<ret>:echo -markup %%{{Information}copied selection to %s clipboard}<ret>'\n" "$copy -selection clipboard" "$backend"
-    printf "map global user -docstring 'replace from clipboard' R '|%s<ret>'\n" "$paste"
-}
-
-
-
-
-
 # Source a local project kak config if it exists
 # Make sure it is set as a kak filetype
 hook global BufCreate (.*/)?(\.kakrc\.local) %{
@@ -211,3 +176,9 @@ hook global BufCreate (.*/)?(\.kakrc\.local) %{
 hook global BufCreate (.*/)?(lfrc) %{
     set-option buffer filetype sh
 }
+
+
+set-option global snippets
+set-option -add global snippets console
+set-option -add global snippets cl
+set-option -add global snippets %{snippets-insert console.log("${1}",${1})}

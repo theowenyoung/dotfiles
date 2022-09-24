@@ -33,7 +33,7 @@ function br {
 }
 function b {
   # start with br
-  local kak_session_name=$(get-kak-session-name)
+  local kak_session_name=$(get-current-project-name)
   # fisrt delete sock file if exist
   rm -f "/tmp/broot-server-$kak_session_name.sock"
   br --listen $kak_session_name;
@@ -70,7 +70,7 @@ n ()
 
     # The backslash allows one to alias n to nnn if desired without making an
     # infinitely recursive alias
-    START_DIR="$PWD" VISUAL="kakproject" \nnn "$@"
+    START_DIR="$PWD" VISUAL="$TMUX_EDITOR" \nnn "$@"
 
     if [ -f "$NNN_TMPFILE" ]; then
             . "$NNN_TMPFILE"
@@ -87,7 +87,7 @@ p(){
       echo "Not in tmux"
       exit 1
   fi
-  session_name="$(get-kak-session-name)"
+  session_name="$(get-current-project-name)"
   is_session_exist=$(kak -l | grep $session_name || echo "")
   if [[ -z "${is_session_exist}" ]]; then
     # Create new kakoune daemon for current dir
@@ -191,8 +191,6 @@ v() {
 alias v.='v .'
 alias vi=v
 alias vi.=v.
-alias vim=v
-alias vim.=v.
 alias path='echo $PATH | tr -s ":" "\n"'
 alias psgrep='pstree | grep'
 alias chx='chmod +x'

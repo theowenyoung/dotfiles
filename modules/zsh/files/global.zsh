@@ -1,12 +1,5 @@
-
-
 ## custom
-
-
-
 ## path
-
-
 export PATH=./node_modules/.bin
 export PATH=$PATH:$HOME/dotfiles/bin
 export PATH=$PATH:$HOME/.local/bin
@@ -21,6 +14,10 @@ export PATH=$PATH:/usr/bin
 export PATH=$PATH:/bin
 export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/sbin
+
+# termcolor info
+# https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -59,13 +56,16 @@ if [ -f "$DOTFILES_FUNCTIONS_PATH" ]; then
   . $DOTFILES_FUNCTIONS_PATH
 fi
 
-
 # editor
-export VIM_EDITOR=kak
+if [ -z "$EDITOR_FORCE" ]; then
+    export VIM_EDITOR=nvim
+else
+    export VIM_EDITOR="$EDITOR_FORCE"
+fi
 export MAIN_EDITOR=$VIM_EDITOR
 export EDITOR=$MAIN_EDITOR
 export VISUAL=$EDITOR
-
+export TMUX_EDITOR="tmux-$EDITOR"
 # acme.sh env
 ACME_ENV_FILE="$HOME/.acme.sh/acme.sh.env"
 if [ -f "$ACME_ENV_FILE" ]; then
@@ -105,7 +105,8 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 
-
+# use emacs as default mode 
+bindkey -e
 ## functions
 # run yamlscript shortcut
 

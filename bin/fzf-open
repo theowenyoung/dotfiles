@@ -4,7 +4,7 @@ set -e
 
 fzf_path=$(fzf)
 # echo $fzf_path
-kakproject $fzf_path
+$TMUX_EDITOR $fzf_path
 
 # panes=$(tmux list-panes -F "#{pane_active} #{pane_current_command}" | wc -l | xargs)
 # echo $panes;

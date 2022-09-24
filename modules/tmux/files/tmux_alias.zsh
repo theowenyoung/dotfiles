@@ -3,6 +3,11 @@
 # Attaches tmux to the last session; creates a new session if none exists.
 alias t='tmux attach || tmux new-session'
 
+function tk(){
+  export EDITOR_FORCE="kak"
+  source ~/.zshrc
+  tmux attach || tmux new-session
+}
 # Attaches tmux to a session (example: ta portal)
 alias ta='tmux attach -t'
 

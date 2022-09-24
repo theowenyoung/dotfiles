@@ -1,0 +1,32 @@
+#!/bin/sh
+set -e
+# check is in tmux
+if [ -z "${TMUX}" ]; then
+    echo "Not in tmux"
+    exit 1
+fi
+# get file path from nnn
+file_path=$1
+# get session name, which is the current directory
+session_name="$(get-current-project-name)"
+is_session_exist=$(kak -l | grep $session_name || echo "")
+if [ -z "${is_session_exist}" ]; then
+    # Create new kakoune daemon for current dir
+    kak -d -s $session_name &
+    sleep 0.1
+fi
+# check current tmux panes number, if panes length is 1, then create a new pane, xargs for trim output
+panes=$(tmux list-panes -F "#{pane_active} #{pane_current_command}" | wc -l | xargs)
+# if panes number is 1, then create a new pane
+if [ $panes -eq 1 ]; then
+    tmux split-window -d -h -l 80% -c '#{pane_current_path}' "kak -c $session_name $@" \; selectp -t 1
+else
+    # open file in kak with client0 , witch is the default client
+    if [ -z "$id" ]; then
+        tmux run "echo \"evaluate-commands -client client0 edit '${file_path}'\" | kak -p $session_name" \; selectp -t 1
+    else
+        tmux run "echo \"evaluate-commands -client client0 set global lf_id ${id}\; edit '${file_path}'\" | kak -p $session_name" \; selectp -t 1
+
+    fi
+
+fi

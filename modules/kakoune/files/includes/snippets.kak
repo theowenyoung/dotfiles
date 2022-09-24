@@ -81,7 +81,7 @@ def -override snippets-expand-trigger -params ..1 %{
                     # in the arbitrary user input (snippet trigger and snippet name)
                     quadrupleupsinglequotes "$2"
                     printf "\\\z''\n"
-                    printf "exec -draft <space><a-k><ret>d\n"
+                    printf "exec -draft <,><a-k><ret>d\n"
                     printf "reg n ''"
                     quadrupleupsinglequotes "$1"
                     printf "''\n"
@@ -220,8 +220,8 @@ def -override snippets-insert -hidden -params 1 %<
             # align everything with the current line
             eval -draft -itersel -save-regs '"' %<
                 try %<
-                    exec -draft -save-regs '/' '<a-s>)<space><a-x>s^\s+<ret>y'
-                    exec -draft '<a-s>)<a-space>P'
+                    exec -draft -save-regs '/' '<a-s>),<a-x>s^\s+<ret>y'
+                    exec -draft '<a-s>)<a-,>P'
                 >
             >
 
@@ -288,7 +288,3 @@ def -override snippets-insert -hidden -params 1 %<
         try %{ select %reg{s} }
     >
 >
-set-option global snippets
-set-option -add global snippets console
-set-option -add global snippets cl
-set-option -add global snippets %{snippets-insert console.log("${1}",${2})}

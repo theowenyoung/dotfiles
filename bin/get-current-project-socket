@@ -1,0 +1,5 @@
+#!/bin/sh
+
+project_name=$(get-current-project-name)
+socket="/tmp/editor_$project_name"
+printf "$socket"

@@ -5,11 +5,11 @@ set relativenumber
 set hiddenfiles .*:!*.env:!.*ignore:!.*rc
 
 # map
-map <enter> ${{
+map <enter> &{{
     if [ -d "$f" ]; then
         lf -remote "send $id cd \"$f\""
     else
-        kakproject "$f"
+        $TMUX_EDITOR "$f"
     fi
 }}
 map o :open
@@ -21,10 +21,21 @@ map a push :mkdir<space>
 map b push :touch<space>
 map <tab> :search-next
 map gr $$f
+# toggle chmod +x or -x
+map x :chmod
 # cmd
 
 cmd delete $trash "$f"
+cmd rm! $rm -rf "$f"
 cmd mkdir %mkdir -p "$@"
 cmd touch %{{
-    mkdir -p $(dirname "$1") && touch "$1" && kakproject "$PWD/$1"
+    mkdir -p $(dirname "$1") && touch "$1" && $TMUX_EDITOR "$PWD/$1"
+}}
+cmd chmod %{{
+    if [ -x "$f" ]; then
+        chmod -x "$f"
+    else
+        chmod +x "$f"
+    fi
+    lf --remote 'send reload'
 }}

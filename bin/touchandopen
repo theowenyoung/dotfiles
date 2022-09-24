@@ -1,12 +1,12 @@
 #!/bin/sh
 
 # check if there is params
-
+set -e
 if [ -z "$1" ];then
     echo no filepath supplied
     exit 1;
 fi
 mkdir -p $(dirname "$1")
 touch "$1"
-# open with kakproject
-kakproject "$1"
+# open with tmux editor
+$TMUX_EDITOR "$1"
