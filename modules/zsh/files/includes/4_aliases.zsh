@@ -106,22 +106,6 @@ p(){
   lf -command "\$printf \"set global lf_id \$id\" | kak -p $session_name"
 }
 
-## kakoune
-killkak ()
-{
-  echo kill | kak -p $@
-}
-
-## killallkak
-#
-killallkak ()
-{
-
-kak -l | while read line ; do
-    killkak $line
-done
-
-}
 
 
 ## clash

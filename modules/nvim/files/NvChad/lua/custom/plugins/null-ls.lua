@@ -9,8 +9,10 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
-  b.formatting.deno_fmt,
-  b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } },
+  b.formatting.deno_fmt.with {
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "json", "markdown" },
+  },
+  b.formatting.prettier.with { filetypes = { "html", "css" } },
 
   -- Lua
   b.formatting.stylua,

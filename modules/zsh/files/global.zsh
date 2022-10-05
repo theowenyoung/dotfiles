@@ -105,7 +105,7 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 
-# use emacs as default mode 
+# use emacs as default mode
 bindkey -e
 ## functions
 # run yamlscript shortcut

@@ -76,7 +76,7 @@
   "foam.internalLink.absoluteLinkPrefix": "",
   "foamLite.internalLink.enableRelativeLink": false,
   "window.openFoldersInNewWindow": "on",
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "editor.fontFamily": "'Fira Code',Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
@@ -172,7 +172,6 @@
       ]
     }
   },
-  "workbench.colorTheme": "Gruvbox Dark Hard",
   "dance.menus": {
     "object": {
       "title": "Select object...",

@@ -43,9 +43,11 @@ map global normal '`'     ": phantom-selection-add-selection<ret>"
 map global normal <~>     ": phantom-selection-select-all; phantom-selection-clear<ret>"
 map global normal <a-`> ": phantom-selection-iterate-next<ret>"
 map global normal <a-~> ": phantom-selection-iterate-prev<ret>"
+map global normal <c-a-l> %{:enter-user-mode lsp<ret>} -docstring "LSP mode"
 
 
 ## user mode
+map global user e -docstring 'current lsp error' ':enter-user-mode lsp<ret>h'
 map global user n -docstring 'next error' '<space>ln'
 map global user h '<space>lh' -docstring "lsp help"
 map global user f ':lsp-formatting' -docstring "lsp format"
@@ -110,6 +112,37 @@ hook global WinCreate .* %{ try %{
     add-highlighter buffer/show-whitespaces show-whitespaces -lf ' ' -spc ' ' -nbsp '⋅'
     add-highlighter global/ regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+b
 }}
+
+
+# insert cursor
+#
+# Shades of blue/cyan for normal mode
+set-face global PrimarySelection white,blue+F
+set-face global SecondarySelection black,blue+F
+set-face global PrimaryCursor black,bright-cyan+F
+set-face global SecondaryCursor black,bright-blue+F
+set-face global PrimaryCursorEol black,bright-cyan
+set-face global SecondaryCursorEol black,bright-blue
+
+# Shades of green/yellow for insert mode.
+hook global ModeChange (push|pop):.*:insert %{
+    set-face window PrimarySelection white,green+F
+    set-face window SecondarySelection black,green+F
+    set-face window PrimaryCursor black,bright-yellow+F
+    set-face window SecondaryCursor black,bright-green+F
+    set-face window PrimaryCursorEol black,bright-yellow
+    set-face window SecondaryCursorEol black,bright-green
+}
+
+# Undo colour changes when we leave insert mode.
+hook global ModeChange (push|pop):insert:.* %{
+    unset-face window PrimarySelection
+    unset-face window SecondarySelection
+    unset-face window PrimaryCursor
+    unset-face window SecondaryCursor
+    unset-face window PrimaryCursorEol
+    unset-face window SecondaryCursorEol
+}
 
 
 hook global BufSetOption filetype=grep %{

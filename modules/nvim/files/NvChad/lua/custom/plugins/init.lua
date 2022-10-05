@@ -6,16 +6,38 @@ return {
       require("exrc").setup()
     end,
   },
+  -- ["zbirenbaum/copilot.lua"] = {
+  --   event = "InsertEnter",
+  --   config = function()
+  --     vim.schedule(function()
+  --       require("copilot").setup()
+  --     end)
+  --   end,
+  -- },
+  -- ["zbirenbaum/copilot-cmp"] = {
+  --   after = { "copilot.lua" },
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end,
+  -- },
+  ["kylechui/nvim-surround"] = {
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
   ["github/copilot.vim"] = {
     setup = function()
       -- copliot options
       vim.g.copilot_no_tab_map = true
+      vim.g.copilot_filetypes = {
+        yaml = true,
+      }
       vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-    end
+    end,
   },
-
-  -- ["goolord/alpha-nvim"] = { disable = false } -- enables dashboard
-
   -- Override plugin definition options
   ["neovim/nvim-lspconfig"] = {
     config = function()
@@ -36,6 +58,9 @@ return {
   ["kyazdani42/nvim-tree.lua"] = {
     override_options = overrides.nvimtree,
   },
+  -- ["hrsh7th/nvim-cmp"] = {
+  --   override_options = overrides.cmp,
+  -- },
 
   -- Install a plugin
   ["max397574/better-escape.nvim"] = {

@@ -1,0 +1,4 @@
+#!/bin/sh
+kak -l | while read line ; do
+    kakkill $line
+done
