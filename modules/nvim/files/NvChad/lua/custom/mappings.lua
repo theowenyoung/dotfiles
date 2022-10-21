@@ -2,40 +2,55 @@ local M = {}
 local function termcodes(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
+M.disabled = {
+  n = {
+    ["<leader>x"] = "",
+  },
+}
+
+-- h(elllllll)
+
 -- general
 M.general = {
   n = {
     [";"] = { ":", "command mode", opts = { nowait = true } },
-    ["<Space>ex"] = { ":%bd|e#<CR>", "close all buffers but this one" },
-    ["<Space>X"] = { ":bufdo bd<CR>", "close all buffers" },
+    ["<Space>X"] = { ":%bd|e#<CR>", "close all buffers but this one" },
     ["C-M-w"] = { "<C-w>", "open window manager" },
-    ["gx"] = { ":!open <c-r><c-a><CR>", "open url", opts = {
-      silent = true,
-    } },
+    -- ["gx"] = { ":!open <c-r><c-a><CR>", "open url", opts = {
+    --   silent = true,
+    -- } },
     ["qq"] = { ":q<CR>", "quit" },
     ["<Leader>w"] = { ":w<CR>", "save filee" },
     ["<D-s>"] = { ":w<CR>", "save file" },
     ["<BS>"] = { "<C-^>", "toggle last buffer" },
     ["<Leader>be"] = { ":%bd|e#<CR>", "close all other buffers except the current one" },
+    ["<leader>x"] = { [["+x]], "delete with cut" },
+    ["<Leader>d"] = { [["+d]], "delete with cut" },
+    ["<Leader>c"] = { [["+c]], "change with cut" },
+    ["<Leader>D"] = { [["+D]], "delete with cut" },
+    ["<Leader>s"] = { ":%sno/", "substitute exactly" },
     ["x"] = { [["_x]], "delete not cut" },
     ["d"] = { [["_d]], "delete not cut" },
     ["c"] = { [["_c]], "change not cut" },
     ["D"] = { [["_D]], "delete not cut" },
-    ["<Leader>x"] = { [[""x]], "delete with cut" },
-    ["<Leader>d"] = { [[""d]], "delete with cut" },
-    ["<Leader>c"] = { [[""c]], "change with cut" },
-    ["<Leader>D"] = { [[""D]], "delete with cut" },
-    ["<Leader>s"] = { ":%sno/", "substitute exactly" },
+    -- close buffer + hide terminal buffer
+    ["<leader><BS>"] = {
+      function()
+        require("nvchad_ui.tabufline").close_buffer()
+      end,
+      "close buffer",
+    },
   },
   x = {
     ["x"] = { [["_x]], "delete ../../ not cut" },
     ["d"] = { [["_d]], "delete not cut" },
     ["c"] = { [["_c]], "change not cut" },
     ["D"] = { [["_D]], "delete not cut" },
-    ["<Leader>x"] = { [[""x]], "delete with cut" },
-    ["<Leader>d"] = { [[""d]], "delete with cut" },
-    ["<Leader>c"] = { [[""c]], "change with cut" },
-    ["<Leader>D"] = { [[""D]], "delete with cut" },
+    ["<leader>x"] = { [["+x]], "delete with cut" },
+    ["<Leader>d"] = { [["+d]], "delete with cut" },
+    ["<Leader>c"] = { [["+c]], "change with cut" },
+    ["<Leader>D"] = { [["+D]], "delete with cut" },
+    ["<C-r>"] = { [["hy:%s/<C-r>h//g<left><left>]], "replace selected word" },
   },
   i = {
     ["<C-s>"] = { "<ESC>:w<CR>", "save file" },
@@ -52,25 +67,31 @@ M.general = {
     ["<C-n>"] = { termcodes "<C-\\><C-N>" .. "<cmd> NvimTreeToggle <CR>", "switch right window" },
   },
 }
-M.nvim_spectre = {
+
+M.open_url = {
+  n = {
+    ["gx"] = { "<Plug>(open-url-browser)", "open url", opts = {
+      silent = true,
+    } },
+  },
+  x = {
+    ["gx"] = { "<Plug>(open-url-browser)", "open url", opts = {
+      silent = true,
+    } },
+  },
+}
+
+M.far = {
   n = {
     ["<Leader>S"] = {
-      '<cmd>lua require("spectre").open()<CR>',
-      "open spectre find and replace",
-    },
-    ["<Leader>sw"] = {
-      '<esc>:lua require("spectre").open_visual()<CR>',
-      "open spectre find current word",
-    },
-    ["<Leader>ss"] = {
-      'viw:lua require("spectre").open_file_search()<cr>',
-      "open spectre find current file",
+      ":Farr<cr>",
+      "find and replace, substitute",
     },
   },
-  v = {
+  x = {
     ["<Leader>S"] = {
-      '<esc>:lua require("spectre").open_visual()<CR>',
-      "open spectre find current word",
+      ":Farr<cr>",
+      "find current word, and replace",
     },
   },
 }
@@ -109,8 +130,14 @@ M.lsp_config = {
       "lsp formatting",
     },
     ["<leader>e"] = {
-      "<cmd>lua vim.lsp.diagnostic.get_line_diagnostics()<CR>",
+      function()
+        vim.diagnostic.open_float()
+      end,
       "show line diagnostics",
+    },
+    ["<leader>E"] = {
+      "<cmd>Telescope diagnostics<CR>",
+      "show all lsp error",
     },
   },
 }

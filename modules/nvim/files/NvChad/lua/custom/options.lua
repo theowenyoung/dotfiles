@@ -2,6 +2,9 @@ local opt = vim.opt
 local g = vim.g
 local wo = vim.wo
 
+-- hide cmd line
+opt.cmdheight = 0
+
 -- auto reload
 opt.autoread = true
 

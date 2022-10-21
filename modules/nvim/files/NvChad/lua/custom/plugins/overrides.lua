@@ -31,6 +31,13 @@ M.mason = {
     "html-lsp",
     "typescript-language-server",
     "deno",
+
+    -- format
+    "prettier",
+
+    -- shell
+    "shfmt",
+    'shellcheck',
   },
 }
 

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 import http.server
-
+import argparse
+import os
 class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_my_headers()
@@ -14,4 +15,13 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    http.server.test(HandlerClass=MyHTTPRequestHandler)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--bind', '-b', default='', metavar='ADDRESS',
+                        help='Specify alternate bind address '
+                             '[default: all interfaces]')
+    parser.add_argument('port', action='store',
+                        default=8000, type=int,
+                        nargs='?',
+                        help='Specify alternate port [default: 8000]')
+    args = parser.parse_args()
+    http.server.test(HandlerClass=MyHTTPRequestHandler, port=args.port, bind=args.bind)
