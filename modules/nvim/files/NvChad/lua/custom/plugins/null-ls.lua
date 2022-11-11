@@ -10,9 +10,9 @@ local sources = {
 
   -- webdev stuff
   b.formatting.deno_fmt.with {
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "json" },
+    filetypes = { "typescript", "typescriptreact", "json" },
   },
-  b.formatting.prettier.with { filetypes = { "html", "css", "markdown" } },
+  b.formatting.prettier.with { filetypes = { "html", "css", "javascript", "markdown" } },
 
   -- Lua
   b.formatting.stylua,

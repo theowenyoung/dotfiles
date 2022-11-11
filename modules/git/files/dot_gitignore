@@ -5,6 +5,7 @@
 .DS_Store
 Desktop.ini
 
+.nvimrc.lua
 # Thumbnail cache files
 ._*
 Thumbs.db
