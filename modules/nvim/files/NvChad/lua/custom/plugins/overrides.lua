@@ -37,7 +37,10 @@ M.mason = {
 
     -- shell
     "shfmt",
-    'shellcheck',
+    "shellcheck",
+
+    -- rust
+    "rust-analyzer",
   },
 }
 
