@@ -16,5 +16,10 @@
     "prefix": "cl",
     "body": ["console.log('$1',$2);"],
     "description": "Log output to console"
+  },
+  "Print to log": {
+    "prefix": "lf",
+    "body": ["_log.fatal('$1',$2);"],
+    "description": "Log to fatal"
   }
 }

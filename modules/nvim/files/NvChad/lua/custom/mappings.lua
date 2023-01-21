@@ -99,10 +99,12 @@ M.telescope = {
   i = {
     ["<C-M-o>"] = { "<ESC><cmd> Telescope find_files <CR>", "find files" },
     ["<C-M-b>"] = { "<ESC><cmd> Telescope buffers <CR>", "find buffers" },
+    ["<C-M-r>"] = { "<cmd> Telescope resume <CR>", "resume last results" },
   },
   n = {
     ["<C-M-o>"] = { "<cmd> Telescope find_files <CR>", "find files" },
     ["<C-M-b>"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
+    ["<C-M-r>"] = { "<cmd> Telescope resume <CR>", "resume last results" },
   },
   t = {
     ["<C-M-o>"] = {
