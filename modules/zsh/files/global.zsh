@@ -5,7 +5,6 @@ export PATH=$PATH:$HOME/dotfiles/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.deno/bin"
-export PATH="$PATH:$HOME/.local/share/pnpm"
 export PATH="$PATH:$HOME/.npm-packages/bin"
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:/opt/local/sbin
@@ -20,7 +19,7 @@ export PATH=$PATH:/sbin
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
 # pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
+# export PNPM_HOME="$HOME/.local/share/pnpm"
 # pnpm end
 
 # deno
