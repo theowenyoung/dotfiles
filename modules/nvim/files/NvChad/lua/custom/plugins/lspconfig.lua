@@ -3,7 +3,8 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local parent_lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "tsserver", "clangd", "denols", "prettier" }
+local servers = { "html", "cssls", "tsserver", "denols", "clangd", "prettier" }
+-- "denols",
 
 local custom_on_attach = function(client, bufnr)
   client.server_capabilities.hover = false
