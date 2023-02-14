@@ -3,7 +3,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local parent_lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "tsserver", "denols", "clangd", "prettier" }
+local servers = { "html", "cssls", "denols", "tsserver", "clangd", "prettier" }
 -- "denols",
 
 local custom_on_attach = function(client, bufnr)
@@ -19,6 +19,7 @@ for _, lsp in ipairs(servers) do
   }
   if lsp == "tsserver" then
     options.root_dir = parent_lspconfig.util.root_pattern "package.json"
+    options.single_file_support = false
   end
   if lsp == "denols" then
     options.root_dir = parent_lspconfig.util.root_pattern("deno.json", "deno.jsonc")

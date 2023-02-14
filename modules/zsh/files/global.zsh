@@ -6,6 +6,7 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.deno/bin"
 export PATH="$PATH:$HOME/.npm-packages/bin"
+export PATH="$PATH:$HOME/.bun/bin"
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:/opt/local/sbin
 export PATH=$PATH:/usr/local/bin
