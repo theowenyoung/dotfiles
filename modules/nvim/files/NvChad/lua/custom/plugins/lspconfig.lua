@@ -24,5 +24,6 @@ for _, lsp in ipairs(servers) do
   if lsp == "denols" then
     options.root_dir = parent_lspconfig.util.root_pattern("deno.json", "deno.jsonc")
   end
+
   parent_lspconfig[lsp].setup(options)
 end
