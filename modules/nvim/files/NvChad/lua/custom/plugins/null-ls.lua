@@ -10,9 +10,12 @@ local sources = {
 
   -- webdev stuff
   b.formatting.deno_fmt.with {
-    filetypes = { "typescript", "typescriptreact", "json" },
+    condition = function(utils)
+      -- root has file deno.json, and not has file .prettierrc
+      return utils.root_has_file "deno.json" and not utils.root_has_file ".prettierrc"
+    end,
   },
-  b.formatting.prettier.with { filetypes = { "html", "css", "javascript", "markdown" } },
+  b.formatting.prettier,
 
   -- Lua
   b.formatting.stylua,
