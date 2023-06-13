@@ -15,7 +15,12 @@ local sources = {
       return utils.root_has_file "deno.json" and not utils.root_has_file ".prettierrc"
     end,
   },
-  b.formatting.prettier,
+  b.formatting.prettier.with {
+
+    condition = function(utils)
+      return not utils.root_has_file "deno.json"
+    end,
+  },
 
   -- Lua
   b.formatting.stylua,
