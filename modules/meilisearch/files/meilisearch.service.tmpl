@@ -4,10 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=%h/.local/bin/meilisearch
+ExecStart=make start
 Restart=on-failure
-WorkingDirectory=%h/.config/meilisearch
-EnvironmentFile=%h/.config/meilisearch/.env
+WorkingDirectory=%h/dotfiles/modules/meilisearch
 
 [Install]
 WantedBy=default.target
