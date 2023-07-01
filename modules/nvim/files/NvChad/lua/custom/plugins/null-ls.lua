@@ -16,9 +16,8 @@ local sources = {
     end,
   },
   b.formatting.prettier.with {
-
     condition = function(utils)
-      return not utils.root_has_file "deno.json" and utils.root_has_file ".prettierrc"
+      return utils.root_has_file ".prettierrc"
     end,
   },
 
