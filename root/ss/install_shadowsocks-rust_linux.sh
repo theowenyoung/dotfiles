@@ -9,7 +9,7 @@ get_latest_release() {
 NAME="ss"
 REPO_NAME="shadowsocks/shadowsocks-rust"
 # latest_version=$(get_latest_release $REPO_NAME)
-latest_version="1.15.0-alpha.9"
+latest_version="1.15.4"
 echo start install $REPO_NAME latest v${latest_version}
 cd /tmp
 file_name="shadowsocks-v${latest_version}.x86_64-unknown-linux-gnu"

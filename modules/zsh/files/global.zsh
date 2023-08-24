@@ -19,6 +19,10 @@ export PATH=$PATH:/sbin
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
+
+# deepl
+export IMMERSIVE_DEEPL_API_KEY=immersive_3f91754955304eeeb6f76742984cd5e2
+
 # pnpm
 # export PNPM_HOME="$HOME/.local/share/pnpm"
 # pnpm end
