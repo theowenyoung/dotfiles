@@ -23,7 +23,7 @@ M.autopairs = function()
 end
 
 M.blankline = function()
-  local present, blankline = pcall(require, "indent_blankline")
+  local present, blankline = pcall(require, "indent_blankline/ibl")
 
   if not present then
     return
@@ -32,23 +32,22 @@ M.blankline = function()
   require("base46").load_highlight "blankline"
 
   local options = {
-    indentLine_enabled = 1,
-    filetype_exclude = {
-      "help",
-      "terminal",
-      "alpha",
-      "packer",
-      "lspinfo",
-      "TelescopePrompt",
-      "TelescopeResults",
-      "mason",
-      "",
+    exclude = {
+      filetypes = {
+        "help",
+        "terminal",
+        "alpha",
+        "packer",
+        "lspinfo",
+        "TelescopePrompt",
+        "TelescopeResults",
+        "mason",
+        "",
+      },
+      buftypes = {
+        "terminal",
+      },
     },
-    buftype_exclude = { "terminal" },
-    show_trailing_blankline_indent = false,
-    show_first_indent_level = false,
-    show_current_context = true,
-    show_current_context_start = true,
   }
 
   options = load_override(options, "lukas-reineke/indent-blankline.nvim")
