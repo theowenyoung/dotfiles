@@ -1,4 +1,7 @@
 ## custom
+
+
+
 ## path
 export PATH=./node_modules/.bin
 export PATH=$PATH:$HOME/dotfiles/bin
@@ -14,6 +17,15 @@ export PATH=$PATH:/usr/bin
 export PATH=$PATH:/bin
 export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/sbin
+
+
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
+
+
 
 # termcolor info
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
@@ -44,6 +56,7 @@ export NNN_TRASH=1
 NNN_PLUG_DEFAULT='x:!chmod +x $nnn*;o:fzopen;c:-fzcd;k:-kakopen'
 NNN_PLUG="$NNN_PLUG_DEFAULT"
 export NNN_PLUG
+
 
 
 ## fpath
@@ -117,3 +130,5 @@ bindkey -e
 function li (){
   $DOTFILES_ROOT_PATH/scripts/link.sh "$@"
 }
+
+
