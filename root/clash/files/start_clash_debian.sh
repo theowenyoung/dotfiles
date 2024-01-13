@@ -26,8 +26,8 @@ fi
 
 sudo mkdir -p /etc/opt/clash
 
-sudo ln -sf /home/green/dotfiles/private/clash/files/config_linux.yaml /etc/opt/clash/config_linux.yaml
-sudo ln -snf /home/green/dotfiles/private/clash/files/ruleset /etc/opt/clash/ruleset
+sudo ln -sf /home/green/dotfiles/private/clash/config_linux.yaml /etc/opt/clash/config_linux.yaml
+sudo ln -snf /home/green/dotfiles/private/clash/ruleset /etc/opt/clash/ruleset
 
 
 # check if bak exists
